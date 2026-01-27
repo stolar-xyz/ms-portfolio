@@ -1,0 +1,21 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--color-border)] py-8 mt-16">
+  <div
+    class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+  >
+    <p class="text-[var(--color-text-muted)] text-sm">
+      &copy; {currentYear} Portfolio. All rights reserved.
+    </p>
+    <p class="text-[var(--color-text-muted)] text-sm">
+      Built with <a
+        href="https://astro.build"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[var(--color-accent)] hover:underline">Astro</a
+      > View Transitions
+    </p>
+  </div>
+</footer>

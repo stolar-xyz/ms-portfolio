@@ -1,0 +1,54 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Portfolio showcasing my work with smooth View Transitions",
+} = Astro.props;
+
+import { ClientRouter } from "astro:transitions";
+import "./layout.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Portfolio</title>
+    <ClientRouter />
+    <script is:inline>
+      function applyTheme() {
+        const theme = localStorage.getItem("theme");
+        if (theme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else if (!window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.classList.remove("dark");
+        }
+      }
+
+      // Apply on initial load
+      applyTheme();
+
+      // Apply after View Transition swap (before new page renders)
+      document.addEventListener("astro:after-swap", applyTheme);
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col bg-[var(--color-background)]">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

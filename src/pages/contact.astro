@@ -31,19 +31,19 @@ const collaborationSteps = [
 ---
 
 <Layout title="Contact" description="Skontaktuj się w sprawie współpracy UX/UI">
-  <div class="hidden px-8 pt-[80px] lg:block lg:px-16" aria-hidden="true">
+  <div class="hidden px-[32px] pt-[32px] lg:block lg:px-16 lg:pt-[40px]" aria-hidden="true">
     <div class="mx-auto flex min-h-[20px] w-full items-center">
       <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
     </div>
   </div>
 
-  <div class="px-8 pt-[80px] lg:hidden" aria-hidden="true">
+  <div class="px-[32px] pt-[32px] lg:hidden" aria-hidden="true">
     <div class="flex min-h-[20px] items-center">
       <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
     </div>
   </div>
 
-  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[72px] pt-[80px] lg:px-0 lg:pb-[110px] lg:pt-[80px]" aria-labelledby="contact-page-title">
+  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] pt-[80px] lg:px-0 lg:pb-[200px] lg:pt-[80px]" aria-labelledby="contact-page-title">
     <div class="grid gap-[48px] lg:grid-cols-[1fr_332px] lg:gap-[64px]">
       <div class="space-y-[24px]">
         <h1 id="contact-page-title" class="text-[56px] font-medium leading-[1] tracking-[-0.01em] text-[var(--color-text)] lg:text-[128px]">
@@ -68,7 +68,7 @@ const collaborationSteps = [
     </div>
   </section>
 
-  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[72px] lg:px-0 lg:pb-[104px]" aria-labelledby="contact-methods-title">
+  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] lg:px-0 lg:pb-[200px]" aria-labelledby="contact-methods-title">
     <h2 id="contact-methods-title" class="sr-only">Kanały kontaktu</h2>
 
     <div class="grid gap-[20px] lg:grid-cols-3">
@@ -92,7 +92,7 @@ const collaborationSteps = [
     </div>
   </section>
 
-  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[104px] lg:px-0 lg:pb-[140px]" aria-labelledby="collaboration-title">
+  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] lg:px-0 lg:pb-[200px]" aria-labelledby="collaboration-title">
     <div class="grid gap-[24px] rounded-[16px] border border-[var(--color-border)] bg-[var(--color-foreground)] p-[24px] lg:grid-cols-[1fr_260px] lg:items-start lg:gap-[40px] lg:p-[36px]">
       <div>
         <h2 id="collaboration-title" class="text-[32px] leading-[40px] text-[var(--color-text)] lg:text-[36px] lg:leading-[44px]">
@@ -101,7 +101,7 @@ const collaborationSteps = [
 
         <div class="mt-[20px] h-px w-full bg-[var(--color-divider)]"></div>
 
-        <ul class="mt-[20px] list-disc space-y-[10px] pl-[24px] text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+        <ul class="mt-[20px] list-disc space-y-[10px] pl-[24px] text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
           {collaborationSteps.map((step) => <li>{step}</li>)}
         </ul>
       </div>
@@ -110,7 +110,7 @@ const collaborationSteps = [
         <p class="text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text-muted)]">Szybki start</p>
         <a
           href="mailto:hello@example.com?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%C4%99"
-          class="mt-[10px] inline-flex w-full items-center justify-center rounded-[10px] bg-[#1e1e1e] px-[18px] py-[14px] text-[16px] font-medium leading-[20px] text-white shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)] transition-colors hover:bg-[#111111] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+          class="mt-[10px] inline-flex w-full items-center justify-center rounded-[10px] bg-[#1e1e1e] px-[18px] py-[14px] text-[14px] lg:text-[16px] font-medium leading-[20px] text-white shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)] transition-colors hover:bg-[#111111] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
         >
           Napisz wiadomość
         </a>

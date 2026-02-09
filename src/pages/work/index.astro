@@ -6,21 +6,21 @@ const projects = getAllProjects();
 ---
 
 <Layout title="Work" description="Portfolio UX/UI - projekty">
-  <section class="hidden px-8 pt-[80px] lg:block lg:px-16" aria-label="Liczba projektów">
+  <section class="hidden px-[32px] pt-[32px] lg:block lg:px-16 lg:pt-[40px]" aria-label="Liczba projektów">
     <div class="mx-auto flex w-full items-center gap-[48px]">
       <div class="h-px flex-1 border-b border-[var(--color-subtle)]"></div>
       <p class="text-[14px] leading-[20px] tracking-[-0.011em] text-[var(--color-subtle)]">{projects.length} Projects</p>
     </div>
   </section>
 
-  <section class="px-8 pt-[80px] lg:hidden" aria-label="Liczba projektów mobilnie">
+  <section class="px-[32px] pt-[32px] lg:hidden" aria-label="Liczba projektów mobilnie">
     <div class="flex items-center gap-[20px]">
       <div class="h-px flex-1 border-b border-[var(--color-subtle)]"></div>
       <p class="text-[14px] leading-[20px] tracking-[-0.011em] text-[var(--color-subtle)]">{projects.length} Projects</p>
     </div>
   </section>
 
-  <section class="mx-auto flex w-full max-w-[1040px] flex-col gap-[80px] px-6 pb-[96px] pt-[80px] lg:gap-[200px] lg:px-0 lg:pb-[160px] lg:pt-[80px]" aria-label="Lista projektów">
+  <section class="mx-auto flex w-full max-w-[1040px] flex-col gap-[80px] px-6 pb-[120px] pt-[80px] lg:gap-[200px] lg:px-0 lg:pb-[200px] lg:pt-[80px]" aria-label="Lista projektów">
     {
       projects.map((project, index) => {
         const reverseOnDesktop = index % 2 === 1;
@@ -81,11 +81,11 @@ const projects = getAllProjects();
 
                   <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
 
-                  <p class="text-[16px] leading-[24px] tracking-[0] text-[var(--color-text)]">
+                  <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0] text-[var(--color-text)]">
                     {project.description}
                   </p>
 
-                  <span class="inline-flex w-fit items-center justify-center rounded-[10px] bg-[#1e1e1e] px-[24px] py-[14px] text-[16px] font-medium leading-[20px] text-white shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)]">
+                  <span class="inline-flex w-fit items-center justify-center rounded-[10px] bg-[#1e1e1e] px-[24px] py-[14px] text-[14px] lg:text-[16px] font-medium leading-[20px] text-white shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)]">
                     Zobacz więcej
                   </span>
                 </div>

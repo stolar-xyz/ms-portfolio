@@ -19,18 +19,18 @@ const activeKey = currentPath.startsWith("/about")
 ---
 
 <header class="relative z-40" transition:name="site-header">
-  <div class="mx-auto w-full px-8 pt-[36px] lg:px-16 lg:pt-[48px]">
-    <nav class="flex items-center justify-between lg:items-start" aria-label="Główna nawigacja">
+  <div class="mx-auto w-full px-[32px] pt-[36px] lg:px-16 lg:pt-[48px]">
+    <nav class="flex items-center justify-between lg:min-h-[140px] lg:items-start" aria-label="Główna nawigacja">
       <a
         href="/"
-        class="text-[16px] leading-none tracking-[-0.01em] text-[var(--color-text)] lg:pt-[2px] lg:text-[24px]"
+        class="text-[16px] leading-none tracking-[-0.01em] text-[var(--color-text)] lg:py-[6px] lg:text-[24px] lg:leading-[32px]"
         transition:name="site-brand"
         transition:persist
       >
         mszczecinska
       </a>
 
-      <div class="flex items-center gap-[8px] lg:items-start lg:gap-[64px]">
+      <div class="flex items-center gap-[24px] lg:items-start lg:gap-[64px]">
         <ul class="hidden items-start gap-[64px] text-[var(--color-text)] lg:flex">
           {
             navItems.map((item) => {
@@ -44,8 +44,8 @@ const activeKey = currentPath.startsWith("/about")
                     class:list={[
                       "block whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text)]",
                       isActive
-                        ? "-mt-[6px] font-medium text-[128px] leading-[1] tracking-[-0.025em]"
-                        : "pt-[2px] text-[24px] leading-none",
+                        ? "font-medium text-[128px] leading-[1] tracking-[-0.025em]"
+                        : "py-[6px] text-[24px] leading-[32px]",
                     ]}
                     transition:name={isActive ? "nav-active-item" : undefined}
                   >
@@ -60,7 +60,7 @@ const activeKey = currentPath.startsWith("/about")
         <div transition:name="theme-toggle" transition:persist>
           <ThemeToggle
             client:load
-            className="inline-flex size-[32px] items-center justify-center p-[4px] text-[var(--color-text)] lg:size-[44px] lg:p-[10px]"
+            className="inline-flex size-[32px] items-center justify-center p-[4px] text-[var(--color-text)] lg:size-[44px] lg:p-[6px]"
             iconClassName="size-6 lg:size-8"
           />
         </div>

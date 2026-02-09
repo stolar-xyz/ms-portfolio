@@ -13,78 +13,49 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "ecommerce-platform",
-    title: "E-Commerce Platform",
-    description: "A modern e-commerce platform with cart functionality, user authentication, and payment integration.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=450&fit=crop",
-    tags: ["React", "Node.js", "Stripe", "PostgreSQL"],
-    content: "Built a full-featured e-commerce platform with product catalog, shopping cart, secure checkout, and order management. Implemented real-time inventory updates and integrated multiple payment providers.",
-    links: {
-      live: "https://example.com",
-      github: "https://github.com/example/ecommerce"
-    }
+    slug: "koncepcja-wizji-produktu-b2c",
+    title: "Koncepcja wizji produktu B2C",
+    description:
+      "Koncept platformy InfoFi do analizy kryptowalut. Pomaga traderom szybko ocenić bezpieczeństwo tokenów i zrozumieć przepływy kapitału, łącząc dane giełdowe i on-chain w jednym, elastycznym dashboardzie.",
+    image: "/figma/checker.png",
+    tags: ["UX Design", "Research", "Crypto / DeFi"],
+    content:
+      "Koncept platformy InfoFi do analizy kryptowalut. Pomaga traderom szybko ocenić bezpieczeństwo tokenów i zrozumieć przepływy kapitału, łącząc dane giełdowe i on-chain w jednym, elastycznym dashboardzie.",
   },
   {
-    slug: "task-management-app",
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates and team workspaces.",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=450&fit=crop",
-    tags: ["TypeScript", "Next.js", "Prisma", "WebSocket"],
-    content: "Developed a Kanban-style task manager with drag-and-drop functionality, real-time collaboration features, and customizable workflows. Supports team workspaces with role-based permissions.",
-    links: {
-      live: "https://example.com",
-      github: "https://github.com/example/tasks"
-    }
+    slug: "readyset-aplikacja-do-planowania-wyjazdow",
+    title: "ReadySet - aplikacja do planowania wyjazdów",
+    description:
+      "Aplikacja mobilna do wspólnego planowania wyjazdów. Umożliwia tworzenie planów ze znajomymi, dodawanie spersonalizowanych kategorii i formularzy, wspólne głosowanie na opcję, oraz prowadzenie rozmów w komentarzach przypiętych do konkretnych kategorii",
+    image: "/figma/checker.png",
+    tags: ["UX / UI Design", "Mobile app", "Travel", "End-to-end"],
+    content:
+      "Aplikacja mobilna do wspólnego planowania wyjazdów. Umożliwia tworzenie planów ze znajomymi, dodawanie spersonalizowanych kategorii i formularzy, wspólne głosowanie na opcję, oraz prowadzenie rozmów w komentarzach przypiętych do konkretnych kategorii",
   },
   {
-    slug: "ai-content-generator",
-    title: "AI Content Generator",
-    description: "An AI-powered content generation tool that helps create blog posts, social media content, and marketing copy.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=450&fit=crop",
-    tags: ["Python", "OpenAI", "FastAPI", "React"],
-    content: "Created an AI content assistant that generates high-quality text content using GPT models. Features include tone adjustment, SEO optimization, and multi-language support.",
-    links: {
-      github: "https://github.com/example/ai-writer"
-    }
+    slug: "mova-aplikacja-do-nauki-jezykow",
+    title: "Mova - aplikacja do nauki języków",
+    description:
+      "Nowoczesna platforma do nauki języków obcych. Zaprojektowana z myślą o użytkownikach poszukujących skutecznego i angażującego sposobu na rozwijanie umiejętności językowych. Dostępna zarówno w formie aplikacji mobilnej jak i wersji webowej, tak aby użytkownik miał możliwość skorzystania z niej w każdych okolicznościach.",
+    image: "/figma/checker.png",
+    tags: ["UX / UI Design", "Web & Mobile", "Language app"],
+    content:
+      "Nowoczesna platforma do nauki języków obcych. Zaprojektowana z myślą o użytkownikach poszukujących skutecznego i angażującego sposobu na rozwijanie umiejętności językowych. Dostępna zarówno w formie aplikacji mobilnej jak i wersji webowej.",
   },
   {
-    slug: "fitness-tracker",
-    title: "Fitness Tracker",
-    description: "A comprehensive fitness tracking application with workout logging, progress charts, and goal setting.",
-    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&h=450&fit=crop",
-    tags: ["React Native", "Firebase", "Chart.js", "TypeScript"],
-    content: "Built a cross-platform mobile app for tracking workouts, nutrition, and fitness goals. Includes exercise library, custom workout builder, and detailed analytics dashboard.",
-    links: {
-      live: "https://example.com"
-    }
+    slug: "aurapura-design-system",
+    title: "AuraPura - design system",
+    description:
+      "Projekt AuraPura to nie tylko design strony na trzy różne widoki, ale również pełny design system stworzony na podstawie podanego case study i briefu.",
+    image: "/figma/checker.png",
+    tags: ["UX / UI Design", "Design system", "E-commerse"],
+    content:
+      "Projekt AuraPura to nie tylko design strony na trzy różne widoki, ale również pełny design system stworzony na podstawie podanego case study i briefu.",
   },
-  {
-    slug: "portfolio-template",
-    title: "Portfolio Template",
-    description: "A clean and modern portfolio template built with Astro and View Transitions for smooth navigation.",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=450&fit=crop",
-    tags: ["Astro", "View Transitions", "Tailwind CSS", "React"],
-    content: "This very template you're viewing! Features smooth page transitions, dark/light mode toggle, and fully responsive design. Built with performance and accessibility in mind.",
-    links: {
-      github: "https://github.com/example/portfolio"
-    }
-  },
-  {
-    slug: "weather-dashboard",
-    title: "Weather Dashboard",
-    description: "A beautiful weather dashboard with forecasts, interactive maps, and severe weather alerts.",
-    image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=450&fit=crop",
-    tags: ["Vue.js", "D3.js", "Weather API", "Mapbox"],
-    content: "Developed an interactive weather application with 7-day forecasts, radar maps, and location-based alerts. Features include saved locations, weather widgets, and data visualization.",
-    links: {
-      live: "https://example.com",
-      github: "https://github.com/example/weather"
-    }
-  }
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+  return projects.find((project) => project.slug === slug);
 }
 
 export function getAllProjects(): Project[] {

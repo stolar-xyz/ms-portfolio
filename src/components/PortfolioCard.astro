@@ -9,23 +9,23 @@ const { project } = Astro.props;
 ---
 
 <a
-  href={`/project/${project.slug}`}
+  href={`/work/${project.slug}`}
   class="group relative block overflow-hidden rounded-xl bg-[var(--color-foreground)] hover:ring-2 hover:ring-[var(--color-accent)] transition-all duration-300"
-  transition:name={`project-${project.slug}-box`}
+  transition:name={`work-${project.slug}-card`}
 >
   <div class="aspect-video overflow-hidden">
     <img
       src={project.image}
       alt={project.title}
       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-      transition:name={`project-${project.slug}-image`}
+      transition:name={`work-${project.slug}-image`}
       loading="lazy"
     />
   </div>
   <div class="p-5">
     <h3
       class="text-lg font-semibold mb-2 text-[var(--color-text)]"
-      transition:name={`project-${project.slug}-title`}
+      transition:name={`work-${project.slug}-title`}
     >
       {project.title}
     </h3>

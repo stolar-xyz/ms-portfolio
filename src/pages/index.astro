@@ -15,63 +15,9 @@ const featuredProjects = featuredSlugs
 if (featuredProjects.length !== featuredSlugs.length) {
   throw new Error("Brak projektów wymaganych do sekcji home.");
 }
-
-const footerNav = [
-  { label: "Home", href: "/" },
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-] as const;
-
-const socialLinks = [
-  { label: "Linkedin", href: "https://linkedin.com" },
-  { label: "Github", href: "https://github.com" },
-] as const;
-
-const pixelDots = [
-  [30, 2.5],
-  [30, 5],
-  [30, 7.5],
-  [32.5, 5],
-  [27.5, 5],
-  [27.5, 27.5],
-  [27.5, 30],
-  [27.5, 32.5],
-  [25, 30],
-  [30, 30],
-  [12.5, 22.5],
-  [12.5, 7.5],
-  [12.5, 25],
-  [12.5, 10],
-  [12.5, 12.5],
-  [17.5, 17.5],
-  [20, 17.5],
-  [22.5, 17.5],
-  [7.5, 17.5],
-  [5, 17.5],
-  [2.5, 17.5],
-  [12.5, 27.5],
-  [10, 20],
-  [10, 15],
-  [15, 15],
-  [15, 20],
-  [12.5, 17.5],
-] as const;
 ---
 
-<Layout title="Home" description="Portfolio UX/UI - strona główna" showFooter={false}>
-  <section class="hidden px-[32px] pt-[32px] lg:block lg:px-16 lg:pt-[40px]" aria-hidden="true">
-    <div class="mx-auto flex min-h-[20px] w-full items-center">
-      <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
-    </div>
-  </section>
-
-  <section class="px-[32px] pt-[32px] lg:hidden" aria-hidden="true">
-    <div class="mx-auto flex min-h-[20px] w-full items-center">
-      <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
-    </div>
-  </section>
-
+<Layout title="Home" description="Portfolio UX/UI - strona główna">
   <section
     class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] pt-[80px] lg:px-0 lg:pb-[200px] lg:pt-[80px]"
     aria-labelledby="home-hero-title"
@@ -79,16 +25,16 @@ const pixelDots = [
     <h1
       id="home-hero-title"
       aria-label="Portfolio Magdaleny Szczecińskiej"
-      class="text-center text-[56px] font-medium leading-[1] tracking-[0] text-[var(--color-text)] lg:text-[88px]"
+      class="text-center text-[56px] font-medium leading-[1] tracking-[0] text-[var(--color-text)] lg:text-[80px]"
     >
-      ----
+    Projektuję, buduję, wdrażam
     </h1>
 
     <p
-      class="mt-[28px] text-center text-[28px] leading-[1] tracking-[0] text-[var(--color-text)] lg:mt-[28px] lg:text-[32px]"
+      class="mt-[28px] text-center text-[24px] leading-[1] tracking-[0] text-[var(--color-text-muted)] lg:mt-[28px]"
       aria-hidden="true"
     >
-      ----
+    UI/UX designerka napędzana AI - tworzę intuicyjne interfejsy od pierwszego szkicu po produkcję
     </p>
 
     <div class="mt-[48px] flex flex-wrap items-center justify-center gap-[12px] lg:mt-[101px]">
@@ -225,64 +171,4 @@ const pixelDots = [
     </div>
   </section>
 
-  <footer class="border-t border-[var(--color-divider)] pb-[20px] pt-[40px]" aria-labelledby="home-footer-title">
-    <h2 id="home-footer-title" class="sr-only">Stopka i kontakt</h2>
-
-    <div class="mx-auto flex w-full max-w-[1040px] flex-col gap-[40px] px-6 lg:px-0">
-      <div class="grid gap-[32px] lg:grid-cols-[40px_63px_103px] lg:gap-[200px]">
-        <div class="relative size-[40px]" aria-hidden="true">
-          {
-            pixelDots.map(([left, top]) => (
-              <span
-                class="absolute size-[2.5px] bg-[var(--color-text)]"
-                style={`left:${left}px;top:${top}px;`}
-              ></span>
-            ))
-          }
-        </div>
-
-        <nav aria-label="Nawigacja stopki">
-          <ul class="flex flex-col items-start gap-[12px] text-[14px] lg:text-[16px] leading-[22px] text-[var(--color-text)]">
-            {
-              footerNav.map((item) => (
-                <li>
-                  <a
-                    href={item.href}
-                    class="px-[10px] py-[5px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </nav>
-
-        <div>
-          <ul class="flex flex-col items-start gap-[12px] text-[14px] lg:text-[16px] leading-[22px] text-[var(--color-text)]">
-            {
-              socialLinks.map((item) => (
-                <li>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="group inline-flex items-center gap-[12px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
-                  >
-                    <span>{item.label}</span>
-                    <TablerIcon
-                      name="arrow-up-right"
-                      class="size-8 transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]"
-                    />
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
-
-      <p class="text-right text-[14px] leading-[19px] text-[var(--color-text)]">© Magdalena Szczecińska 2026</p>
-    </div>
-  </footer>
 </Layout>

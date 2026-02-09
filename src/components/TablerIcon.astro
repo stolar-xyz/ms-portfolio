@@ -11,7 +11,8 @@ interface Props {
     | "scale"
     | "chart-bar"
     | "puzzle"
-    | "eye";
+    | "eye"
+    | "download";
   class?: string;
   strokeWidth?: number;
 }
@@ -58,9 +59,14 @@ const iconPaths: Record<Props["name"], string[]> = {
     "M3 12s3.5 -6 9 -6s9 6 9 6s-3.5 6 -9 6s-9 -6 -9 -6",
     "M12 9a3 3 0 1 0 0 6a3 3 0 0 0 0 -6",
   ],
+  download: [
+    "M12 4v10",
+    "M8 10l4 4l4 -4",
+    "M4 20h16",
+  ],
 };
 
-const paths = iconPaths[name];
+const paths = iconPaths[name] ?? [];
 ---
 
 <svg

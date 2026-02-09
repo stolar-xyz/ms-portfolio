@@ -13,73 +13,67 @@ export function getStaticPaths() {
 const { project } = Astro.props;
 
 const tools = [
-  { src: "/figma/tool-figma.png", alt: "Figma" },
-  { src: "/figma/tool-notion.png", alt: "Notion" },
-  { src: "/figma/tool-openai.png", alt: "OpenAI" },
-  { src: "/figma/tool-gemini.png", alt: "Gemini" },
+  { src: "/icons/tool-figma.png", alt: "Figma" },
+  { src: "/icons/tool-notion.png", alt: "Notion" },
+  { src: "/icons/tool-openai.png", alt: "OpenAI" },
+  { src: "/icons/tool-gemini.png", alt: "Gemini" },
 ] as const;
 
 const conclusionsRows = [
   {
     aspect: "Komunikacja",
-    traditional: "Chat (Messanger/WhatsApp)",
-    finding: "Szybka i łatwa, ale informacje giną w konwersacji",
+    traditional: "Chat (Messenger/WhatsApp)",
+    finding: "Szybka, ale informacje giną w historii",
   },
   {
     aspect: "Dane",
-    traditional: "Linki, arkusze, mail",
-    finding: "Zorganizowane, ale zmuszają do użycia kolejnych narzędzi",
+    traditional: "Linki, arkusze, maile",
+    finding: "Rozproszone między wieloma narzędziami",
   },
   {
-    aspect: "Decyzja",
-    traditional: "Brak twardej, zbiorczej akceptacji",
-    finding:
-      "Decyzje są opóźnione ze względu na rozproszenie informacji, czasami ważne wiadomości giną w zgielku",
+    aspect: "Decyzje",
+    traditional: "Ankiety w komunikatorach",
+    finding: "Brak trwałej akceptacji, giną w konwersacji",
   },
 ] as const;
 
 const jobsToBeDone = [
   {
     icon: "notes",
-    title: "Zebrać wszystkie pomysły w jednym miejscu",
+    title: "Zebrać wszystkie propozycje w jednym miejscu",
     description:
-      "Kiedy znajomi wrzucają pomysły na nocleg, transport czy atrakcje w różnych czatach i narzędziach, chcę mieć jedno miejsce, w którym mogę to wszystko szybko zebrać i uporządkować.",
+      "Kiedy pomysły na nocleg, transport i atrakcje są rozproszone po czatach i narzędziach, potrzebuję jednego miejsca do zbierania i porządkowania wszystkich informacji.",
   },
   {
     icon: "scale",
-    title: "Porównać opcje i znaleźć „złoty środek”",
+    title: "Porównać opcje i podjąć wspólną decyzję",
     description:
-      "Kiedy mamy kilka propozycji noclegów, środków transportu czy atrakcji, chcę zobaczyć je obok siebie z głosami innych osób, żeby łatwo wybrać opcję, która najlepiej pasuje całej grupie.",
+      "Kiedy mamy kilka propozycji, chcę zobaczyć je obok siebie wraz z opiniami grupy, żeby wybrać najlepszą opcję dla wszystkich.",
   },
   {
     icon: "chart-bar",
-    title: "Śledzić status ustaleń",
+    title: "Monitorować postęp planowania",
     description:
-      "Kiedy część decyzji jest już podjęta, a część tematów nadal jest otwarta, potrzebuję prostego widoku, który pokazuje status każdej kategorii, żebym w każdej chwili mogła sprawdzić, na jakim etapie jest nasz plan.",
+      "Kiedy część decyzji jest zamknięta, a część wciąż otwarta, potrzebuję przejrzystego widoku statusu każdej kategorii.",
   },
   {
-    icon: "puzzle",
-    title: "Jedno narzędzie zamiast pięciu",
+    icon: "download",
+    title: "Mieć gotowy plan zawsze pod ręką",
     description:
-      "Kiedy do planowania korzystamy jednocześnie z komunikatora, arkusza, notatek i zakładek w przeglądarce, chcę przenieść ten proces do jednego narzędzia, żebym nie musiała skakać między aplikacjami i szukać informacji w kilku miejscach.",
-  },
-  {
-    icon: "eye",
-    title: "Szybko „wejść w temat” jako uczestnik",
-    description:
-      "Kiedy dołączam do już planowanego wyjazdu, chcę w kilka sekund zrozumieć jaki jest zarys planu, żebym mogła szybko zdecydować, czy jadę i co muszę zorganizować po swojej stronie.",
+      "Kiedy wyjazd jest już zaplanowany, chcę mieć wszystkie informacje (adresy, godziny, linki) w jednym miejscu, dostępne nawet bez internetu.",
   },
 ] as const;
 
 const planningFlow = [
-  "Użytkownik startuje od prostego formularza (data, nazwa, kierunek), który natychmiast tworzy współdzieloną przestrzeń.",
-  "Użytkownicy dodają propozycje do dedykowanych kategorii. System automatycznie parsuje wklejane linki (np. z Airbnb), pobierając zdjęcia i ceny, aby uniknąć ręcznego uzupełniania danych.",
-  "Każda kategoria ma status (np. aktywne głosowanie, zakończone). Komentarze są przypisane do danej kategorii co pozwala uporządkować wątki.",
+  "Prosty start: użytkownik tworzy wyjazd przez formularz (data, nazwa, kierunek), który natychmiast generuje współdzieloną przestrzeń.",
+  "Dashboard z kafelkami kategorii: status każdej kategorii (np. aktywne głosowanie, zakończone) daje poczucie kontroli nad procesem.",
+  "Automatyczne parsowanie linków: system pobiera zdjęcia, ceny i nazwy z wklejanych linków (np. Airbnb, Booking), eliminując ręczne uzupełnianie danych.",
+  "Kontekst komentarzy: komentarze są przypisane do konkretnych kategorii zamiast jednego chaotycznego wątku.",
 ] as const;
 
 const scheduleFlow = [
-  "Wyświetla tylko zwycięskie opcje (np. wybrany hotel, konkretny pociąg).",
-  'Kluczową funkcją jest przycisk "Pobierz PDF", który generuje plik z m.in. adresami i godzinami, dostępny nawet przy braku zasięgu w podróży..',
+  "Po zamknięciu głosowań aplikacja automatycznie generuje czytelny harmonogram z zatwierdzonymi opcjami.",
+  'Funkcja "Pobierz PDF": harmonogram można wyeksportować jako PDF dostępny offline.',
 ] as const;
 
 const testTasks = [
@@ -89,13 +83,13 @@ const testTasks = [
 ] as const;
 
 const nextSteps = [
-  "wprowadzeniu funkcji “Guest Mode” dla zaproszonych użytkowników. Dzięki temu wyeliminowałabym barierę wejścia i wyciągnęłabym rękę do użytkowników, którzy nie chcą od samego początku zakładać konta",
-  "audycie WCAG w celu sprawdzenia wszystkich kontrastów i hierarchii.",
+  "Guest Mode - umożliwienie udziału w planowaniu bez zakładania konta, co obniży barierę wejścia.",
+  "Audyt WCAG - weryfikacja kontrastów i hierarchii dla dostępności.",
 ] as const;
 
 const successMetrics = [
-  "czas osiągnięcia ostatecznej decyzji - skrócenie czasu, jaki zajmuje grupie przejście od dodania propozycji do podjęcia ostatecznej decyzji, weryfikowany zarówno danymi analitycznymi w aplikacji  i badaniami jakościowymi (ankiety, wywiady),",
-  "skuteczność automatycznych linków - monitorowanie kluczowej funkcji automatycznego zaciągania danych z linków zewnętrznych, niska częstotliwość błędów jest tu miarą zaufania do aplikacji.",
+  "Czas podjęcia decyzji - skrócenie czasu od dodania propozycji do zamknięcia głosowania (dane analityczne + badania jakościowe).",
+  "Skuteczność parsowania linków - niska częstotliwość błędów przy automatycznym pobieraniu danych z zewnętrznych źródeł.",
 ] as const;
 ---
 
@@ -125,7 +119,7 @@ const successMetrics = [
       </div>
     </div>
 
-    <div class="flex flex-col gap-[120px] lg:gap-[200px]">
+    <div class="flex flex-col gap-[80px] lg:gap-[120px]">
       <header class="mx-auto flex w-full max-w-[864px] flex-col gap-[40px]">
       <div class="flex flex-col gap-[24px]">
         <h1
@@ -151,11 +145,11 @@ const successMetrics = [
       </div>
 
       <div
-        class="relative h-[420px] w-full overflow-hidden bg-[var(--color-surface)] lg:h-[568px]"
+        class={`relative h-[420px] w-full overflow-hidden lg:h-[568px] ${project.slug === "readyset-aplikacja-do-planowania-wyjazdow" ? "" : "bg-[var(--color-surface)]"}`}
         transition:name={`work-${project.slug}-card`}
       >
         <img
-          src={project.image}
+          src={project.slug === "readyset-aplikacja-do-planowania-wyjazdow" ? "/assets/ready-set/hero-readyset.png" : project.image}
           alt={`Podgląd projektu ${project.title}`}
           class="size-full object-cover"
           transition:name={`work-${project.slug}-image`}
@@ -171,7 +165,7 @@ const successMetrics = [
         </div>
         <div class="h-px w-full bg-[var(--color-border)]"></div>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-          Planowanie grupowych wyjazdów bywa męczące. Setki wiadomości, linki do hoteli ginące w konwersacji, a decyzja „gdzie i kiedy” rozjeżdża się w chaosie. Zaprojektowałam aplikację mobilną, która zmienia ten chaotyczny proces w ułożony plan. To narzędzie, które pomaga w komunikacji, ułatwia podejmowanie decyzji z pomocą głosowania i automatycznie generuje finalny harmonogram wyjazdu, aby zawsze był pod ręką.
+          Planowanie grupowych wyjazdów bywa męczące. Setki wiadomości, linki ginące w konwersacji, a decyzje rozmywają się między różnymi narzędziami. ReadySet to aplikacja mobilna, która porządkuje cały ten proces. Centralizuje komunikację, usprawnia podejmowanie decyzji przez głosowanie i automatycznie generuje finalny harmonogram zawsze dostępny pod ręką.
         </p>
       </div>
 
@@ -187,7 +181,7 @@ const successMetrics = [
         </div>
 
         <div class="rounded-[12px] border border-[var(--color-border)] px-[20px] py-[14px]">
-          <p class="text-[14px] lg:text-[16px] font-medium leading-[24px] tracking-[0.15px] text-[var(--color-text)]">Narzędzia</p>
+          <p class="text-[14px] font-medium leading-[20px] tracking-[0.25px] text-[var(--color-text)]">Narzędzia</p>
           <ul class="mt-[12px] flex items-start gap-[16px]" aria-label="Narzędzia projektu">
             {
               tools.map((tool) => (
@@ -202,30 +196,30 @@ const successMetrics = [
     </section>
 
     <section class="grid gap-[48px] lg:grid-cols-[509px_467px] lg:items-center lg:gap-[64px]" aria-labelledby="problem-title">
-      <div class="flex flex-col gap-[24px]">
+      <div class="flex flex-col gap-[24px] lg:justify-center">
         <h2 id="problem-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Problem</h2>
         <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-          Podczas wspólnego planowania wyjazdów pojawiają się chaos i frustracja . Są one spowodowane rozproszeniem decyzji i informacji między różnymi narzędziami, które nie współpracują ze sobą, co powoduje problemy w płynnym przejściu procesu. W efekcie użytkownicy tracą poczucie kontroli nad planem i terminami, a juz ustalone decyzje gubią się w zgiełku informacji.
+          Planowanie wyjazdów w grupie generuje chaos z powodu rozproszenia informacji między różnymi narzędziami. Użytkownicy tracą kontrolę nad planem, decyzje gubią się w wątkach, a organizator musi ręcznie spinać ustalenia.
         </p>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]"><strong>Frustracja:</strong> Uczestnicy gubią się w wątkach i tracą poczucie kontroli.</p>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]"><strong>Paraliż decyzyjny:</strong> Trudno ustalić jedną wersję wydarzeń, gdy opinie są rozsiane po różnych kanałach.</p>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]"><strong>Strata czasu:</strong> Organizer musi ręcznie spinać ustalenia w całość.</p>
       </div>
       <div class="h-[360px] overflow-hidden bg-[var(--color-surface)] lg:h-[467px]">
-        <img src="/figma/checker.png" alt="Ilustracja problemu planowania grupowych wyjazdów" class="size-full object-cover" loading="lazy" />
+        <video src="/assets/ready-set/start-page (1).mp4" aria-label="Ilustracja problemu planowania grupowych wyjazdów" class="size-full object-cover" autoplay loop muted playsinline></video>
       </div>
     </section>
 
     <section class="grid gap-[48px] lg:grid-cols-[467px_507px] lg:items-center lg:gap-[64px]" aria-labelledby="goal-title">
       <div class="h-[360px] overflow-hidden bg-[var(--color-surface)] lg:h-[467px]">
-        <img src="/figma/checker.png" alt="Widok zaproszenia do planowania wyjazdu" class="size-full object-cover" loading="lazy" />
+        <img src="/assets/ready-set/invite-readyset.png" alt="Widok zaproszenia do planowania wyjazdu" class="size-full object-cover" loading="lazy" />
       </div>
-      <div class="flex flex-col gap-[24px]">
+      <div class="flex flex-col gap-[24px] lg:justify-center">
         <h2 id="goal-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Cel</h2>
         <div class="h-px w-full bg-[var(--color-border)]"></div>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-          Celem aplikacji jest zaprojektowanie platformy, która w jasny i angażujący sposób zbiera propozycje, ułatwia grupie szybkie podjęcie decyzji (poprzez głosowanie) oraz weryfikuje postęp, przenosząc cały proces planowania z chaotycznych czatów i rozsianych narzędzi do jednego, spójnego harmonogramu.
+          Zaprojektować platformę, która w jasny sposób zbiera propozycje, ułatwia grupie szybkie podjęcie decyzji oraz weryfikuje postęp, przenosząc cały proces planowania z chaotycznych czatów i rozsianych narzędzi do jednego, spójnego harmonogramu. Krótko mówiąc: cały wyjazd w jednym miejscu.
         </p>
       </div>
     </section>
@@ -238,27 +232,27 @@ const successMetrics = [
         </div>
         <div class="h-px w-full bg-[var(--color-border)]"></div>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-          Aby lepiej zrozumieć z jakimi problemami zmagają się różni użytkownicy planujący wyjazdy zrealizowałam 3 wywiady pogłębione (IDI) z osobami, które organizują wyjazdy w grupach.
+          Przeprowadziłam 3 wywiady pogłębione (IDI) z osobami organizującymi wyjazdy grupowe, skupiając się na konkretnych wyzwaniach i sposobie podejmowania decyzji.
         </p>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Kluczowe pytania, które zadałam w trakcie każdego wywiadu to:</p>
         <ul class="list-disc pl-[24px] text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
           <li>Jakie były największe wyzwania podczas planowania ostatniego wyjazdu?</li>
-          <li>W jaki sposób grupa wymienia się uwagami oraz podejmuje ostateczne decyzję?</li>
-          <li>Co chcieliby pominąć w trakcie całego procesu, aby był prostszy?</li>
+          <li>W jaki sposób grupa wymienia się uwagami i podejmuje decyzje?</li>
+          <li>Co chcieliby uprościć w całym procesie?</li>
         </ul>
       </div>
 
-      <div class="h-[420px] overflow-hidden bg-[var(--color-surface)] lg:h-[948px]">
-        <img src="/figma/checker.png" alt="Wyniki i artefakty procesu badawczego" class="size-full object-cover" loading="lazy" />
+      <div class="overflow-hidden">
+        <img src="/assets/ready-set/stickynotes-readyset.png" alt="Wyniki i artefakty procesu badawczego" class="w-full h-auto" loading="lazy" />
       </div>
     </section>
 
     <section class="grid gap-[48px] lg:grid-cols-[504px_467px] lg:items-stretch lg:gap-[64px]" aria-labelledby="conclusions-title">
-      <div class="flex flex-col gap-[24px]">
+      <div class="flex flex-col gap-[24px] lg:justify-center">
         <h2 id="conclusions-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Wnioski</h2>
         <div class="h-px w-full bg-[var(--color-border)]"></div>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-          Wykorzystując FigJam, przeanalizowałam wypowiedzi badanych i pogrupowałam je w obszary tematyczne. Dzięki temu mogłam w prosty sposób określić jakie są podobieństwa w całym procesie, na jakie problemy trafiają użytkownicy i na czym warto skupić się podczas projektowania aplikacji.
+          Wykorzystując affinity mapping, pogrupowałam wypowiedzi w obszary tematyczne i zidentyfikowałam kluczowe problemy.
         </p>
 
         <div class="overflow-hidden rounded-[16px] border border-[var(--color-border)]">
@@ -280,61 +274,61 @@ const successMetrics = [
         </div>
       </div>
 
-      <div class="h-[420px] overflow-hidden bg-[var(--color-surface)] lg:h-[612px]">
-        <img src="/figma/checker.png" alt="Wizualizacja wniosków z badań" class="size-full object-cover" loading="lazy" />
+      <div class="h-[420px] overflow-hidden lg:h-[612px]">
+        <img src="/assets/ready-set/problem-notes-readyset.png" alt="Wizualizacja wniosków z badań" class="size-full object-contain" loading="lazy" />
       </div>
     </section>
 
     <section class="flex flex-col gap-[64px]" aria-labelledby="define-title">
-      <div class="flex flex-col gap-[24px]">
+      <div class="flex flex-col gap-[24px] lg:justify-center">
         <div class="flex flex-col gap-[14px]">
           <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">Define</p>
           <h2 id="define-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Definiowanie rozwiązania</h2>
         </div>
         <div class="h-px w-full bg-[var(--color-border)]"></div>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-          Na bazie wniosków sformułowałam pytania "How Might We" (Jak moglibyśmy?) oraz ogólny storyboard ukazujący jak aplikacja może być użyta. te działania pozwoliły mi ukierunkować dalszy proces projektowy.
+          Na podstawie wniosków z badań sformułowałam pytania "How Might We", które ukierunkowały proces projektowy.
         </p>
 
         <ol class="flex flex-col gap-[32px]">
           <li class="grid gap-[12px] lg:grid-cols-[27px_1fr] lg:gap-[16px]">
             <p class="text-[45px] font-bold leading-[52px] text-[#474747]">1</p>
             <div class="flex flex-col gap-[12px]">
-              <p class="text-[14px] lg:text-[16px] leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Jak możemy sprawić ułatwić podejmowanie decyzji i zredukować stres?</p>
-              <p class="text-[14px] lg:text-[16px] italic leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Rozwiązanie: Dedykowane kategorie (np. nocleg, transport, jedzenie) z listą opcji dodawanych przez uczestników wyjazdu.</p>
+              <p class="text-[14px] lg:text-[16px] leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Jak możemy uporządkować różne typy informacji o wyjeździe?</p>
+              <p class="text-[14px] lg:text-[16px] italic leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Rozwiązanie: Dedykowane kategorie (nocleg, transport, jedzenie) z opcjami dodawanymi przez uczestników.</p>
             </div>
           </li>
           <li class="grid gap-[12px] lg:grid-cols-[27px_1fr] lg:gap-[16px]">
             <p class="text-[45px] font-bold leading-[52px] text-[#474747]">2</p>
             <div class="flex flex-col gap-[12px]">
               <p class="text-[14px] lg:text-[16px] leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Jak możemy zebrać wszystkie propozycje w jednym miejscu, aby nie przepadły w historii czatu?</p>
-              <p class="text-[14px] lg:text-[16px] italic leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Rozwiązanie: Stworzyć jedno miejsce gdzie można gromadzić wszystkie informację dotyczące wyjazdów.</p>
+              <p class="text-[14px] lg:text-[16px] italic leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Rozwiązanie: Stworzyć jedno miejsce, gdzie można gromadzić wszystkie informacje dotyczące wyjazdów.</p>
             </div>
           </li>
           <li class="grid gap-[12px] lg:grid-cols-[27px_1fr] lg:gap-[16px]">
             <p class="text-[45px] font-bold leading-[52px] text-[#474747]">3</p>
             <div class="flex flex-col gap-[12px]">
-              <p class="text-[14px] lg:text-[16px] leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Jak możemy zmienić gotowy plan w prosty harmonogram dostępny zawsze pod ręką?</p>
-              <p class="text-[14px] lg:text-[16px] italic leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Rozwiązanie: Automatyczny harmonogram wygenerowany na podstawie decyzji grupy.</p>
+              <p class="text-[14px] lg:text-[16px] leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Jak możemy zamienić gotowy plan w prosty harmonogram dostępny zawsze pod ręką?</p>
+              <p class="text-[14px] lg:text-[16px] italic leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Rozwiązanie: Automatyczny harmonogram generowany na podstawie decyzji grupy z możliwością pobrania.</p>
             </div>
           </li>
         </ol>
       </div>
 
-      <div class="h-[420px] overflow-hidden bg-[var(--color-surface)] lg:h-[837px]">
-        <img src="/figma/checker.png" alt="Storyboard definiujący rozwiązanie" class="size-full object-cover" loading="lazy" />
+      <div class="h-[420px] overflow-hidden lg:h-[837px]">
+        <img src="/assets/ready-set/storeyboard-readyset.png" alt="Storyboard definiujący rozwiązanie" class="size-full object-contain" loading="lazy" />
       </div>
     </section>
 
     <section class="mx-auto flex w-full max-w-[864px] flex-col gap-[64px]" aria-labelledby="jtbd-title">
       <div class="flex flex-col gap-[24px]">
         <div class="flex flex-col gap-[14px]">
-          <p class="text-[14px] lg:text-[16px] leading-[16px] tracking-[0.4px] text-[#474747]">JTBD</p>
+          <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">JTBD</p>
           <h2 id="jtbd-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Jobs to be done</h2>
         </div>
         <div class="h-px w-full bg-[var(--color-border)]"></div>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-          Na podstawie wywiadów i analizy obecnego sposobu planowania wyjazdów w grupie, zamiast myśleć od razu o funkcjach, skupiłam się na tym, w jaki sposób aplikacja może pomóc w procesie. W tym celu ustaliłam “jobsy”, które uzytkownicy mają do zrobienia i które plikacja mogłaby znacząco uprościć. Poniżej przedstawiam kluczowe jobs to be done dla ReadySet, głównie z perspektywy osoby organizującej wyjazd, ale z uwzględnieniem potrzeb pozostałych uczestników.
+          Zamiast od razu projektować funkcje, skupiłam się na zadaniach, które użytkownicy muszą wykonać w procesie planowania.
         </p>
       </div>
 
@@ -359,11 +353,11 @@ const successMetrics = [
       <div class="flex flex-col gap-[24px]">
         <div class="flex flex-col gap-[14px]">
           <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">User flow</p>
-          <h2 id="user-flow-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Architektura informacji i przeplyw</h2>
+          <h2 id="user-flow-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Architektura i kluczowe decyzje projektowe</h2>
         </div>
 
         <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
-        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Zależało mi na maksymalnym uproszczeniu ścieżki użytkownika. Dodatkowo aplikacja dzieli proces na dwie wyraźne fazy, co odzwierciedliłam w nawigacji (panel planowania i harmonogramu).</p>
+        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Aplikacja dzieli proces na dwie wyraźne fazy, co odzwierciedliłam w nawigacji: Planowanie i Harmonogram.</p>
 
         <h3 class="text-[14px] lg:text-[16px] font-medium leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Planowanie</h3>
         <ul class="list-disc pl-[24px] text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
@@ -376,8 +370,8 @@ const successMetrics = [
         </ul>
       </div>
 
-      <div class="h-[420px] overflow-hidden bg-[var(--color-surface)] lg:h-[658px]">
-        <img src="/figma/checker.png" alt="Schemat przepływu użytkownika" class="size-full object-cover" loading="lazy" />
+      <div class="h-[420px] overflow-hidden lg:h-[658px]">
+        <img src="/assets/ready-set/flow.png" alt="Schemat przepływu użytkownika" class="size-full object-contain" loading="lazy" />
       </div>
     </section>
 
@@ -394,7 +388,7 @@ const successMetrics = [
           <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Na ekranie domowym użytkownika korzystającego z aplikacji możemy wyróżnić sekcje wyjazdów aktywnych oraz zarchiwizowanych. Z tego poziomu użytkownik ma możliwość stworzenia nowego wyjazdu i przejścia do aktywnych bądź zakończonych. Nowi użytkownicy otrzymują informację o braku wyjazdów i komunikat CTA o stworzeniu nowego wyjazdu. Proces tworzenia wyjazdu jest taki sam niezależnie od użytkownika.</p>
         </div>
         <div class="h-[360px] overflow-hidden bg-[var(--color-surface)] lg:h-[449px]">
-          <img src="/figma/checker.png" alt="Widok ekranu domowego aplikacji" class="size-full object-cover" loading="lazy" />
+          <img src="/assets/ready-set/ekran-domowy-readyset.png" alt="Widok ekranu domowego aplikacji" class="size-full object-cover" loading="lazy" />
         </div>
       </section>
 
@@ -404,7 +398,7 @@ const successMetrics = [
           <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Widok wyjazdu jest głównym ekranem wyjazdu. Z poziomu tego widoku użytkownik może zarządzać całym wyjazdem, jego kategoriami, opcjami kategorii czy zaproszonymi osobami. Zamiast niekończącej się listy, zastosowałam kafelki kategorii, które od razu pokazują status. Dodatkowo użytkownik może eksportować gotowy plan jako gotowy plik PDF z całym planem i informacjami o danych opcjach.</p>
         </div>
         <div class="h-[360px] overflow-hidden bg-[var(--color-surface)] lg:h-[618px]">
-          <img src="/figma/checker.png" alt="Dashboard wyjazdu" class="size-full object-cover" loading="lazy" />
+          <img src="/assets/ready-set/dashboard-wyjazdu-readyset.png" alt="Dashboard wyjazdu" class="size-full object-cover" loading="lazy" />
         </div>
       </section>
 
@@ -414,14 +408,14 @@ const successMetrics = [
           <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Użytkownik ma możliwość dodania opcji na etapie tworzenia kategorii lub po jej utworzeniu. Podczas dodawania kolejnych np. hoteli wyświetlany jest modal, który pozwala użytkownikowi natychmiast wrócić do widoku kategorii jeśli zmieni zdanie. Samo dodanie opcji polega głównie na wklejeniu linku, a aplikacja automatycznie zaciągnie zdjęcie i nazwę. To kluczowe dla szybkości dodawania propozycji.</p>
         </div>
         <div class="h-[360px] overflow-hidden bg-[var(--color-surface)] lg:h-[506px]">
-          <img src="/figma/checker.png" alt="Widok dodawania opcji" class="size-full object-cover" loading="lazy" />
+          <img src="/assets/ready-set/dodawanie-opcji-readyset.png" alt="Widok dodawania opcji" class="size-full object-cover" loading="lazy" />
         </div>
         <div class="grid gap-[24px] lg:grid-cols-2">
           <div class="h-[240px] overflow-hidden bg-[var(--color-surface)] lg:h-[298px]">
-            <img src="/figma/checker.png" alt="Dodatkowy ekran opcji 1" class="size-full object-cover" loading="lazy" />
+            <video src="/assets/ready-set/add-option.mp4" aria-label="Dodatkowy ekran opcji 1" class="size-full object-cover" autoplay loop muted playsinline></video>
           </div>
           <div class="h-[240px] overflow-hidden bg-[var(--color-surface)] lg:h-[298px]">
-            <img src="/figma/checker.png" alt="Dodatkowy ekran opcji 2" class="size-full object-cover" loading="lazy" />
+            <video src="/assets/ready-set/new-option.mp4" aria-label="Dodatkowy ekran opcji 2" class="size-full object-cover" autoplay loop muted playsinline></video>
           </div>
         </div>
       </section>
@@ -432,50 +426,50 @@ const successMetrics = [
           <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Po zakończeniu planowania, aplikacja generuje czysty, czytelny harmonogram.Dodatkowo zaprojektowałam funkcję "Pobierz PDF".</p>
         </div>
         <div class="h-[360px] overflow-hidden bg-[var(--color-surface)] lg:h-[465px]">
-          <img src="/figma/checker.png" alt="Widok harmonogramu wyjazdu" class="size-full object-cover" loading="lazy" />
+          <img src="/assets/ready-set/harmonogram-readyset.png" alt="Widok harmonogramu wyjazdu" class="size-full object-cover" loading="lazy" />
         </div>
       </section>
     </section>
 
     <section class="grid gap-[48px] lg:grid-cols-[467px_509px] lg:items-center lg:gap-[64px]" aria-labelledby="style-title">
       <div class="h-[360px] overflow-hidden bg-[var(--color-surface)] lg:h-[467px]">
-        <img src="/figma/checker.png" alt="Przykład stylu wizualnego aplikacji" class="size-full object-cover" loading="lazy" />
+        <img src="/assets/ready-set/UI-readyset.png" alt="Przykład stylu wizualnego aplikacji" class="size-full object-cover" loading="lazy" />
       </div>
-      <div class="flex flex-col gap-[24px]">
+      <div class="flex flex-col gap-[24px] lg:justify-center">
         <h2 id="style-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Style i UI</h2>
         <div class="h-px w-full bg-[var(--color-border)]"></div>
-        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">W ramach tego projektu zdecydowałam się na wykorzystanie komponentów z design systemu Material Design. Komponenty modyfikowałam pod swoje potrzeby zmieniają m.in. kolory brandowe, bordery czy cienie. dzięki temu uzyskałam design skrojony pod brand aplikacji ReadySet bez tworzenia biblioteki komponentów od postaw. Aplikacja używa bezszeryfowego fontu “Roboto”, który idealnie sprawdza się do małych ekranów.</p>
+        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Wykorzystałam Material Design jako bazę, modyfikując komponenty (kolory brandowe, zaokrąglenia, cienie) pod potrzeby aplikacji. Dzięki temu uzyskałam profesjonalny, spójny design bez konieczności tworzenia systemu od podstaw. Font Roboto zapewnia czytelność na małych ekranach mobilnych.</p>
         <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Wszystkie style i komponenty są widoczne na stronie <a href="https://www.figma.com/design/DMxRfKfATk1JRYhEYXuUxC?node-id=526-13593" target="_blank" rel="noopener noreferrer" class="font-bold underline">COMPONENTS/COLOR</a></p>
       </div>
     </section>
 
     <section class="grid gap-[48px] lg:grid-cols-[511px_283px] lg:items-center lg:justify-between" aria-labelledby="user-tests-title">
-      <div class="flex flex-col gap-[24px]">
+      <div class="flex flex-col gap-[24px] lg:justify-center">
         <div class="flex flex-col gap-[14px]">
-          <p class="text-[14px] lg:text-[16px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">User tests</p>
+          <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">User tests</p>
           <h2 id="user-tests-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Testy użytkowników</h2>
         </div>
         <div class="h-px w-full bg-[var(--color-border)]"></div>
-        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Po przygotowaniu prototypu aplikację przetestowało kilku moich znajomych. Celem testów było sprawdzenie czy interfejs jest dla nich czytelny i zrozumiały. W tym celu poprosiłam ich o wykonanie kilku zadań takich jak:</p>
+        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Przeprowadziłam testy prototypu z kilkoma użytkownikami, prosząc ich o wykonanie kluczowych zadań:</p>
         <ul class="list-disc pl-[24px] text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
           {testTasks.map((task) => <li>{task}</li>)}
         </ul>
-        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Feedback osób testujących aplikacje był bardzo pozytywny. Zwracali oni uwagę na przejrzystość informacji oraz łatwość w poruszaniu się po aplikacji. Dodatkowo podkreślali bardzo przyjazdy wygląd.</p>
+        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Wnioski: użytkownicy pozytywnie ocenili przejrzystość informacji i łatwość poruszania się po aplikacji. Nie napotkali problemów ze zrozumieniem struktury kategorii ani funkcji głosowania.</p>
       </div>
       <div class="h-[420px] overflow-hidden rounded-[47px] bg-[var(--color-surface)] shadow-[2px_2px_4px_0px_rgba(0,0,0,0.04),0px_5px_6px_0px_rgba(0,0,0,0.1)] lg:h-[612px]">
-        <img src="/figma/checker.png" alt="Nagranie z testów użytkowników" class="size-full object-cover" loading="lazy" />
+        <video src="/assets/ready-set/user-test-readyset.mov" aria-label="Nagranie z testów użytkowników" class="size-full object-cover" autoplay loop muted playsinline></video>
       </div>
     </section>
 
     <section class="grid gap-[48px] lg:grid-cols-[465px_511px] lg:items-center lg:gap-[64px]" aria-labelledby="reflections-title">
       <div class="h-[360px] overflow-hidden bg-[var(--color-surface)] lg:h-[465px]">
-        <img src="/figma/checker.png" alt="Ilustracja podsumowania projektu" class="size-full object-cover" loading="lazy" />
+        <img src="/assets/ready-set/invite-readyset.png" alt="Ilustracja podsumowania projektu" class="size-full object-cover" loading="lazy" />
       </div>
-      <div class="flex flex-col gap-[24px]">
+      <div class="flex flex-col gap-[24px] lg:justify-center">
         <h2 id="reflections-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Wnioski i dalsze kroki</h2>
         <div class="h-px w-full bg-[var(--color-border)]"></div>
-        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Proces projektowy aplikacji ReadySet był dla mnie okazją do przećwiczenia pełenego proces UX. Miałam możliwość stworzenia go od podstaw zaczynając od hipotezy, przez badania jakościowe , aż po makietę i klikalny prototyp. Największym wyzwaniem było zaprojektowanie interfejsu, który pomieści dużą ilość zmiennych (daty, linki, ceny, opinie, głosy), pozostając jednocześnie czytelnym.</p>
-        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">W kolejnych iteracjach skupiłabym się na:</p>
+        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Największym wyzwaniem było zaprojektowanie interfejsu, który pomieści dużą ilość danych (daty, linki, ceny, opinie, głosy), pozostając jednocześnie czytelnym.</p>
+        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Kolejne iteracje:</p>
         <ul class="list-disc pl-[24px] text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
           {nextSteps.map((step) => <li>{step}</li>)}
         </ul>
@@ -483,16 +477,16 @@ const successMetrics = [
     </section>
 
     <section class="grid gap-[48px] lg:grid-cols-[488px_488px] lg:items-center lg:gap-[64px]" aria-labelledby="success-title">
-      <div class="flex flex-col gap-[24px]">
+      <div class="flex flex-col gap-[24px] lg:justify-center">
         <h2 id="success-title" class="text-[36px] leading-[44px] text-[var(--color-text)]">Miary sukcesu</h2>
         <div class="h-px w-full bg-[var(--color-border)]"></div>
-        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Dodatkowo gdyby aplikacja ReadySet została wprowadzona na rynek, sukces mierzylibyśmy przede wszystkim w dwóch kluczowych obszarach:</p>
+        <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Gdyby aplikacja ReadySet została wdrożona, sukces mierzylibyśmy przede wszystkim w dwóch kluczowych obszarach:</p>
         <ul class="list-disc pl-[24px] text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
           {successMetrics.map((metric) => <li>{metric}</li>)}
         </ul>
       </div>
       <div class="h-[360px] overflow-hidden bg-[var(--color-surface)] lg:h-[488px]">
-        <img src="/figma/checker.png" alt="Wizualizacja metryk sukcesu" class="size-full object-cover" loading="lazy" />
+        <img src="/assets/ready-set/two-phones-readyset.png" alt="Wizualizacja metryk sukcesu" class="size-full object-cover" loading="lazy" />
       </div>
     </section>
     </div>

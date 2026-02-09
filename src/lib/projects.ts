@@ -27,7 +27,7 @@ export const projects: Project[] = [
     title: "ReadySet - aplikacja do planowania wyjazdów",
     description:
       "Aplikacja mobilna do wspólnego planowania wyjazdów. Umożliwia tworzenie planów ze znajomymi, dodawanie spersonalizowanych kategorii i formularzy, wspólne głosowanie na opcję, oraz prowadzenie rozmów w komentarzach przypiętych do konkretnych kategorii",
-    image: "/figma/checker.png",
+    image: "/assets/ready-set/work-readyset.png",
     tags: ["UX / UI Design", "Mobile app", "Travel", "End-to-end"],
     content:
       "Aplikacja mobilna do wspólnego planowania wyjazdów. Umożliwia tworzenie planów ze znajomymi, dodawanie spersonalizowanych kategorii i formularzy, wspólne głosowanie na opcję, oraz prowadzenie rozmów w komentarzach przypiętych do konkretnych kategorii",
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     title: "Mova - aplikacja do nauki języków",
     description:
       "Nowoczesna platforma do nauki języków obcych. Zaprojektowana z myślą o użytkownikach poszukujących skutecznego i angażującego sposobu na rozwijanie umiejętności językowych. Dostępna zarówno w formie aplikacji mobilnej jak i wersji webowej, tak aby użytkownik miał możliwość skorzystania z niej w każdych okolicznościach.",
-    image: "/figma/checker.png",
+    image: "/assets/mova/work-mova.png",
     tags: ["UX / UI Design", "Web & Mobile", "Language app"],
     content:
       "Nowoczesna platforma do nauki języków obcych. Zaprojektowana z myślą o użytkownikach poszukujących skutecznego i angażującego sposobu na rozwijanie umiejętności językowych. Dostępna zarówno w formie aplikacji mobilnej jak i wersji webowej.",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     title: "AuraPura - design system",
     description:
       "Projekt AuraPura to nie tylko design strony na trzy różne widoki, ale również pełny design system stworzony na podstawie podanego case study i briefu.",
-    image: "/figma/checker.png",
+    image: "/assets/aurapura/work-aurapura.png",
     tags: ["UX / UI Design", "Design system", "E-commerse"],
     content:
       "Projekt AuraPura to nie tylko design strony na trzy różne widoki, ale również pełny design system stworzony na podstawie podanego case study i briefu.",

@@ -1,0 +1,25 @@
+---
+import WorkCaseShell from "../../components/work/WorkCaseShell.astro";
+import MovaCaseContent from "../../components/work/cases/MovaCaseContent.astro";
+import { getProjectBySlug } from "../../lib/projects";
+
+const project = getProjectBySlug("mova-aplikacja-do-nauki-jezykow");
+
+if (!project) {
+  return Astro.redirect("/work");
+}
+
+const tools = [{ src: "/icons/tool-figma.png", alt: "Figma" }] as const;
+---
+
+<WorkCaseShell
+  project={project}
+  tools={tools}
+  heroImage="/assets/mova/hero-mova.png"
+  overviewHeading="Kontekst projektu"
+  overviewText="Mova to projekt konceptualny oparty na realnym projekcie komercyjnym. W zespole odpowiadałam za makiety, interaktywny prototyp i design system zapewniający spójność produktu. Wersję portfolio przygotowałam samodzielnie, pokazując kluczowe decyzje projektowe i podejście do projektowania aplikacji edukacyjnych."
+  duration="2 tygodnie"
+  projectType="Projekt konceptualny (portfolio) na bazie projektu komercyjnego"
+>
+  <MovaCaseContent />
+</WorkCaseShell>

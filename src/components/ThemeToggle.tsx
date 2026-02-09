@@ -1,6 +1,46 @@
 import { useEffect, useState } from "react";
 
-export default function ThemeToggle() {
+interface ThemeToggleProps {
+  className?: string;
+  iconClassName?: string;
+  ariaLabelDark?: string;
+  ariaLabelLight?: string;
+}
+
+const DEFAULT_BUTTON_CLASS =
+  "inline-flex items-center justify-center rounded-lg bg-[var(--color-foreground)] p-2 transition-colors hover:bg-[var(--color-border)]";
+const DEFAULT_ICON_CLASS = "size-5";
+
+function SunHighIcon({ className }: { className: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 3v1.5" />
+      <path d="M12 19.5v1.5" />
+      <path d="M3 12h1.5" />
+      <path d="M19.5 12H21" />
+      <path d="M5.64 5.64l1.06 1.06" />
+      <path d="M17.3 17.3l1.06 1.06" />
+      <path d="M5.64 18.36l1.06 -1.06" />
+      <path d="M17.3 6.7l1.06 -1.06" />
+      <path d="M12 8a4 4 0 1 0 0 8a4 4 0 0 0 0 -8z" />
+    </svg>
+  );
+}
+
+function MoonIcon({ className }: { className: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  );
+}
+
+export default function ThemeToggle({
+  className,
+  iconClassName,
+  ariaLabelDark = "Przełącz na tryb jasny",
+  ariaLabelLight = "Przełącz na tryb ciemny",
+}: ThemeToggleProps) {
   const [isDark, setIsDark] = useState(true);
   const [mounted, setMounted] = useState(false);
 
@@ -29,30 +69,26 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        className="p-2 rounded-lg bg-[var(--color-foreground)] hover:bg-[var(--color-border)] transition-colors"
-        aria-label="Toggle theme"
+        type="button"
+        className={className ?? DEFAULT_BUTTON_CLASS}
+        aria-label={ariaLabelLight}
       >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
+        <SunHighIcon className={iconClassName ?? DEFAULT_ICON_CLASS} />
       </button>
     );
   }
 
   return (
     <button
+      type="button"
       onClick={() => setIsDark(!isDark)}
-      className="p-2 rounded-lg bg-[var(--color-foreground)] hover:bg-[var(--color-border)] transition-colors"
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className={className ?? DEFAULT_BUTTON_CLASS}
+      aria-label={isDark ? ariaLabelDark : ariaLabelLight}
     >
       {isDark ? (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
+        <SunHighIcon className={iconClassName ?? DEFAULT_ICON_CLASS} />
       ) : (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
+        <MoonIcon className={iconClassName ?? DEFAULT_ICON_CLASS} />
       )}
     </button>
   );

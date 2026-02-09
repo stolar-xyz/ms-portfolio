@@ -1,0 +1,298 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TablerIcon from "../components/TablerIcon.astro";
+
+const introDesktop = [
+  "W swoich projektach łączę estetykę z użytecznością, dbając o to, aby interfejsy były nie tylko dopracowane wizualnie, ale także przejrzyste i intuicyjne. Pracuję głównie w Figmie i wykorzystuję narzędzia AI, aby szybciej przejść od koncepcji do pierwszych wersji widoków, a następnie wdrożyć je na produkcję.",
+  "Jestem otwarta na feedback i stale rozwijam swoje umiejętności, ponieważ świadomość tego, jak wiele mogę się jeszcze nauczyć, bardzo mnie motywuje. Inspiracji szukam również poza designem m.in. w modzie i kinematografii - to one pomagają mi odkrywać nowe kierunki estetyczne, które dzięki technologii mogę przekładać na konkretne projekty.",
+];
+
+const introMobile = [
+  "W swoich projektach łączę estetykę z użytecznością, dbając o to, aby interfejsy były nie tylko dopracowane wizualnie, ale także przejrzyste i intuicyjne. Pracuję głównie w Figmie i wykorzystuję narzędzia AI, aby szybciej przejść od koncepcji do pierwszych wersji widoków, a następnie wdrożyć je na produkcję.",
+  "Jestem otwarta na feedback i stale rozwijam swoje umiejętności, ponieważ świadomość tego, jak wiele mogę się jeszcze nauczyć, bardzo mnie motywuje. Inspiracji szukam również poza designem m.in. w modzie i kinematografii - to one pomagają mi odkrywać nowe kierunki estetyczne, które dzięki technologii mogę przekładać na konkretne projekty.",
+];
+
+const socialLinks = [
+  { label: "LINKEDIN", href: "https://linkedin.com" },
+  { label: "Github", href: "https://github.com" },
+  { label: "mail", href: "mailto:hello@example.com" },
+] as const;
+
+const techStackDesktop = [
+  {
+    title: "Design",
+    tools: [
+      { label: "Figma", icon: "/icons/tool-figma.png" },
+      { label: "Jitter", icon: "/icons/tool-jitter.png" },
+      { label: "Affinity", icon: "/icons/tool-affinity.png" },
+    ],
+  },
+  {
+    title: "Productivity",
+    tools: [
+      { label: "Notion", icon: "/icons/tool-notion.png" },
+      { label: "Slack", icon: "/icons/tool-slack.png" },
+    ],
+  },
+  {
+    title: "AI",
+    tools: [
+      { label: "Claude Code", icon: "/icons/tool-claude-code.png" },
+      { label: "Codex", icon: "/icons/tool-claude-code.png" },
+      { label: "Perplexity", icon: "/icons/tool-perplexity.svg" },
+      { label: "ChatGPT", icon: "/icons/tool-chatgpt.svg" },
+    ],
+  },
+  {
+    title: "Development",
+    tools: [
+      { label: "Cursor", icon: "/icons/tool-cursor.svg" },
+      { label: "Vercel", icon: "/icons/tool-vercel.svg" },
+    ],
+  },
+] as const;
+
+const techStackMobile = [
+  {
+    title: "Design",
+    tools: [
+      { label: "Figma", icon: "/icons/tool-figma.png" },
+      { label: "Jitter", icon: "/icons/tool-jitter.png" },
+      { label: "Affinity", icon: "/icons/tool-affinity.png" },
+    ],
+  },
+  {
+    title: "Productivity",
+    tools: [
+      { label: "Notion", icon: "/icons/tool-notion.png" },
+      { label: "Slack", icon: "/icons/tool-slack.png" },
+    ],
+  },
+  {
+    title: "AI",
+    tools: [
+      { label: "Claude Code", icon: "/icons/tool-claude-code.png" },
+      { label: "Perplexity", icon: "/icons/tool-perplexity.svg" },
+      { label: "ChatGPT", icon: "/icons/tool-chatgpt.svg" },
+    ],
+  },
+  {
+    title: "Development",
+    tools: [
+      { label: "Cursor", icon: "/icons/tool-cursor.svg" },
+      { label: "Vercel", icon: "/icons/tool-vercel.svg" },
+    ],
+  },
+] as const;
+
+const testimonials = [
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
+    name: "Name and surname",
+    role: "Role",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
+    name: "Name and surname",
+    role: "Role",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
+    name: "Name and surname",
+    role: "Role",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
+    name: "Name and surname",
+    role: "Role",
+  },
+] as const;
+---
+
+<Layout title="About" description="Portfolio UX/UI - strona About">
+  <div class="hidden px-8 pt-[80px] lg:block lg:px-16">
+    <div class="mx-auto flex min-h-[20px] w-full items-center">
+      <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
+    </div>
+  </div>
+
+  <div class="px-8 pt-[80px] lg:hidden">
+    <div class="flex min-h-[20px] items-center">
+      <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
+    </div>
+  </div>
+
+  <section class="mx-auto hidden max-w-[1040px] px-[8px] pb-[120px] pt-[80px] lg:flex lg:items-start lg:justify-between">
+    <div
+      class="size-[245px] shrink-0 bg-[#c4c4c4]"
+      role="img"
+      aria-label="Miejsce na zdjęcie profilowe"
+      transition:name="about-profile-photo"
+    ></div>
+
+    <div class="w-[688px]">
+      <div class="flex flex-col gap-[64px]">
+        <div class="flex flex-col gap-[24px]">
+          <div class="flex items-center gap-[10px]">
+            <h1 class="text-[36px] font-medium leading-[44px] tracking-[0] text-[var(--color-text)]" transition:name="about-title">Cześć, jestem Magda</h1>
+            <TablerIcon name="sparkles" class="size-8 text-[var(--color-text)]" />
+          </div>
+
+          <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
+
+          <div class="flex items-center gap-[12px]">
+            <span class="inline-flex size-[16px] rounded-full bg-[#49b46f]" aria-hidden="true"></span>
+            <p class="text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text-muted)]">Wrocław, PL</p>
+          </div>
+
+          <div class="space-y-4 text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+            {introDesktop.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+
+          <ul class="flex flex-wrap items-center gap-[24px]">
+            {
+              socialLinks.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    class="group inline-flex items-center gap-[12px] text-[16px] uppercase leading-[24px] tracking-[0.5px] text-[var(--color-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+                  >
+                    <span>{item.label}</span>
+                    <TablerIcon name="arrow-up-right" class="size-8 transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="flex flex-col gap-[24px]">
+          <h2 class="text-[36px] font-medium leading-[44px] text-[var(--color-text)]">Tech stack</h2>
+
+          <div class="grid grid-cols-4 gap-[16px]">
+            {
+              techStackDesktop.map((column) => (
+                <article class="flex w-[156px] flex-col items-center gap-[24px]">
+                  <h3 class="text-center text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{column.title}</h3>
+                  <ul class="flex w-full flex-col gap-[24px]">
+                    {
+                      column.tools.map((tool) => (
+                        <li>
+                          <div class="flex items-center gap-[12px] rounded-[12px] border border-[var(--color-border)] px-[16px] py-[14px]">
+                            <span class="inline-flex size-[40px] items-center justify-center rounded-[8px] bg-[var(--color-surface)] p-[8px]">
+                              <img src={tool.icon} alt="" class="size-full object-contain" loading="lazy" decoding="async" />
+                            </span>
+                            <span class="text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)]">{tool.label}</span>
+                          </div>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[327px] px-[0] pb-[56px] pt-[80px] lg:hidden">
+    <div class="mx-auto size-[245px] bg-[#c4c4c4]" role="img" aria-label="Miejsce na zdjęcie profilowe" transition:name="about-profile-photo"></div>
+
+    <div class="mt-[64px] flex flex-col gap-[64px]">
+      <div class="flex flex-col gap-[24px]">
+        <div class="flex items-center justify-center gap-[10px]">
+          <h1 class="text-[24px] font-medium leading-[44px] text-[var(--color-text)]" transition:name="about-title">Cześć, jestem Magda</h1>
+          <TablerIcon name="sparkles" class="size-6 text-[var(--color-text)]" />
+        </div>
+
+        <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
+
+        <div class="space-y-4 text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+          {introMobile.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+
+        <ul class="flex flex-wrap items-center gap-[24px]">
+          {
+            socialLinks.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  class="group inline-flex items-center gap-[12px] text-[14px] uppercase leading-[24px] tracking-[0.5px] text-[var(--color-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+                >
+                  <span>{item.label}</span>
+                  <TablerIcon name="arrow-up-right" class="size-6 transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+      </div>
+
+      <div class="flex flex-col gap-[24px]">
+        <h2 class="text-center text-[24px] font-medium leading-[44px] text-[var(--color-text)]">Tech stack</h2>
+
+        <div class="grid grid-cols-2 gap-x-[18px] gap-y-[24px]">
+          {
+            techStackMobile.map((column) => (
+              <article class="flex w-full flex-col items-center gap-[16px]">
+                <h3 class="text-center text-[14px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{column.title}</h3>
+                <ul class="flex w-full flex-col gap-[16px]">
+                  {
+                    column.tools.map((tool) => (
+                      <li>
+                        <div class="flex items-center gap-[12px] rounded-[12px] border border-[var(--color-border)] px-[14px] py-[12px]">
+                          <span class="inline-flex size-8 items-center justify-center rounded-[6px] bg-[var(--color-surface)] p-[6px]">
+                            <img src={tool.icon} alt="" class="size-full object-contain" loading="lazy" decoding="async" />
+                          </span>
+                          <span class="text-[12px] leading-[18px] tracking-[0.25px] text-[var(--color-text)]">{tool.label}</span>
+                        </div>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto hidden max-w-[1040px] pb-[110px] lg:block">
+    <h2 class="text-center text-[36px] font-medium leading-[44px] text-[var(--color-text)]">Co mówią o mnie innni?</h2>
+
+    <div class="mt-[46px] grid grid-cols-2 gap-x-[20px] gap-y-[24px]">
+      {
+        testimonials.map((item) => (
+          <article class="px-[20px] py-[24px]">
+            <div class="flex items-start gap-[12px]">
+              <p class="flex-1 text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{item.quote}</p>
+              <TablerIcon name="quote" class="size-[92px] text-black/10" />
+            </div>
+
+            <div class="mt-[24px] h-[2px] w-full bg-[var(--color-divider)]"></div>
+
+            <div class="mt-[24px] flex items-center gap-[20px]">
+              <span class="inline-flex size-[64px] shrink-0 rounded-full bg-[#d3d3d3]" aria-hidden="true"></span>
+              <div>
+                <p class="text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{item.name}</p>
+                <p class="text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text-muted)]">{item.role}</p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

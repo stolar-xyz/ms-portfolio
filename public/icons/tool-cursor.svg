@@ -1,0 +1,26 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cursor-bg" x1="24" y1="4" x2="24" y2="44" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#434343"/>
+      <stop offset="1" stop-color="#242424"/>
+    </linearGradient>
+    <linearGradient id="cursor-left" x1="7" y1="24" x2="24" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#737373"/>
+      <stop offset="1" stop-color="#3A3A3A"/>
+    </linearGradient>
+    <linearGradient id="cursor-right" x1="24" y1="24" x2="41" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3A3A3A"/>
+      <stop offset="1" stop-color="#737373"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M24 4L41 14V34L24 44L7 34V14L24 4Z" fill="url(#cursor-bg)"/>
+  <path d="M24 4L41 14V34L24 44L7 34V14L24 4Z" stroke="#BEBEBE" stroke-opacity="0.45"/>
+  <path d="M24 4L7 14L24 24L41 14L24 4Z" fill="#3B3B3B"/>
+  <path d="M7 14V34L24 44V24L7 14Z" fill="url(#cursor-left)"/>
+  <path d="M41 14V34L24 44V24L41 14Z" fill="url(#cursor-right)"/>
+
+  <path d="M7 14H41L24 24L7 14Z" fill="#F7F7F7"/>
+  <path d="M24 24L41 14L24 44V24Z" fill="#E1E1E1"/>
+  <path d="M24 24V44L29.6 20.7L24 24Z" fill="#BABABA"/>
+</svg>

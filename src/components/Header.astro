@@ -1,49 +1,345 @@
 ---
 import ThemeToggle from "./ThemeToggle";
+import TablerIcon from "./TablerIcon.astro";
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/#projects", label: "Work" },
-  { href: "/#about", label: "About" },
-  { href: "/#contact", label: "Contact" },
-];
+  { key: "work", href: "/work", label: "Work" },
+  { key: "about", href: "/about", label: "About" },
+  { key: "contact", href: "/contact", label: "Contact" },
+] as const;
 
 const currentPath = Astro.url.pathname;
+const activeKey = currentPath.startsWith("/about")
+  ? "about"
+  : currentPath.startsWith("/work")
+    ? "work"
+    : currentPath.startsWith("/contact")
+      ? "contact"
+      : null;
 ---
 
-<header
-  class="sticky top-0 z-50 bg-[var(--color-background)]/80 backdrop-blur-md border-b border-[var(--color-border)]"
-  transition:name="header"
-  transition:persist
->
-  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a
-      href="/"
-      class="text-xl font-bold text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
-    >
-      Portfolio
-    </a>
-    <div class="flex items-center gap-6">
-      <ul class="hidden sm:flex items-center gap-6">
-        {
-          navItems.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                class:list={[
-                  "text-sm transition-colors",
-                  currentPath === item.href
-                    ? "text-[var(--color-text)] font-medium"
-                    : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]",
-                ]}
+<header class="relative z-40" transition:name="site-header">
+  <div class="mx-auto w-full px-8 pt-[36px] lg:px-16 lg:pt-[48px]">
+    <nav class="flex items-center justify-between lg:items-start" aria-label="Główna nawigacja">
+      <a
+        href="/"
+        class="text-[16px] leading-none tracking-[-0.01em] text-[var(--color-text)] lg:pt-[2px] lg:text-[24px]"
+        transition:name="site-brand"
+        transition:persist
+      >
+        mszczecinska
+      </a>
+
+      <div class="flex items-center gap-[8px] lg:items-start lg:gap-[64px]">
+        <ul class="hidden items-start gap-[64px] text-[var(--color-text)] lg:flex">
+          {
+            navItems.map((item) => {
+              const isActive = item.key === activeKey;
+
+              return (
+                <li>
+                  <a
+                    href={item.href}
+                    aria-current={isActive ? "page" : undefined}
+                    class:list={[
+                      "block whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text)]",
+                      isActive
+                        ? "-mt-[6px] font-medium text-[128px] leading-[1] tracking-[-0.025em]"
+                        : "pt-[2px] text-[24px] leading-none",
+                    ]}
+                    transition:name={isActive ? "nav-active-item" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+
+        <div transition:name="theme-toggle" transition:persist>
+          <ThemeToggle
+            client:load
+            className="inline-flex size-[32px] items-center justify-center p-[4px] text-[var(--color-text)] lg:size-[44px] lg:p-[10px]"
+            iconClassName="size-6 lg:size-8"
+          />
+        </div>
+
+        <div class="lg:hidden" data-mobile-menu>
+          <button
+            type="button"
+            data-mobile-open
+            class="inline-flex size-[32px] items-center justify-center rounded-full text-[var(--color-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+            aria-label="Otwórz menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu-panel"
+          >
+            <TablerIcon name="menu-2" class="size-6" />
+          </button>
+
+          <div
+            class="fixed inset-0 z-[90] opacity-0 pointer-events-none transition-opacity duration-200"
+            data-mobile-overlay
+            aria-hidden="true"
+          >
+            <button
+              type="button"
+              class="absolute inset-0 bg-black/10"
+              data-mobile-backdrop
+              tabindex="-1"
+              aria-label="Zamknij menu"
+            ></button>
+
+            <div
+              id="mobile-menu-panel"
+              class="absolute right-0 top-0 flex h-full w-[53%] min-w-[200px] max-w-[220px] translate-x-full flex-col items-end bg-[var(--color-background)] px-[32px] pb-[40px] pt-[36px] transition-transform duration-200"
+              data-mobile-panel
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menu nawigacji"
+            >
+              <button
+                type="button"
+                data-mobile-close
+                class="inline-flex size-[32px] items-center justify-center rounded-full text-[var(--color-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+                aria-label="Zamknij menu"
               >
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <ThemeToggle client:load />
-    </div>
-  </nav>
+                <TablerIcon name="x" class="size-6" />
+              </button>
+
+              <ul class="mt-[56px] flex flex-col items-end gap-[16px] text-[var(--color-text)]">
+                {
+                  navItems.map((item) => {
+                    const isActive = item.key === activeKey;
+
+                    return (
+                      <li>
+                        <a
+                          href={item.href}
+                          data-mobile-link
+                          aria-current={isActive ? "page" : undefined}
+                          class:list={[
+                            "block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text)]",
+                            isActive
+                              ? "font-medium text-[40px] leading-[1] tracking-[-0.0375em]"
+                              : "text-[16px] leading-none",
+                          ]}
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    );
+                  })
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
 </header>
+
+<script is:inline>
+  (() => {
+    const STATE_KEY = "__portfolioMobileMenuState";
+    const state = window[STATE_KEY] ?? (window[STATE_KEY] = {});
+
+    const focusablesSelector =
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    const setup = () => {
+      if (typeof state.cleanup === "function") {
+        state.cleanup();
+      }
+
+      const previousFocus = new WeakMap();
+      const controller = new AbortController();
+      const { signal } = controller;
+
+      const getRoot = (target) =>
+        target instanceof Element ? target.closest("[data-mobile-menu]") : null;
+
+      const getRoots = () => Array.from(document.querySelectorAll("[data-mobile-menu]"));
+
+      const getElements = (root) => ({
+        openButton: root.querySelector("[data-mobile-open]"),
+        closeButton: root.querySelector("[data-mobile-close]"),
+        overlay: root.querySelector("[data-mobile-overlay]"),
+        panel: root.querySelector("[data-mobile-panel]"),
+      });
+
+      const isOpen = (root) => {
+        const { openButton } = getElements(root);
+        return openButton?.getAttribute("aria-expanded") === "true";
+      };
+
+      const syncBodyScrollLock = () => {
+        const hasOpenMenu = getRoots().some((root) => isOpen(root));
+        document.body.classList.toggle("mobile-menu-open", hasOpenMenu);
+      };
+
+      const closeMenu = (root, restoreFocus = true) => {
+        const { openButton, overlay, panel } = getElements(root);
+        if (!openButton || !overlay || !panel) return;
+
+        openButton.setAttribute("aria-expanded", "false");
+        overlay.setAttribute("aria-hidden", "true");
+        root.classList.remove("is-open");
+
+        overlay.classList.remove("opacity-100", "pointer-events-auto");
+        overlay.classList.add("opacity-0", "pointer-events-none");
+        panel.classList.remove("translate-x-0");
+        panel.classList.add("translate-x-full");
+
+        syncBodyScrollLock();
+
+        const savedFocus = previousFocus.get(root);
+        if (restoreFocus && savedFocus instanceof HTMLElement) {
+          savedFocus.focus();
+        }
+        previousFocus.delete(root);
+      };
+
+      const closeAllMenus = (restoreFocus = false) => {
+        getRoots().forEach((root) => {
+          if (isOpen(root)) {
+            closeMenu(root, restoreFocus);
+          }
+        });
+      };
+
+      const openMenu = (root) => {
+        const { openButton, closeButton, overlay, panel } = getElements(root);
+        if (!openButton || !closeButton || !overlay || !panel) return;
+
+        closeAllMenus(false);
+
+        const activeElement = document.activeElement;
+        previousFocus.set(root, activeElement instanceof HTMLElement ? activeElement : null);
+
+        openButton.setAttribute("aria-expanded", "true");
+        overlay.setAttribute("aria-hidden", "false");
+        root.classList.add("is-open");
+
+        overlay.classList.remove("opacity-0", "pointer-events-none");
+        overlay.classList.add("opacity-100", "pointer-events-auto");
+        panel.classList.remove("translate-x-full");
+        panel.classList.add("translate-x-0");
+
+        syncBodyScrollLock();
+        requestAnimationFrame(() => closeButton.focus());
+      };
+
+      document.addEventListener(
+        "click",
+        (event) => {
+          const target = event.target;
+          if (!(target instanceof Element)) return;
+
+          const openTrigger = target.closest("[data-mobile-open]");
+          if (openTrigger) {
+            const root = getRoot(openTrigger);
+            if (!root) return;
+            event.preventDefault();
+            openMenu(root);
+            return;
+          }
+
+          const closeTrigger = target.closest("[data-mobile-close], [data-mobile-backdrop]");
+          if (closeTrigger) {
+            const root = getRoot(closeTrigger);
+            if (!root) return;
+            event.preventDefault();
+            closeMenu(root, true);
+            return;
+          }
+
+          const navLink = target.closest("[data-mobile-link]");
+          if (navLink) {
+            const root = getRoot(navLink);
+            if (!root) return;
+            closeMenu(root, false);
+          }
+        },
+        { signal }
+      );
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+          const root = getRoots().find((menuRoot) => isOpen(menuRoot));
+          if (!root) return;
+
+          const { panel } = getElements(root);
+          if (!panel) return;
+
+          if (event.key === "Escape") {
+            event.preventDefault();
+            closeMenu(root, true);
+            return;
+          }
+
+          if (event.key !== "Tab") return;
+
+          const panelFocusable = Array.from(panel.querySelectorAll(focusablesSelector)).filter(
+            (element) =>
+              element instanceof HTMLElement &&
+              !element.hasAttribute("disabled") &&
+              element.tabIndex !== -1
+          );
+
+          if (panelFocusable.length === 0) return;
+
+          const first = panelFocusable[0];
+          const last = panelFocusable[panelFocusable.length - 1];
+
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        },
+        { signal }
+      );
+
+      window.addEventListener(
+        "resize",
+        () => {
+          if (window.matchMedia("(min-width: 1024px)").matches) {
+            closeAllMenus(false);
+          }
+        },
+        { signal }
+      );
+
+      document.addEventListener(
+        "astro:before-swap",
+        () => {
+          closeAllMenus(false);
+        },
+        { signal }
+      );
+
+      state.cleanup = () => {
+        closeAllMenus(false);
+        controller.abort();
+      };
+    };
+
+    if (!state.pageLoadBound) {
+      document.addEventListener("astro:page-load", setup);
+      state.pageLoadBound = true;
+    }
+
+    setup();
+  })();
+</script>
+
+<style>
+  :global(body.mobile-menu-open) {
+    overflow: hidden;
+  }
+</style>

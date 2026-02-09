@@ -1,61 +1,72 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap");
 @import "tailwindcss";
 
 :root {
-  --color-background: #f8f9fa;
-  --color-foreground: #e9ecef;
-  --color-text: #1a1a2e;
-  --color-text-muted: #6c757d;
-  --color-accent: #7c3aed;
-  --color-border: #dee2e6;
+  --color-background: #ffffff;
+  --color-foreground: #ffffff;
+  --color-surface: #f2f2f2;
+  --color-text: #0a0a0a;
+  --color-text-muted: #464646;
+  --color-accent: #0a0a0a;
+  --color-border: #c5c5c5;
+  --color-divider: #dbdbdb;
+  --color-subtle: #a1a1a1;
 }
 
 .dark {
-  --color-background: #0f0f1a;
-  --color-foreground: #1a1a2e;
-  --color-text: #f1f1f1;
-  --color-text-muted: #9ca3af;
-  --color-accent: #a78bfa;
-  --color-border: #2d2d3a;
+  --color-background: #111111;
+  --color-foreground: #191919;
+  --color-surface: #202020;
+  --color-text: #f5f5f5;
+  --color-text-muted: #c1c1c1;
+  --color-accent: #f5f5f5;
+  --color-border: #383838;
+  --color-divider: #2b2b2b;
+  --color-subtle: #8a8a8a;
 }
 
-html {
+html,
+body {
+  margin: 0;
+  min-height: 100%;
   background-color: var(--color-background);
   color: var(--color-text);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: "Satoshi", "Avenir Next", "Segoe UI", sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 280ms;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #6b7280 transparent;
+  scrollbar-color: #7f7f7f transparent;
 }
 
 *::-webkit-scrollbar {
-  height: 8px;
   width: 8px;
+  height: 8px;
 }
 
 *::-webkit-scrollbar-track {
-  border-radius: 4px;
-  background-color: transparent;
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: #6b7280;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background-color: #9ca3af;
+  border-radius: 999px;
+  background-color: #7f7f7f;
 }
 
 .dark *::-webkit-scrollbar-thumb {
-  background-color: #4b5563;
-}
-
-.dark *::-webkit-scrollbar-thumb:hover {
-  background-color: #6b7280;
+  background-color: #5f5f5f;
 }

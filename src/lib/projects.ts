@@ -16,11 +16,11 @@ export const projects: Project[] = [
     slug: "koncepcja-wizji-produktu-b2c",
     title: "Koncepcja wizji produktu B2C",
     description:
-      "Koncept platformy InfoFi do analizy kryptowalut. Pomaga traderom szybko ocenić bezpieczeństwo tokenów i zrozumieć przepływy kapitału, łącząc dane giełdowe i on-chain w jednym, elastycznym dashboardzie.",
-    image: "/figma/checker.png",
+      "Projekt koncepcyjno-researchowy dla InsightX: od silnika B2B do kierunku produktu B2C dla Smart Traderów. Efektem była wizja InfoFi, łącząca dane on-chain, giełdowe i AI w research-ready workspace.",
+    image: "/assets/inx/work-inx.png",
     tags: ["UX Design", "Research", "Crypto / DeFi"],
     content:
-      "Koncept platformy InfoFi do analizy kryptowalut. Pomaga traderom szybko ocenić bezpieczeństwo tokenów i zrozumieć przepływy kapitału, łącząc dane giełdowe i on-chain w jednym, elastycznym dashboardzie.",
+      "Projekt koncepcyjno-researchowy dla InsightX: od silnika B2B do kierunku produktu B2C dla Smart Traderów. Efektem była wizja InfoFi, łącząca dane on-chain, giełdowe i AI w research-ready workspace.",
   },
   {
     slug: "readyset-aplikacja-do-planowania-wyjazdow",

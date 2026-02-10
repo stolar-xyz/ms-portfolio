@@ -69,7 +69,7 @@ if (featuredProjects.length !== featuredSlugs.length) {
               class="group flex flex-col gap-[32px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text)]"
               transition:name={`work-${project.slug}-card`}
             >
-              <div class={`h-[380px] overflow-hidden lg:h-[500px] ${project.slug === "readyset-aplikacja-do-planowania-wyjazdow" ? "" : "bg-[var(--color-surface)]"}`}>
+              <div class="h-[380px] overflow-hidden lg:h-[500px]">
                 <img
                   src={project.image}
                   alt={`Podgląd projektu ${project.title}`}

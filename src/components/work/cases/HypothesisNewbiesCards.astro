@@ -1,0 +1,529 @@
+---
+type ScoreRow = {
+  label: string;
+  value: string;
+  tone?: "green" | "red";
+};
+
+type Card = {
+  title: string;
+  description?: string;
+  bullets?: string[];
+  callout?: {
+    tone: "green" | "orange";
+    lines: string[];
+  };
+  rating?: string;
+  scoreRows?: ScoreRow[];
+  desktopStart?: "2" | "3" | "4";
+};
+
+type Tab = {
+  id: string;
+  label: string;
+  cards: Card[];
+};
+
+const tabs: Tab[] = [
+  {
+    id: "design",
+    label: "Design",
+    cards: [
+      {
+        title: "Interfejs kartowy",
+        bullets: [
+          "Prezentacja danych w formie przystępnych kart zamiast tabel",
+          "Jedna karta = jeden projekt z kluczowymi informacjami",
+          "Szybki skan bez zagłębiania się w szczegóły",
+          "Mniej bałaganu - najważniejsze informacje na wierzchu",
+        ],
+      },
+      {
+        title: "Przyjemny design",
+        bullets: [
+          "Nowoczesny, kolorowy interfejs przyciągający młodszych użytkowników",
+          "Energia Gen Z - memy, animacje, mikrointerakcje",
+          'Odejście od "nudnego" wyglądu finansowych aplikacji',
+        ],
+      },
+      {
+        title: "Interaktywne karty",
+        bullets: [
+          "Możliwość dodawania kart do ulubionych",
+          "Interaktywne elementy - rozwijanie szczegółów jednym kliknięciem",
+          "Personalizowane alerty dla obserwowanych projektów",
+        ],
+        callout: {
+          tone: "green",
+          lines: ['Przykład: "Twoja moneta spadła o 20%"', 'lub "Wykryto czerwoną flagę"'],
+        },
+      },
+      {
+        title: "Motywy",
+        bullets: [
+          "Personalizacja wyglądu aplikacji przez użytkownika",
+          "Tryb jasny / ciemny / kolorowe motywy",
+          "Dostosowanie interfejsu do preferencji wizualnych",
+        ],
+        desktopStart: "3",
+      },
+    ],
+  },
+  {
+    id: "plugin",
+    label: "Wtyczka Chrome",
+    cards: [
+      {
+        title: "Instalacja jednym kliknięciem",
+        bullets: [
+          "Wtyczka pokazująca ocenę bezpieczeństwa podczas przeglądania",
+          "Automatyczne wykrywanie stron projektów crypto",
+          "Ocena widoczna od razu, bez wchodzenia na stronę INX",
+        ],
+        desktopStart: "2",
+      },
+      {
+        title: "Integracja ze stronami",
+        description:
+          "Wtyczka automatycznie rozpoznaje adresy kontraktów i strony tokenów, dodając informacje o bezpieczeństwie bezpośrednio w miejscu, gdzie użytkownik podejmuje decyzje.",
+        bullets: ["Viralowy potencjał wśród społeczności crypto"],
+        desktopStart: "4",
+      },
+    ],
+  },
+  {
+    id: "onboarding",
+    label: "Onboarding",
+    cards: [
+      {
+        title: "Wyjaśnienia przyjazne dla początkujących",
+        bullets: [
+          'Tooltips i pop-upy "Co to znaczy?" przy technicznych terminach',
+          "Budowanie zaufania przez edukację w kontekście",
+        ],
+        callout: {
+          tone: "green",
+          lines: [
+            'Przykład: gdy strona pokazuje "Owner not renounced: ⚠️", INX wyjaśnia:',
+            '"Deweloperzy wciąż mają kontrolę nad kontraktem i mogą zmienić jego kod"',
+          ],
+        },
+      },
+      {
+        title: "Asystent AI",
+        description:
+          "Konwersacyjny bot AI, który odpowiada na pytania użytkownika prostym językiem i pomaga zrozumieć dane techniczne.",
+        bullets: ["Język casual traderów z lekkim humorem"],
+        callout: {
+          tone: "green",
+          lines: ['"No honeypot here - looks safe to swap!"', '"Whale alert: jeden portfel trzyma aż 50% podaży!"'],
+        },
+      },
+      {
+        title: "Komentarz na żywo",
+        description:
+          "Wyjaśnienia w czasie rzeczywistym co się dzieje z tokenem - aktualizacje o istotnych zmianach (płynność, transakcje wielorybów, zmiany w kontrakcie).",
+        bullets: ["Powiadomienia o znaczących zmianach w projekcie", "Tłumaczenie zdarzeń technicznych na prosty język"],
+      },
+      {
+        title: "Porównania na żywo",
+        description: 'Łatwe porównywanie - "Token A vs Token B", aby początkujący mogli szybko zobaczyć różnice.',
+        bullets: [
+          "Porównanie ocen bezpieczeństwa obok siebie",
+          "Sprawdzanie tokenów staje się mniej onieśmielające i bardziej angażujące",
+        ],
+        desktopStart: "3",
+      },
+    ],
+  },
+  {
+    id: "coins",
+    label: "Nowe monety",
+    cards: [
+      {
+        title: "Wczesne powiadomienia",
+        bullets: [
+          "Analiza projektów które inne platformy pomijają",
+          "Nisza z małą konkurencją - szansa na pozycję lidera",
+        ],
+      },
+      {
+        title: "Darmowy dostęp",
+        description:
+          "Podstawowe sprawdzenie bezpieczeństwa za darmo - bez barier wejścia. Początkujący nie powinni płacić za sprawdzenie, czy moneta jest bezpieczna.",
+        bullets: ["Premium: zaawansowane alerty i szczegółowe raporty"],
+      },
+      {
+        title: 'Sekcja "Właśnie wystartowały"',
+        bullets: [
+          "Lista nowych projektów z automatyczną analizą",
+          "Szybka ocena bezpieczeństwa dla świeżych tokenów",
+          "Alert o potencjalnych zagrożeniach",
+        ],
+      },
+      {
+        title: 'Sekcja "Na czasie"',
+        bullets: ["Trending projekty z oceną bezpieczeństwa", "Porównanie z social media buzz"],
+        desktopStart: "2",
+      },
+      {
+        title: "Alerty cenowe",
+        bullets: ["Powiadomienia o zmianach cen obserwowanych monet", "Połączenie z alertami bezpieczeństwa"],
+        callout: {
+          tone: "orange",
+          lines: ['"Cena spadła o 30% + wykryto', 'podejrzaną aktywność na portfelu', 'dewelopera"'],
+        },
+        desktopStart: "4",
+      },
+    ],
+  },
+  {
+    id: "community",
+    label: "Społeczność",
+    cards: [
+      {
+        title: "IMDB dla Crypto",
+        description:
+          "Jedno miejsce, gdzie użytkownicy mogą zobaczyć komentarze zarówno od innych użytkowników, jak i od ekspertów. Średnia ocena i wszystkie komentarze w jednym miejscu.",
+        rating: "4.2 (1 247 recenzji)",
+      },
+      {
+        title: "Oceny i recenzje społeczności",
+        description: "Społeczność traderów dzieli się swoim poziomem zaufania do tokena",
+        scoreRows: [
+          { label: "Automated Safety Score:", value: "78/100", tone: "green" },
+          { label: "User Trust Score:", value: "2.3/5", tone: "red" },
+        ],
+      },
+      {
+        title: "Komentarze o bezpieczeństwie",
+        description:
+          "Sekcja komentarzy jak Reddit, ale skupiona na bezpieczeństwie, nie popularności - mądrość tłumu jako wczesne ostrzeżenie.",
+        bullets: ['"Dev porzucił projekt"', '"Dev wcześniej zrobił 3 rug pulle - uważaj"', '"Dużo botów na Telegramie tokena - podejrzane"'],
+      },
+      {
+        title: "Krytyk i użytkownik",
+        description: "Analogia do IMDB: recenzje krytyków (algorytm INX/eksperci) + recenzje użytkowników.",
+        bullets: [
+          "Jeśli zarówno AI, jak i społeczność mówią że token jest niebezpieczny - warto posłuchać",
+          "Czysto automatyczne systemy nie wyłapią sygnałów od społeczności",
+        ],
+        desktopStart: "3",
+      },
+    ],
+  },
+  {
+    id: "marketing",
+    label: "Marketing",
+    cards: [
+      {
+        title: "Zostań memem",
+        bullets: [
+          "Wykorzystanie kultury memów w crypto",
+          "Viralowe treści budujące rozpoznawalność",
+          "Obecność na Twitter/X z crypto humorem",
+        ],
+      },
+      {
+        title: "Filmy na YouTube",
+        description: 'Poradniki "Jak sprawdzić czy coin jest bezpieczny" i case study "Jak INX wykrył ten scam".',
+        bullets: ["Treści edukacyjne o due diligence przed inwestycją", "Współpraca z crypto YouTuberami"],
+      },
+      {
+        title: "Influencerzy / Builderzy",
+        bullets: [
+          "Partnerstwa z twórcami w niszy crypto",
+          "Focus na edukację, nie płatne shille",
+          "Autentyczne rekomendacje od zaufanych osób",
+        ],
+      },
+    ],
+  },
+];
+---
+
+<section class="newbies-cards rounded-[16px] bg-transparent p-0 pt-[8px] pb-[14px] lg:pt-[12px] lg:pb-[20px]" data-newbies-cards aria-label="Karty koncepcji dla początkujących">
+
+  <nav class="newbies-tabs" aria-label="Zakres koncepcji newbie friendly">
+    {
+      tabs.map((tab, index) => (
+        <button type="button" class:list={["newbies-tab-btn", index === 0 ? "is-active" : ""]} data-newbies-tab={tab.id} aria-selected={index === 0 ? "true" : "false"}>
+          {tab.label}
+        </button>
+      ))
+    }
+  </nav>
+
+  <div class="newbies-panels">
+    {
+      tabs.map((tab, tabIndex) => (
+        <div class:list={["newbies-panel", tabIndex === 0 ? "" : "hidden"]} data-newbies-panel={tab.id}>
+          <div class="newbies-grid">
+            {
+              tab.cards.map((card) => (
+                <article class:list={["newbies-card", card.desktopStart ? `newbies-card--start-${card.desktopStart}` : ""]}>
+                  <h4 class="newbies-card-title">{card.title}</h4>
+
+                  {card.description && <p class="newbies-card-description">{card.description}</p>}
+
+                  {card.bullets && (
+                    <ul class="newbies-card-list">
+                      {card.bullets.map((item) => <li>{item}</li>)}
+                    </ul>
+                  )}
+
+                  {card.callout && (
+                    <div class:list={["newbies-callout", card.callout.tone === "green" ? "newbies-callout--green" : "newbies-callout--orange"]}>
+                      {card.callout.lines.map((line) => <p>{line}</p>)}
+                    </div>
+                  )}
+
+                  {card.rating && (
+                    <div class="newbies-scorebox">
+                      <span class="newbies-stars">★★★★☆</span>
+                      <span>{card.rating}</span>
+                    </div>
+                  )}
+
+                  {card.scoreRows && (
+                    <div class="newbies-score-rows">
+                      {card.scoreRows.map((row) => (
+                        <div class="newbies-score-row">
+                          <span>{row.label}</span>
+                          <span class:list={["newbies-score-value", row.tone === "green" ? "is-green" : "", row.tone === "red" ? "is-red" : ""]}>{row.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .newbies-intro {
+    text-align: center;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-text);
+  }
+
+  .newbies-tabs {
+    margin-top: 22px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .newbies-tab-btn {
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--color-text);
+    background: var(--color-background);
+    white-space: nowrap;
+  }
+
+  .newbies-tab-btn.is-active {
+    background: #1e1e1e;
+    color: #fff;
+    border-color: #1e1e1e;
+  }
+
+  .newbies-panels {
+    margin-top: 22px;
+  }
+
+  .newbies-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .newbies-card {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-background);
+    padding: 16px;
+  }
+
+  .newbies-card-title {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .newbies-card-description {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--color-text);
+  }
+
+  .newbies-card-list {
+    margin-top: 12px;
+    list-style: disc;
+    padding-left: 18px;
+    display: grid;
+    gap: 6px;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--color-text);
+  }
+
+  .newbies-callout {
+    margin-top: 12px;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  .newbies-callout--green {
+    background: #d8e9db;
+    color: #4f9a5f;
+  }
+
+  .newbies-callout--orange {
+    background: #efe2c6;
+    color: #b6842e;
+  }
+
+  .newbies-scorebox {
+    margin-top: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-text);
+  }
+
+  .newbies-stars {
+    color: #d3a12d;
+    letter-spacing: 1px;
+  }
+
+  .newbies-score-rows {
+    margin-top: 12px;
+    display: grid;
+    gap: 10px;
+  }
+
+  .newbies-score-row {
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-text);
+  }
+
+  .newbies-score-value {
+    font-weight: 600;
+  }
+
+  .newbies-score-value.is-green {
+    color: #4f9a5f;
+  }
+
+  .newbies-score-value.is-red {
+    color: #b64040;
+  }
+
+  .newbies-panel-enter {
+    animation: newbiesPanelEnter 220ms ease-out;
+  }
+
+  @keyframes newbiesPanelEnter {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .newbies-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .newbies-card {
+      grid-column: span 2;
+      padding: 20px;
+    }
+
+    .newbies-card--start-2 {
+      grid-column: 2 / span 2;
+    }
+
+    .newbies-card--start-3 {
+      grid-column: 3 / span 2;
+    }
+
+    .newbies-card--start-4 {
+      grid-column: 4 / span 2;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const roots = document.querySelectorAll("[data-newbies-cards]");
+    if (!roots.length) return;
+
+    roots.forEach((root) => {
+      const buttons = root.querySelectorAll("[data-newbies-tab]");
+      const panels = root.querySelectorAll("[data-newbies-panel]");
+
+      const setActive = (tabId) => {
+        buttons.forEach((button) => {
+          const isActive = button.getAttribute("data-newbies-tab") === tabId;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-selected", isActive ? "true" : "false");
+        });
+
+        panels.forEach((panel) => {
+          const isActive = panel.getAttribute("data-newbies-panel") === tabId;
+          panel.classList.toggle("hidden", !isActive);
+
+          if (isActive) {
+            panel.classList.remove("newbies-panel-enter");
+            void panel.offsetWidth;
+            panel.classList.add("newbies-panel-enter");
+          }
+        });
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const tabId = button.getAttribute("data-newbies-tab");
+          if (tabId) setActive(tabId);
+        });
+      });
+    });
+  })();
+</script>

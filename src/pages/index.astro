@@ -1,20 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import TablerIcon from "../components/TablerIcon.astro";
-import { getProjectBySlug } from "../lib/projects";
+import { getAllProjects } from "../lib/projects";
 
-const featuredSlugs = [
-  "koncepcja-wizji-produktu-b2c",
-  "readyset-aplikacja-do-planowania-wyjazdow",
-] as const;
-
-const featuredProjects = featuredSlugs
-  .map((slug) => getProjectBySlug(slug))
-  .filter((project) => project !== undefined);
-
-if (featuredProjects.length !== featuredSlugs.length) {
-  throw new Error("Brak projektów wymaganych do sekcji home.");
-}
+const featuredProjects = getAllProjects().slice(0, 2);
 ---
 
 <Layout title="Home" description="Portfolio UX/UI - strona główna">

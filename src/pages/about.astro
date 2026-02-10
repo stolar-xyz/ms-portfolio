@@ -13,9 +13,8 @@ const introMobile = [
 ];
 
 const socialLinks = [
-  { label: "LINKEDIN", href: "https://linkedin.com" },
-  { label: "Github", href: "https://github.com" },
-  { label: "mail", href: "mailto:hello@example.com" },
+  { label: "LINKEDIN", href: "https://www.linkedin.com/in/magdalena-szczecinska/" },
+  { label: "Github", href: "https://github.com/mszczecinska" },
 ] as const;
 
 const techStackDesktop = [
@@ -38,7 +37,7 @@ const techStackDesktop = [
     title: "AI",
     tools: [
       { label: "Claude Code", icon: "/icons/tool-claude-code.png" },
-      { label: "Codex", icon: "/icons/tool-claude-code.png" },
+      { label: "Codex", icon: "/icons/tool-chatgpt.svg" },
       { label: "Perplexity", icon: "/icons/tool-perplexity.svg" },
       { label: "ChatGPT", icon: "/icons/tool-chatgpt.svg" },
     ],
@@ -72,6 +71,7 @@ const techStackMobile = [
     title: "AI",
     tools: [
       { label: "Claude Code", icon: "/icons/tool-claude-code.png" },
+      { label: "Codex", icon: "/icons/tool-chatgpt.svg" },
       { label: "Perplexity", icon: "/icons/tool-perplexity.svg" },
       { label: "ChatGPT", icon: "/icons/tool-chatgpt.svg" },
     ],
@@ -111,6 +111,18 @@ const testimonials = [
     role: "Role",
   },
 ] as const;
+
+function getDarkIconSrc(src: string): string | undefined {
+  if (src === "/icons/tool-openai.png" || src === "/icons/tool-chatgpt.svg") {
+    return "/icons/openai-dark-icon.png";
+  }
+
+  if (src === "/icons/tool-vercel.svg") {
+    return "/icons/vercel-dark-icon.png";
+  }
+
+  return undefined;
+}
 ---
 
 <Layout title="About" description="Portfolio UX/UI - strona About">
@@ -186,7 +198,16 @@ const testimonials = [
                         <li>
                           <div class="flex items-center gap-[12px] rounded-[12px] border border-[var(--color-border)] px-[16px] py-[14px]">
                             <span class="inline-flex size-[40px] items-center justify-center rounded-[8px] bg-[var(--color-surface)] p-[8px]">
-                              <img src={tool.icon} alt="" class="size-full object-contain" loading="lazy" decoding="async" />
+                              {
+                                getDarkIconSrc(tool.icon) ? (
+                                  <>
+                                    <img src={tool.icon} alt="" class="theme-icon-light size-full object-contain" loading="lazy" decoding="async" />
+                                    <img src={getDarkIconSrc(tool.icon)} alt="" class="theme-icon-dark size-full object-contain" loading="lazy" decoding="async" />
+                                  </>
+                                ) : (
+                                  <img src={tool.icon} alt="" class="size-full object-contain" loading="lazy" decoding="async" />
+                                )
+                              }
                             </span>
                             <span class="text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)]">{tool.label}</span>
                           </div>
@@ -253,7 +274,16 @@ const testimonials = [
                       <li>
                         <div class="flex items-center gap-[12px] rounded-[12px] border border-[var(--color-border)] px-[14px] py-[12px]">
                           <span class="inline-flex size-8 items-center justify-center rounded-[6px] bg-[var(--color-surface)] p-[6px]">
-                            <img src={tool.icon} alt="" class="size-full object-contain" loading="lazy" decoding="async" />
+                            {
+                              getDarkIconSrc(tool.icon) ? (
+                                <>
+                                  <img src={tool.icon} alt="" class="theme-icon-light size-full object-contain" loading="lazy" decoding="async" />
+                                  <img src={getDarkIconSrc(tool.icon)} alt="" class="theme-icon-dark size-full object-contain" loading="lazy" decoding="async" />
+                                </>
+                              ) : (
+                                <img src={tool.icon} alt="" class="size-full object-contain" loading="lazy" decoding="async" />
+                              )
+                            }
                           </span>
                           <span class="text-[12px] leading-[18px] tracking-[0.25px] text-[var(--color-text)]">{tool.label}</span>
                         </div>

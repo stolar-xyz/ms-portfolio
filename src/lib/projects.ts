@@ -13,6 +13,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "miropoix-saas-dla-szefow-kuchni",
+    title: "Miropoix - SaaS dla szefów kuchni",
+    description:
+      "Miropoix to aplikacja SaaS skierowana do zespołów kuchennych. Aplikacja daje zespołowi jedno wspólne narzędzie, w którym każdy kucharz dodaje to, co potrzebuje danego dnia.",
+    image: "/assets/miropoix/work-miropoix.png",
+    tags: ["UI Design", "Web & Mobile", "Web Design", "Animation"],
+    content:
+      "Miropoix to aplikacja SaaS skierowana do zespołów kuchennych. Aplikacja daje zespołowi jedno wspólne narzędzie, w którym każdy kucharz dodaje to, co potrzebuje danego dnia.",
+  },
+  {
     slug: "koncepcja-wizji-produktu-b2c",
     title: "Koncepcja wizji produktu B2C",
     description:

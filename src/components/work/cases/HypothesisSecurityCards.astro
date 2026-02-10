@@ -414,10 +414,12 @@
   }
 </style>
 
-<script is:inline>
+<script is:inline data-astro-rerun>
   (() => {
     const root = document.currentScript?.previousElementSibling;
     if (!(root instanceof HTMLElement)) return;
+    if (root.dataset.tabsInitialized === "true") return;
+    root.dataset.tabsInitialized = "true";
 
     const buttons = root.querySelectorAll("[data-tab]");
     const panels = root.querySelectorAll("[data-panel]");

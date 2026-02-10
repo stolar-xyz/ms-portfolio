@@ -490,12 +490,16 @@ const tabs: Tab[] = [
   }
 </style>
 
-<script is:inline>
+<script is:inline data-astro-rerun>
   (() => {
     const roots = document.querySelectorAll("[data-newbies-cards]");
     if (!roots.length) return;
 
     roots.forEach((root) => {
+      if (!(root instanceof HTMLElement)) return;
+      if (root.dataset.tabsInitialized === "true") return;
+      root.dataset.tabsInitialized = "true";
+
       const buttons = root.querySelectorAll("[data-newbies-tab]");
       const panels = root.querySelectorAll("[data-newbies-panel]");
 

@@ -43,9 +43,15 @@ body {
   outline-offset: 2px;
 }
 
+::view-transition-group(root) {
+  background-color: var(--color-background);
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 280ms;
+  mix-blend-mode: normal;
+  background-color: var(--color-background);
 }
 
 * {

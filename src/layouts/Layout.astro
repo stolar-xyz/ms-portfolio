@@ -18,7 +18,7 @@ import Footer from "../components/Footer.astro";
 ---
 
 <!doctype html>
-<html lang="pl" class="dark">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -42,7 +42,8 @@ import Footer from "../components/Footer.astro";
       // Apply on initial load
       applyTheme();
 
-      // Apply after View Transition swap (before new page renders)
+      // Apply before swap to avoid one-frame theme flash during view transitions
+      document.addEventListener("astro:before-swap", applyTheme);
       document.addEventListener("astro:after-swap", applyTheme);
     </script>
   </head>

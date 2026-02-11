@@ -76,3 +76,15 @@ body {
 .dark *::-webkit-scrollbar-thumb {
   background-color: #5f5f5f;
 }
+
+.theme-icon-dark {
+  display: none;
+}
+
+.dark .theme-icon-light {
+  display: none;
+}
+
+.dark .theme-icon-dark {
+  display: block;
+}

@@ -23,7 +23,12 @@ import Footer from "../components/Footer.astro";
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="shortcut icon" href="/favicon-light.ico"  media="(prefers-color-scheme:light)" />
+    <link rel="shortcut icon" href="/favicon-dark.ico"  media="(prefers-color-scheme:dark)" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Portfolio" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Portfolio</title>
     <ClientRouter />

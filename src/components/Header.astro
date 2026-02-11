@@ -47,7 +47,7 @@ const activeKey = currentPath.startsWith("/about")
                         ? "font-medium text-[128px] leading-[1] tracking-[-0.025em]"
                         : "py-[6px] text-[24px] leading-[32px]",
                     ]}
-                    transition:name={isActive ? "nav-active-item" : undefined}
+                    transition:name={`nav-item-${item.key}`}
                   >
                     {item.label}
                   </a>

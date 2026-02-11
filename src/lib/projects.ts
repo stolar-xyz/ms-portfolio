@@ -18,7 +18,7 @@ export const projects: Project[] = [
     description:
       "Miropoix to aplikacja SaaS skierowana do zespołów kuchennych. Aplikacja daje zespołowi jedno wspólne narzędzie, w którym każdy kucharz dodaje to, co potrzebuje danego dnia.",
     image: "/assets/miropoix/work-miropoix.png",
-    tags: ["UI Design", "Web & Mobile", "Web Design", "Animation"],
+    tags: ["UI Design", "Web Design", "Motion Design", "SaaS"],
     content:
       "Miropoix to aplikacja SaaS skierowana do zespołów kuchennych. Aplikacja daje zespołowi jedno wspólne narzędzie, w którym każdy kucharz dodaje to, co potrzebuje danego dnia.",
   },

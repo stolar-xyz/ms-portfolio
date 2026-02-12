@@ -24,7 +24,7 @@ export const projects: Project[] = [
   },
   {
     slug: "koncepcja-wizji-produktu-b2c",
-    title: "Koncepcja wizji produktu B2C",
+    title: "INX - wizja produktu B2C",
     description:
       "Projekt koncepcyjno-researchowy dla InsightX: od silnika B2B do kierunku produktu B2C dla Smart Traderów. Efektem była wizja InfoFi, łącząca dane on-chain, giełdowe i AI w research-ready workspace.",
     image: "/assets/inx/work-inx.png",

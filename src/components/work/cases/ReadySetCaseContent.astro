@@ -86,14 +86,14 @@ const successMetrics = [
     <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]"><strong>Paraliż decyzyjny:</strong> Trudno ustalić jedną wersję wydarzeń, gdy opinie są rozsiane po różnych kanałach.</p>
     <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]"><strong>Strata czasu:</strong> Organizer musi ręcznie spinać ustalenia w całość.</p>
   </div>
-  <div class="overflow-hidden bg-transparent lg:h-[467px]">
-    <video src="/assets/ready-set/start-page (1).mp4" aria-label="Animacja ekranu startowego aplikacji" class="w-full h-auto lg:size-full lg:object-cover" autoplay loop muted playsinline></video>
+  <div class="overflow-hidden bg-transparent sm:h-auto sm:aspect-square lg:h-[467px]">
+    <video src="/assets/ready-set/start-page (1).mp4" aria-label="Animacja ekranu startowego aplikacji" class="size-full object-cover" autoplay loop muted playsinline></video>
   </div>
 </section>
 
 <section class="grid gap-[48px] lg:grid-cols-[467px_507px] lg:items-center lg:gap-[64px]" aria-labelledby="goal-title">
-  <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] lg:h-[467px]">
-    <img src="/assets/ready-set/invite-readyset.png" alt="Widok zaproszenia do planowania wyjazdu" class="w-full h-auto lg:size-full lg:object-cover" loading="lazy" />
+  <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-square lg:h-[467px]">
+    <img src="/assets/ready-set/invite-readyset.png" alt="Widok zaproszenia do planowania wyjazdu" class="size-full object-cover" loading="lazy" />
   </div>
   <div class="flex flex-col gap-[24px] lg:justify-center">
     <h2 id="goal-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Cel</h2>
@@ -137,17 +137,17 @@ const successMetrics = [
 
     <div class="overflow-hidden rounded-[16px] border border-[var(--color-border)]">
       <div class="grid grid-cols-3 border-b border-[var(--color-border)] bg-[var(--color-foreground)]">
-        <p class="px-[16px] py-[12px] text-[14px] font-medium leading-[20px] tracking-[0.25px]">Aspekt</p>
-        <p class="px-[16px] py-[12px] text-[14px] font-medium leading-[20px] tracking-[0.25px]">Tradycyjny proces</p>
-        <p class="px-[16px] py-[12px] text-[14px] font-medium leading-[20px] tracking-[0.25px]">Wnioski</p>
+        <p class="min-w-0 px-[16px] py-[12px] text-[14px] font-medium leading-[20px] tracking-[0.25px] [overflow-wrap:anywhere]">Aspekt</p>
+        <p class="min-w-0 px-[16px] py-[12px] text-[14px] font-medium leading-[20px] tracking-[0.25px] [overflow-wrap:anywhere]">Tradycyjny proces</p>
+        <p class="min-w-0 px-[16px] py-[12px] text-[14px] font-medium leading-[20px] tracking-[0.25px] [overflow-wrap:anywhere]">Wnioski</p>
       </div>
 
       {
         conclusionsRows.map((row, index) => (
           <div class:list={["grid grid-cols-3", index < conclusionsRows.length - 1 ? "border-b border-[var(--color-border)]" : ""]}>
-            <p class="px-[16px] py-[12px] text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)]">{row.aspect}</p>
-            <p class="px-[16px] py-[12px] text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)]">{row.traditional}</p>
-            <p class="px-[16px] py-[12px] text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)]">{row.finding}</p>
+            <p class="min-w-0 px-[16px] py-[12px] text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)] [overflow-wrap:anywhere]">{row.aspect}</p>
+            <p class="min-w-0 px-[16px] py-[12px] text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)] [overflow-wrap:anywhere]">{row.traditional}</p>
+            <p class="min-w-0 px-[16px] py-[12px] text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)] [overflow-wrap:anywhere]">{row.finding}</p>
           </div>
         ))
       }
@@ -200,7 +200,7 @@ const successMetrics = [
     </ol>
   </div>
 
-  <div class="overflow-hidden lg:h-[837px]">
+  <div class="overflow-hidden sm:h-auto sm:aspect-[288/279] lg:h-[837px]">
     <img src="/assets/ready-set/storeyboard-readyset.png" alt="Storyboard definiujący rozwiązanie" class="size-full object-contain" loading="lazy" />
   </div>
 </section>
@@ -255,7 +255,7 @@ const successMetrics = [
     </ul>
   </div>
 
-  <div class="overflow-hidden lg:h-[658px]">
+  <div class="overflow-hidden sm:h-auto sm:aspect-[432/329] lg:h-[658px]">
     <img src="/assets/ready-set/flow.png" alt="Schemat przepływu użytkownika" class="size-full object-contain" loading="lazy" />
   </div>
 </section>
@@ -272,8 +272,8 @@ const successMetrics = [
       <h3 id="home-screen-title" class="text-[20px] leading-[28px] lg:text-[28px] lg:leading-[36px] text-[var(--color-text)]">Ekran domowy</h3>
       <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Na ekranie domowym użytkownika korzystającego z aplikacji możemy wyróżnić sekcje wyjazdów aktywnych oraz zarchiwizowanych. Z tego poziomu użytkownik ma możliwość stworzenia nowego wyjazdu i przejścia do aktywnych bądź zakończonych. Nowi użytkownicy otrzymują informację o braku wyjazdów i komunikat CTA o stworzeniu nowego wyjazdu. Proces tworzenia wyjazdu jest taki sam niezależnie od użytkownika.</p>
     </div>
-    <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] lg:h-[449px]">
-      <img src="/assets/ready-set/ekran-domowy-readyset.png" alt="Widok ekranu domowego aplikacji" class="w-full h-auto lg:size-full lg:object-cover" loading="lazy" />
+    <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-[432/225] lg:h-[449px]">
+      <img src="/assets/ready-set/ekran-domowy-readyset.png" alt="Widok ekranu domowego aplikacji" class="size-full object-cover" loading="lazy" />
     </div>
   </section>
 
@@ -282,8 +282,8 @@ const successMetrics = [
       <h3 id="dashboard-title" class="text-[20px] leading-[28px] lg:text-[28px] lg:leading-[36px] text-[var(--color-text)]">Dashboard wyjazdu</h3>
       <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Widok wyjazdu jest głównym ekranem wyjazdu. Z poziomu tego widoku użytkownik może zarządzać całym wyjazdem, jego kategoriami, opcjami kategorii czy zaproszonymi osobami. Zamiast niekończącej się listy, zastosowałam kafelki kategorii, które od razu pokazują status. Dodatkowo użytkownik może eksportować gotowy plan jako gotowy plik PDF z całym planem i informacjami o danych opcjach.</p>
     </div>
-    <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] lg:h-[618px]">
-      <img src="/assets/ready-set/dashboard-wyjazdu-readyset.png" alt="Dashboard wyjazdu" class="w-full h-auto lg:size-full lg:object-cover" loading="lazy" />
+    <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-[432/309] lg:h-[618px]">
+      <img src="/assets/ready-set/dashboard-wyjazdu-readyset.png" alt="Dashboard wyjazdu" class="size-full object-cover" loading="lazy" />
     </div>
   </section>
 
@@ -292,15 +292,15 @@ const successMetrics = [
       <h3 id="options-title" class="text-[20px] leading-[28px] lg:text-[28px] lg:leading-[36px] text-[var(--color-text)]">Dodawanie opcji</h3>
       <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Użytkownik ma możliwość dodania opcji na etapie tworzenia kategorii lub po jej utworzeniu. Podczas dodawania kolejnych np. hoteli wyświetlany jest modal, który pozwala użytkownikowi natychmiast wrócić do widoku kategorii jeśli zmieni zdanie. Samo dodanie opcji polega głównie na wklejeniu linku, a aplikacja automatycznie zaciągnie zdjęcie i nazwę. To kluczowe dla szybkości dodawania propozycji.</p>
     </div>
-    <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] lg:h-[506px]">
-      <img src="/assets/ready-set/dodawanie-opcji-readyset.png" alt="Widok dodawania opcji" class="w-full h-auto lg:size-full lg:object-cover" loading="lazy" />
+    <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-[432/253] lg:h-[506px]">
+      <img src="/assets/ready-set/dodawanie-opcji-readyset.png" alt="Widok dodawania opcji" class="size-full object-cover" loading="lazy" />
     </div>
-    <div class="grid gap-[24px] lg:grid-cols-2">
-      <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] lg:h-[298px]">
-        <video src="/assets/ready-set/add-option.mp4" aria-label="Dodatkowy ekran opcji 1" class="w-full h-auto lg:size-full lg:object-cover" autoplay loop muted playsinline></video>
+    <div class="grid gap-[24px] sm:grid-cols-2">
+      <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-[149/103] lg:h-[298px]">
+        <video src="/assets/ready-set/add-option.mp4" aria-label="Dodatkowy ekran opcji 1" class="size-full object-cover" autoplay loop muted playsinline></video>
       </div>
-      <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] lg:h-[298px]">
-        <video src="/assets/ready-set/new-option.mp4" aria-label="Dodatkowy ekran opcji 2" class="w-full h-auto lg:size-full lg:object-cover" autoplay loop muted playsinline></video>
+      <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-[149/103] lg:h-[298px]">
+        <video src="/assets/ready-set/new-option.mp4" aria-label="Dodatkowy ekran opcji 2" class="size-full object-cover" autoplay loop muted playsinline></video>
       </div>
     </div>
   </section>
@@ -310,15 +310,15 @@ const successMetrics = [
       <h3 id="schedule-title" class="text-[20px] leading-[28px] lg:text-[28px] lg:leading-[36px] text-[var(--color-text)]">Harmonogram</h3>
       <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Po zakończeniu planowania, aplikacja generuje czysty, czytelny harmonogram.Dodatkowo zaprojektowałam funkcję "Pobierz PDF".</p>
     </div>
-    <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] lg:h-[465px]">
-      <img src="/assets/ready-set/harmonogram-readyset.png" alt="Widok harmonogramu wyjazdu" class="w-full h-auto lg:size-full lg:object-cover" loading="lazy" />
+    <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-[432/233] lg:h-[465px]">
+      <img src="/assets/ready-set/harmonogram-readyset.png" alt="Widok harmonogramu wyjazdu" class="size-full object-cover" loading="lazy" />
     </div>
   </section>
 </section>
 
 <section class="grid gap-[48px] lg:grid-cols-[467px_509px] lg:items-center lg:gap-[64px]" aria-labelledby="style-title">
-  <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] lg:h-[467px]">
-    <img src="/assets/ready-set/UI-readyset.png" alt="Przykład stylu wizualnego aplikacji" class="w-full h-auto lg:size-full lg:object-cover" loading="lazy" />
+  <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-square lg:h-[467px]">
+    <img src="/assets/ready-set/UI-readyset.png" alt="Przykład stylu wizualnego aplikacji" class="size-full object-cover" loading="lazy" />
   </div>
   <div class="flex flex-col gap-[24px] lg:justify-center">
     <h2 id="style-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Style i UI</h2>
@@ -328,7 +328,7 @@ const successMetrics = [
   </div>
 </section>
 
-<section class="grid gap-[48px] lg:grid-cols-[511px_283px] lg:items-center lg:justify-between" aria-labelledby="user-tests-title">
+<section class="grid gap-[48px] lg:grid-cols-[511px_283px] lg:items-start lg:justify-between" aria-labelledby="user-tests-title">
   <div class="flex flex-col gap-[24px] lg:justify-center">
     <div class="flex flex-col gap-[14px]">
       <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">User tests</p>
@@ -341,14 +341,14 @@ const successMetrics = [
     </ul>
     <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">Wnioski: użytkownicy pozytywnie ocenili przejrzystość informacji i łatwość poruszania się po aplikacji. Nie napotkali problemów ze zrozumieniem struktury kategorii ani funkcji głosowania.</p>
   </div>
-  <div class="overflow-hidden shadow-[2px_2px_4px_0px_rgba(0,0,0,0.04),0px_5px_6px_0px_rgba(0,0,0,0.1)] lg:h-[612px]">
-    <video src="/assets/ready-set/user-test-readyset.mov" aria-label="Nagranie z testów użytkowników" class="w-full h-auto lg:size-full lg:object-cover" autoplay loop muted playsinline></video>
+  <div class="mx-auto w-full max-w-[360px] overflow-hidden rounded-[56px] shadow-[0px_4px_14px_rgba(0,0,0,0.08)] sm:mx-0 sm:max-w-none sm:h-auto sm:aspect-[24/17] lg:w-[283px] lg:h-[612px]">
+    <video src="/assets/ready-set/user-test-readyset.mov" aria-label="Nagranie z testów użytkowników" class="size-full rounded-[56px] object-cover [clip-path:inset(0_1px_1px_0_round_56px)]" autoplay loop muted playsinline></video>
   </div>
 </section>
 
 <section class="grid gap-[48px] lg:grid-cols-[465px_511px] lg:items-center lg:gap-[64px]" aria-labelledby="reflections-title">
-  <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] lg:h-[465px]">
-    <img src="/assets/ready-set/invite-readyset.png" alt="Ilustracja podsumowania projektu" class="w-full h-auto lg:size-full lg:object-cover" loading="lazy" />
+  <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-square lg:h-[465px]">
+    <img src="/assets/ready-set/invite-readyset.png" alt="Ilustracja podsumowania projektu" class="size-full object-contain" loading="lazy" />
   </div>
   <div class="flex flex-col gap-[24px] lg:justify-center">
     <h2 id="reflections-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Wnioski i dalsze kroki</h2>
@@ -370,7 +370,7 @@ const successMetrics = [
       {successMetrics.map((metric) => <li>{metric}</li>)}
     </ul>
   </div>
-  <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] lg:h-[488px]">
-    <img src="/assets/ready-set/two-phones-readyset.png" alt="Wizualizacja metryk sukcesu" class="w-full h-auto lg:size-full lg:object-cover" loading="lazy" />
+  <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-square lg:h-[488px]">
+    <img src="/assets/ready-set/two-phones-readyset.png" alt="Wizualizacja metryk sukcesu" class="size-full object-contain" loading="lazy" />
   </div>
 </section>

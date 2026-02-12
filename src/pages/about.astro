@@ -88,29 +88,35 @@ const techStackMobile = [
 const testimonials = [
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
-    name: "Name and surname",
-    role: "Role",
+      "Pracowałem razem z Magdą nad projektem UIUX w branży Krypto. Współpraca była naprawdę super, czas i zaangażowanie jakie wprowadzała do zespołu pozwoliły zrobić nam naprawdę szybki progres, do tego stopnia że usłyszeliśmy od klienta \"jesteśmy w szoku ile udało wam się zrobić w tak krótkim czasie\". Polecam każdemu pracę z Magdą i sam z chęcią pracowałbym nad wspólnym projektem w przyszłości 🔥",
+    name: "Stan",
+    role: "Founder of nueve.design",
+    photo: "",
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
-    name: "Name and surname",
-    role: "Role",
+      "Magda to jedna z tych osób, na które po prostu można liczyć. Pracowaliśmy razem przy kilku projektach i za każdym razem dowoziła temat od A do Z. Było bardzo terminowo i zawsze jakościowo. Świetnie radzi sobie z nietypowymi zadaniami. Szybko łapie nowe narzędzia i potrafi znaleźć rozwiązanie tam, gdzie inni widzą problem. Implementacje stron, które przygotowywała, potrafiły wyrwać z butów. Natomiast dla mnie najważniejsza w trakcie pracy jest komunikacja i tu była na naprawdę na wysokim poziomie. Zawsze miałem jasność, co jestzrobione, co jest w toku i co planujemy dalej. Jeśli będę miał okazję, chętnie znów z nią popracuję. Zdecydowanie polecam.",
+    name: "Kamil",
+    role: "All the fancy words: marketing, vibe coding, no coding",
+    photo: "",
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
-    name: "Name and surname",
-    role: "Role",
+      "Z pełnym przekonaniem polecam Magdę jako projektantkę UI. Współpraca developer–designer przebiegała wzorowo. Magda błyskawicznie wyłapywała wymagania techniczne, podsuwała estetyczne i funkcjonalne rozwiązania oraz była zawsze otwarta na konstruktywny feedback. Praca z taką osobą była czystą przyjemnością 😊",
+    name: "Andrzej",
+    role: "Frontend Engineer",
+    photo: "" ,
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
-    name: "Name and surname",
-    role: "Role",
+      "Z przyjemnością polecam Magdalenę Szczecińską, która jest na świetnej drodze, by zostać profesjonalną UI Designer. Miałam okazję współpracować z Magdą przy kilku projektach w ramach mojej pracy w Superflymarketing - wspierała mnie całkowicie non profit, traktując to jako szansę na rozwijanie swoich umiejętności i budowanie portfolio.Od samego początku widać było, że ma doskonałe wyczucie estetyki, dbałość o detale i bardzo dobre zrozumienie zasad projektowania z perspektywy użytkownika. Jest otwarta na feedback, błyskawicznie się uczy, zadaje trafne pytania i potrafi samodzielnie znajdować rozwiązania. Współpraca z nią to była czysta przyjemność - sprawnie, konkretnie i w dobrej atmosferze. Z takim zaangażowaniem i podejściem Magda na pewno wniesie dużo wartości do każdego projektu i zespołu.",
+    name: "Kasia",
+    role: "UI/UX/Graphic Designer",
+    photo: "",
   },
 ] as const;
+
+const testimonialsCtaHref = "https://www.linkedin.com/in/magdalena-szczecinska/details/recommendations/";
 
 function getDarkIconSrc(src: string): string | undefined {
   if (src === "/icons/tool-openai.png" || src === "/icons/tool-chatgpt.svg") {
@@ -300,25 +306,53 @@ function getDarkIconSrc(src: string): string | undefined {
   </section>
 
   <section class="mx-auto hidden max-w-[1040px] pb-[120px] lg:block lg:pb-[200px]">
-    <h2 class="text-center text-[36px] font-medium leading-[44px] text-[var(--color-text)]">Co mówią o mnie inni?</h2>
+    <div class="flex items-center justify-between gap-[20px]">
+      <h2 class="text-[36px] font-medium leading-[44px] text-[var(--color-text)]">Co mówią o mnie inni?</h2>
+      <a
+        href={testimonialsCtaHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-[10px] text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)] underline underline-offset-4 transition-colors hover:text-[var(--color-text-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+      >
+        <span>Zobacz na LinkedIn</span>
+        <TablerIcon name="arrow-up-right" class="size-[18px] transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
+      </a>
+    </div>
 
     <div class="mt-[46px] grid grid-cols-2 gap-x-[20px] gap-y-[24px]">
       {
         testimonials.map((item) => (
-          <article class="px-[20px] py-[24px]">
-            <div class="flex items-start gap-[12px]">
-              <p class="flex-1 text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{item.quote}</p>
-              <TablerIcon name="quote" class="size-[92px] text-black/10" />
+          <article class="testimonial-card testimonial-card-desktop is-collapsed rounded-[24px] border border-[var(--color-divider)] px-[28px] py-[28px]" data-testimonial-card>
+            <div class="flex items-center gap-[20px]">
+              {
+                item.photo ? (
+                  <img
+                    src={item.photo}
+                    alt={`Zdjęcie ${item.name}`}
+                    class="size-[64px] shrink-0 rounded-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <span class="inline-flex size-[64px] shrink-0 rounded-full bg-[#d3d3d3]" aria-hidden="true"></span>
+                )
+              }
+              <div>
+                <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]" data-testimonial-name>{item.name}</p>
+                <p class="text-[12px] lg:text-[14px] leading-[16px] lg:leading-[20px] tracking-[0.5px] text-[var(--color-text-muted)]">{item.role}</p>
+              </div>
             </div>
 
-            <div class="mt-[24px] h-[2px] w-full bg-[var(--color-divider)]"></div>
-
-            <div class="mt-[24px] flex items-center gap-[20px]">
-              <span class="inline-flex size-[64px] shrink-0 rounded-full bg-[#d3d3d3]" aria-hidden="true"></span>
-              <div>
-                <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{item.name}</p>
-                <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text-muted)]">{item.role}</p>
-              </div>
+            <div class="mt-[28px] flex min-h-0 flex-1 flex-col gap-[12px]">
+              <p class="testimonial-quote text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]" data-testimonial-quote>{item.quote}</p>
+              <button
+                type="button"
+                class="testimonial-toggle hidden w-fit text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text-muted)] underline underline-offset-4 transition-colors hover:text-[var(--color-text)]"
+                data-testimonial-toggle
+                aria-expanded="false"
+              >
+                Pokaż więcej
+              </button>
             </div>
           </article>
         ))
@@ -327,29 +361,219 @@ function getDarkIconSrc(src: string): string | undefined {
   </section>
 
   <section class="mx-auto max-w-[327px] px-[0] pb-[120px] lg:hidden">
-    <h2 class="text-center text-[24px] font-medium leading-[32px] text-[var(--color-text)]">Co mówią o mnie inni?</h2>
+    <div class="flex flex-col items-center gap-[12px]">
+      <h2 class="text-center text-[24px] font-medium leading-[32px] text-[var(--color-text)]">Co mówią o mnie inni?</h2>
+      <a
+        href={testimonialsCtaHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-[8px] text-[13px] leading-[18px] tracking-[0.25px] text-[var(--color-text)] underline underline-offset-4 transition-colors hover:text-[var(--color-text-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+      >
+        <span>Zobacz na LinkedIn</span>
+        <TablerIcon name="arrow-up-right" class="size-[16px] transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
+      </a>
+    </div>
 
-    <div class="mt-[32px] grid grid-cols-1 gap-y-[32px]">
+    <div class="mt-[32px] grid grid-cols-1 gap-y-[20px]">
       {
         testimonials.map((item) => (
-          <article class="px-[0] py-[0]">
-            <div class="flex items-start gap-[12px]">
-              <p class="flex-1 text-[14px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{item.quote}</p>
-              <TablerIcon name="quote" class="size-[44px] shrink-0 text-black/10" />
+          <article class="testimonial-card testimonial-card-mobile is-collapsed rounded-[20px] border border-[var(--color-divider)] px-[16px] py-[18px]" data-testimonial-card>
+            <div class="flex items-center gap-[14px]">
+              {
+                item.photo ? (
+                  <img
+                    src={item.photo}
+                    alt={`Zdjęcie ${item.name}`}
+                    class="size-[48px] shrink-0 rounded-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <span class="inline-flex size-[48px] shrink-0 rounded-full bg-[#d3d3d3]" aria-hidden="true"></span>
+                )
+              }
+              <div>
+                <p class="text-[14px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]" data-testimonial-name>{item.name}</p>
+                <p class="text-[12px] leading-[16px] tracking-[0.5px] text-[var(--color-text-muted)]">{item.role}</p>
+              </div>
             </div>
 
-            <div class="mt-[24px] h-[2px] w-full bg-[var(--color-divider)]"></div>
-
-            <div class="mt-[24px] flex items-center gap-[20px]">
-              <span class="inline-flex size-[48px] shrink-0 rounded-full bg-[#d3d3d3]" aria-hidden="true"></span>
-              <div>
-                <p class="text-[14px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{item.name}</p>
-                <p class="text-[14px] leading-[24px] tracking-[0.5px] text-[var(--color-text-muted)]">{item.role}</p>
-              </div>
+            <div class="mt-[18px] flex min-h-0 flex-1 flex-col gap-[10px]">
+              <p class="testimonial-quote text-[14px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]" data-testimonial-quote>{item.quote}</p>
+              <button
+                type="button"
+                class="testimonial-toggle hidden w-fit text-[13px] leading-[18px] tracking-[0.25px] text-[var(--color-text-muted)] underline underline-offset-4 transition-colors hover:text-[var(--color-text)]"
+                data-testimonial-toggle
+                aria-expanded="false"
+              >
+                Pokaż więcej
+              </button>
             </div>
           </article>
         ))
       }
     </div>
   </section>
+
+  <style>
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      transition: border-color 220ms ease;
+    }
+
+    .testimonial-card-desktop.is-collapsed {
+      height: 352px;
+    }
+
+    .testimonial-card-mobile.is-collapsed {
+      height: 286px;
+    }
+
+    .testimonial-card.is-collapsed {
+      overflow: hidden;
+    }
+
+    .testimonial-card.is-collapsed .testimonial-quote.is-dynamic-clamped {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--testimonial-line-clamp, 4);
+    }
+
+    .testimonial-card.is-expanding {
+      animation: testimonial-expand 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .testimonial-card.is-expanding .testimonial-quote {
+      animation: testimonial-quote-reveal 260ms ease;
+    }
+
+    @keyframes testimonial-expand {
+      0% {
+        transform: translateY(0);
+      }
+      45% {
+        transform: translateY(-2px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes testimonial-quote-reveal {
+      0% {
+        opacity: 0.65;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <script>
+    function initTestimonials() {
+      const cards = Array.from(document.querySelectorAll("[data-testimonial-card]"));
+      if (!cards.length) return;
+
+      const stanNamePattern = /stan\b/i;
+      const stanQuoteLength = (() => {
+        for (const card of cards) {
+          if (!(card instanceof HTMLElement)) continue;
+
+          const name = card.querySelector("[data-testimonial-name]");
+          const quote = card.querySelector("[data-testimonial-quote]");
+
+          if (!(name instanceof HTMLElement) || !(quote instanceof HTMLElement)) continue;
+          if (stanNamePattern.test(name.textContent?.trim() ?? "")) {
+            return (quote.textContent?.trim() ?? "").length;
+          }
+        }
+
+        return 0;
+      })();
+
+      function syncTestimonialCard(card) {
+        if (!(card instanceof HTMLElement) || card.offsetParent === null) return;
+
+        const quote = card.querySelector("[data-testimonial-quote]");
+        const toggle = card.querySelector("[data-testimonial-toggle]");
+        const quoteWrap = quote?.parentElement;
+
+        if (!(quote instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement) || !(quoteWrap instanceof HTMLElement)) return;
+
+        const quoteLength = (quote.textContent?.trim() ?? "").length;
+        const exceedsStanThreshold = stanQuoteLength > 0 ? quoteLength > stanQuoteLength : true;
+        quote.style.removeProperty("--testimonial-line-clamp");
+        quote.classList.remove("is-dynamic-clamped");
+
+        const isCollapsed = card.classList.contains("is-collapsed");
+        if (!isCollapsed) {
+          toggle.classList.remove("hidden");
+          return;
+        }
+
+        toggle.classList.add("hidden");
+        const overflowsWithoutToggle = quote.scrollHeight > quoteWrap.clientHeight + 1;
+        const shouldClamp = exceedsStanThreshold || overflowsWithoutToggle;
+
+        if (!shouldClamp) {
+          return;
+        }
+
+        if (!overflowsWithoutToggle) {
+          return;
+        }
+
+        toggle.classList.remove("hidden");
+
+        const contentStyles = window.getComputedStyle(quoteWrap);
+        const gap = Number.parseFloat(contentStyles.rowGap || contentStyles.gap || "0") || 0;
+        const availableQuoteHeight = quoteWrap.clientHeight - toggle.offsetHeight - gap;
+        const quoteStyles = window.getComputedStyle(quote);
+        const lineHeight = Number.parseFloat(quoteStyles.lineHeight || "0") || 24;
+        const clampedLines = Math.max(1, Math.floor((Math.max(0, availableQuoteHeight) + 0.5) / lineHeight));
+
+        quote.style.setProperty("--testimonial-line-clamp", String(clampedLines));
+        quote.classList.add("is-dynamic-clamped");
+      }
+
+      function syncAllTestimonialCards() {
+        cards.forEach((card) => syncTestimonialCard(card));
+      }
+
+      cards.forEach((card) => {
+        const toggle = card.querySelector("[data-testimonial-toggle]");
+        if (!(toggle instanceof HTMLButtonElement) || toggle.dataset.bound === "true") return;
+
+        toggle.dataset.bound = "true";
+        toggle.addEventListener("click", () => {
+          const isCollapsed = card.classList.toggle("is-collapsed");
+          toggle.textContent = isCollapsed ? "Pokaż więcej" : "Pokaż mniej";
+          toggle.setAttribute("aria-expanded", String(!isCollapsed));
+
+          if (!isCollapsed) {
+            card.classList.add("is-expanding");
+            window.setTimeout(() => {
+              card.classList.remove("is-expanding");
+            }, 280);
+          }
+
+          syncTestimonialCard(card);
+        });
+      });
+
+      const prevResizeHandler = window.__testimonialResizeHandler;
+      if (typeof prevResizeHandler === "function") {
+        window.removeEventListener("resize", prevResizeHandler);
+      }
+      window.__testimonialResizeHandler = syncAllTestimonialCards;
+
+      syncAllTestimonialCards();
+      window.addEventListener("resize", syncAllTestimonialCards);
+    }
+
+    initTestimonials();
+    document.addEventListener("astro:page-load", initTestimonials);
+  </script>
 </Layout>

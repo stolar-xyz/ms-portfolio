@@ -6,21 +6,14 @@ const projects = getAllProjects();
 ---
 
 <Layout title="Work" description="Portfolio UX/UI - projekty">
-  <section class="hidden px-[32px] pt-[32px] lg:block lg:px-16 lg:pt-[40px]" aria-label="Liczba projektów">
-    <div class="mx-auto flex w-full items-center gap-[48px]">
+  <section class="px-[32px] pt-[32px] sm:px-10 sm:pt-[36px] lg:px-16 lg:pt-[40px]" aria-label="Liczba projektów">
+    <div class="mx-auto flex w-full items-center gap-[20px] sm:gap-[32px] lg:gap-[48px]">
       <div class="h-px flex-1 border-b border-[var(--color-subtle)]"></div>
       <p class="text-[14px] leading-[20px] tracking-[-0.011em] text-[var(--color-subtle)]">{projects.length} Projects</p>
     </div>
   </section>
 
-  <section class="px-[32px] pt-[32px] lg:hidden" aria-label="Liczba projektów mobilnie">
-    <div class="flex items-center gap-[20px]">
-      <div class="h-px flex-1 border-b border-[var(--color-subtle)]"></div>
-      <p class="text-[14px] leading-[20px] tracking-[-0.011em] text-[var(--color-subtle)]">{projects.length} Projects</p>
-    </div>
-  </section>
-
-  <section class="mx-auto flex w-full max-w-[1040px] flex-col gap-[80px] px-6 pb-[120px] pt-[32px] lg:gap-[200px] lg:px-0 lg:pb-[200px] lg:pt-[80px]" aria-label="Lista projektów">
+  <section class="mx-auto flex w-full max-w-[1040px] flex-col gap-[80px] px-6 pb-[120px] pt-[32px] sm:px-8 sm:pb-[144px] sm:pt-[48px] md:gap-[120px] lg:gap-[200px] lg:px-0 lg:pb-[200px] lg:pt-[80px]" aria-label="Lista projektów">
     {
       projects.map((project, index) => {
         const reverseOnDesktop = index % 2 === 1;
@@ -29,13 +22,13 @@ const projects = getAllProjects();
           <article class="w-full" aria-labelledby={`work-title-${project.slug}`}>
             <a
               href={`/work/${project.slug}`}
-              class="group flex flex-col gap-[28px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text)] lg:flex-row lg:items-center lg:gap-[34px]"
+              class="group flex flex-col gap-[28px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text)] md:flex-row md:items-center md:gap-[28px] lg:gap-[34px]"
               transition:name={`work-${project.slug}-card`}
             >
               <div
                 class:list={[
-                  "relative h-[320px] w-full overflow-hidden lg:h-[500px] lg:w-[510px]",
-                  reverseOnDesktop ? "lg:order-2" : "",
+                  "relative h-[320px] w-full overflow-hidden md:h-auto md:aspect-[51/50] md:w-[48%] lg:h-[500px] lg:w-[510px]",
+                  reverseOnDesktop ? "md:order-2" : "",
                 ]}
               >
                 <img
@@ -49,8 +42,8 @@ const projects = getAllProjects();
 
               <div
                 class:list={[
-                  "w-full lg:w-[496px]",
-                  reverseOnDesktop ? "lg:order-1" : "",
+                  "w-full md:w-[52%] lg:w-[496px]",
+                  reverseOnDesktop ? "md:order-1" : "",
                   index === 2 ? "lg:pt-[11px]" : "",
                   index === 3 ? "lg:pt-[11px]" : "",
                 ]}
@@ -59,7 +52,7 @@ const projects = getAllProjects();
                   <div class="flex flex-col gap-[12px]">
                     <h2
                       id={`work-title-${project.slug}`}
-                      class="text-[28px] leading-[1.2] tracking-[0] text-[var(--color-text)] lg:text-[24px] lg:leading-[44px]"
+                      class="text-[28px] leading-[1.2] tracking-[0] text-[var(--color-text)] md:text-[26px] lg:text-[24px] lg:leading-[44px]"
                       transition:name={`work-${project.slug}-title`}
                     >
                       {project.title}

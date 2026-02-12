@@ -19,7 +19,7 @@ const activeKey = currentPath.startsWith("/about")
 ---
 
 <header class="relative z-40" transition:name="site-header">
-  <div class="mx-auto w-full px-[32px] pt-[36px] lg:px-16 lg:pt-[48px]">
+  <div class="mx-auto w-full px-[32px] pt-[36px] sm:px-10 sm:pt-[40px] lg:px-16 lg:pt-[48px]">
     <nav class="flex items-center justify-between lg:min-h-[140px] lg:items-start" aria-label="Główna nawigacja">
       <a
         href="/"
@@ -30,7 +30,7 @@ const activeKey = currentPath.startsWith("/about")
         mszczecinska
       </a>
 
-      <div class="flex items-center gap-[24px] lg:items-start lg:gap-[64px]">
+      <div class="flex items-center gap-[24px] sm:gap-[32px] lg:items-start lg:gap-[64px]">
         <ul class="hidden items-start gap-[64px] text-[var(--color-text)] lg:flex">
           {
             navItems.map((item) => {
@@ -60,8 +60,8 @@ const activeKey = currentPath.startsWith("/about")
         <div transition:name="theme-toggle" transition:persist>
           <ThemeToggle
             client:load
-            className="inline-flex size-[32px] items-center justify-center p-[4px] text-[var(--color-text)] lg:size-[44px] lg:p-[6px]"
-            iconClassName="size-6 lg:size-8"
+            className="inline-flex size-[32px] items-center justify-center p-[4px] text-[var(--color-text)] sm:size-[36px] sm:p-[5px] lg:size-[44px] lg:p-[6px]"
+            iconClassName="size-6 sm:size-7 lg:size-8"
           />
         </div>
 
@@ -69,7 +69,7 @@ const activeKey = currentPath.startsWith("/about")
           <button
             type="button"
             data-mobile-open
-            class="inline-flex size-[32px] items-center justify-center rounded-full text-[var(--color-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+            class="inline-flex size-[32px] items-center justify-center rounded-full text-[var(--color-text)] sm:size-[36px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
             aria-label="Otwórz menu"
             aria-expanded="false"
             aria-controls="mobile-menu-panel"
@@ -92,7 +92,7 @@ const activeKey = currentPath.startsWith("/about")
 
             <div
               id="mobile-menu-panel"
-              class="absolute right-0 top-0 flex h-full w-[53%] min-w-[200px] max-w-[220px] translate-x-full flex-col items-end bg-[var(--color-background)] px-[32px] pb-[40px] pt-[36px] transition-transform duration-200"
+              class="absolute right-0 top-0 flex h-full w-[53%] min-w-[200px] max-w-[220px] translate-x-full flex-col items-end bg-[var(--color-background)] px-[32px] pb-[40px] pt-[36px] transition-transform duration-200 sm:w-[40%] sm:min-w-[280px] sm:max-w-[360px] sm:px-[36px] sm:pb-[44px] sm:pt-[40px]"
               data-mobile-panel
               role="dialog"
               aria-modal="true"
@@ -101,13 +101,13 @@ const activeKey = currentPath.startsWith("/about")
               <button
                 type="button"
                 data-mobile-close
-                class="inline-flex size-[32px] items-center justify-center rounded-full text-[var(--color-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+                class="inline-flex size-[32px] items-center justify-center rounded-full text-[var(--color-text)] sm:size-[36px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
                 aria-label="Zamknij menu"
               >
                 <TablerIcon name="x" class="size-6" />
               </button>
 
-              <ul class="mt-[56px] flex flex-col items-end gap-[16px] text-[var(--color-text)]">
+              <ul class="mt-[56px] flex flex-col items-end gap-[16px] text-[var(--color-text)] sm:mt-[64px] sm:gap-[20px]">
                 {
                   navItems.map((item) => {
                     const isActive = item.key === activeKey;

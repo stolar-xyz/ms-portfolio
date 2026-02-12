@@ -31,20 +31,14 @@ const collaborationSteps = [
 ---
 
 <Layout title="Contact" description="Skontaktuj się w sprawie współpracy UX/UI">
-  <div class="hidden px-[32px] pt-[32px] lg:block lg:px-16 lg:pt-[40px]" aria-hidden="true">
+  <div class="px-[32px] pt-[32px] sm:px-10 sm:pt-[36px] lg:px-16 lg:pt-[40px]" aria-hidden="true">
     <div class="mx-auto flex min-h-[20px] w-full items-center">
       <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
     </div>
   </div>
 
-  <div class="px-[32px] pt-[32px] lg:hidden" aria-hidden="true">
-    <div class="flex min-h-[20px] items-center">
-      <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
-    </div>
-  </div>
-
-  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] pt-[32px] lg:px-0 lg:pb-[200px] lg:pt-[80px]" aria-labelledby="contact-page-title">
-    <div class="grid gap-[48px] lg:grid-cols-[1fr_332px] lg:gap-[64px]">
+  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] pt-[32px] sm:px-8 sm:pb-[144px] sm:pt-[48px] lg:px-0 lg:pb-[200px] lg:pt-[80px]" aria-labelledby="contact-page-title">
+    <div class="grid gap-[48px] md:grid-cols-[1fr_320px] md:gap-[40px] lg:grid-cols-[1fr_332px] lg:gap-[64px]">
       <div class="space-y-[24px]">
         <h1 id="contact-page-title" class="text-[56px] font-medium leading-[1] tracking-[-0.01em] text-[var(--color-text)] lg:text-[128px]">
           Contact
@@ -68,10 +62,10 @@ const collaborationSteps = [
     </div>
   </section>
 
-  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] lg:px-0 lg:pb-[200px]" aria-labelledby="contact-methods-title">
+  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] sm:px-8 sm:pb-[144px] lg:px-0 lg:pb-[200px]" aria-labelledby="contact-methods-title">
     <h2 id="contact-methods-title" class="sr-only">Kanały kontaktu</h2>
 
-    <div class="grid gap-[20px] lg:grid-cols-3">
+    <div class="grid gap-[20px] md:grid-cols-2 lg:grid-cols-3">
       {
         contactMethods.map((item) => (
           <article class="group rounded-[16px] border border-[var(--color-border)] bg-[var(--color-foreground)] p-[24px] transition-colors hover:bg-[var(--color-background)]">
@@ -92,8 +86,8 @@ const collaborationSteps = [
     </div>
   </section>
 
-  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] lg:px-0 lg:pb-[200px]" aria-labelledby="collaboration-title">
-    <div class="grid gap-[24px] rounded-[16px] border border-[var(--color-border)] bg-[var(--color-foreground)] p-[24px] lg:grid-cols-[1fr_260px] lg:items-start lg:gap-[40px] lg:p-[36px]">
+  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] sm:px-8 sm:pb-[144px] lg:px-0 lg:pb-[200px]" aria-labelledby="collaboration-title">
+    <div class="grid gap-[24px] rounded-[16px] border border-[var(--color-border)] bg-[var(--color-foreground)] p-[24px] md:grid-cols-[1fr_240px] md:items-start md:gap-[28px] lg:grid-cols-[1fr_260px] lg:gap-[40px] lg:p-[36px]">
       <div>
         <h2 id="collaboration-title" class="text-[32px] leading-[40px] text-[var(--color-text)] lg:text-[36px] lg:leading-[44px]">
           Jak przygotować pierwszy kontakt

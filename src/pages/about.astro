@@ -132,19 +132,19 @@ function getDarkIconSrc(src: string): string | undefined {
 ---
 
 <Layout title="About" description="Portfolio UX/UI - strona About">
-  <div class="hidden px-[32px] pt-[32px] lg:block lg:px-16 lg:pt-[40px]">
+  <div class="hidden px-[32px] pt-[32px] sm:px-10 sm:pt-[36px] md:block lg:px-16 lg:pt-[40px]">
     <div class="mx-auto flex min-h-[20px] w-full items-center">
       <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
     </div>
   </div>
 
-  <div class="px-[32px] pt-[32px] lg:hidden">
+  <div class="px-[32px] pt-[32px] sm:px-10 sm:pt-[36px] md:hidden">
     <div class="flex min-h-[20px] items-center">
       <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
     </div>
   </div>
 
-  <section class="mx-auto hidden max-w-[1040px] px-[8px] pb-[120px] pt-[32px] lg:pt-[80px] lg:flex lg:items-start lg:justify-between lg:pb-[200px]">
+  <section class="mx-auto hidden max-w-[1040px] px-[8px] pb-[120px] pt-[32px] md:flex md:flex-col md:items-center md:gap-[56px] md:px-8 md:pb-[144px] md:pt-[48px] lg:flex-row lg:items-start lg:justify-between lg:gap-0 lg:px-[8px] lg:pb-[200px] lg:pt-[80px]">
     <div
       class="size-[245px] shrink-0 bg-[#c4c4c4]"
       role="img"
@@ -152,7 +152,7 @@ function getDarkIconSrc(src: string): string | undefined {
       transition:name="about-profile-photo"
     ></div>
 
-    <div class="w-[688px]">
+    <div class="w-full md:max-w-[720px] lg:w-[688px]">
       <div class="flex flex-col gap-[64px]">
         <div class="flex flex-col gap-[24px]">
           <div class="flex items-center gap-[10px]">
@@ -193,10 +193,10 @@ function getDarkIconSrc(src: string): string | undefined {
         <div class="flex flex-col gap-[24px]">
           <h2 class="text-[36px] font-medium leading-[44px] text-[var(--color-text)]">Tech stack</h2>
 
-          <div class="grid grid-cols-4 gap-[16px]">
+          <div class="grid gap-[16px] md:grid-cols-2 lg:grid-cols-4">
             {
               techStackDesktop.map((column) => (
-                <article class="flex w-[156px] flex-col items-center gap-[24px]">
+                <article class="flex w-full flex-col items-center gap-[24px] lg:w-[156px]">
                   <h3 class="text-center text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{column.title}</h3>
                   <ul class="flex w-full flex-col gap-[24px]">
                     {
@@ -230,7 +230,7 @@ function getDarkIconSrc(src: string): string | undefined {
     </div>
   </section>
 
-  <section class="mx-auto max-w-[327px] px-[0] pb-[120px] pt-[32px] lg:pt-[80px] lg:hidden">
+  <section class="mx-auto max-w-[327px] px-[0] pb-[120px] pt-[32px] sm:max-w-[560px] sm:pt-[48px] md:hidden">
     <div class="mx-auto size-[245px] bg-[#c4c4c4]" role="img" aria-label="Miejsce na zdjęcie profilowe" transition:name="about-profile-photo"></div>
 
     <div class="mt-[64px] flex flex-col gap-[64px]">
@@ -305,9 +305,9 @@ function getDarkIconSrc(src: string): string | undefined {
     </div>
   </section>
 
-  <section class="mx-auto hidden max-w-[1040px] pb-[120px] lg:block lg:pb-[200px]">
+  <section class="mx-auto hidden max-w-[1040px] pb-[120px] md:block md:px-8 md:pb-[144px] lg:px-0 lg:pb-[200px]">
     <div class="flex items-center justify-between gap-[20px]">
-      <h2 class="text-[36px] font-medium leading-[44px] text-[var(--color-text)]">Co mówią o mnie inni?</h2>
+      <h2 class="text-[30px] font-medium leading-[38px] text-[var(--color-text)] lg:text-[36px] lg:leading-[44px]">Co mówią o mnie inni?</h2>
       <a
         href={testimonialsCtaHref}
         target="_blank"
@@ -360,7 +360,7 @@ function getDarkIconSrc(src: string): string | undefined {
     </div>
   </section>
 
-  <section class="mx-auto max-w-[327px] px-[0] pb-[120px] lg:hidden">
+  <section class="mx-auto max-w-[327px] px-[0] pb-[120px] sm:max-w-[560px] md:hidden">
     <div class="flex flex-col items-center gap-[12px]">
       <h2 class="text-center text-[24px] font-medium leading-[32px] text-[var(--color-text)]">Co mówią o mnie inni?</h2>
       <a

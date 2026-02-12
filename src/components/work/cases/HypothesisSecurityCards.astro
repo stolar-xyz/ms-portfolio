@@ -3,7 +3,7 @@
 
 <section class="security-cards rounded-[16px] bg-transparent p-0 pt-[8px] pb-[14px] lg:pt-[12px] lg:pb-[20px]" aria-label="Karty koncepcji bezpieczeństwa">
 
-  <nav class="mt-[22px] flex gap-[10px] justify-center overflow-x-auto pb-[6px]" aria-label="Zakres koncepcji bezpieczeństwa">
+  <nav class="mt-[22px] flex w-full gap-[10px] justify-start overflow-x-auto px-[16px] pb-[6px] sm:justify-center sm:px-0" aria-label="Zakres koncepcji bezpieczeństwa">
     <button type="button" class="security-tab-btn is-active" data-tab="features" aria-selected="true">Funkcje</button>
     <button type="button" class="security-tab-btn" data-tab="community" aria-selected="false">Społeczność</button>
     <button type="button" class="security-tab-btn" data-tab="branding" aria-selected="false">Branding</button>
@@ -384,6 +384,21 @@
 
     .security-card--start-3 {
       grid-column: 3 / span 2;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .security-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .security-card {
+      grid-column: auto;
+    }
+
+    .security-card--start-3 {
+      grid-column: auto;
     }
   }
 

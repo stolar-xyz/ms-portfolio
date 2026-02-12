@@ -244,7 +244,7 @@ const tabs: Tab[] = [
 
 <section class="newbies-cards rounded-[16px] bg-transparent p-0 pt-[8px] pb-[14px] lg:pt-[12px] lg:pb-[20px]" data-newbies-cards aria-label="Karty koncepcji dla początkujących">
 
-  <nav class="newbies-tabs" aria-label="Zakres koncepcji newbie friendly">
+  <nav class="newbies-tabs px-[16px] sm:px-0" aria-label="Zakres koncepcji newbie friendly">
     {
       tabs.map((tab, index) => (
         <button type="button" class:list={["newbies-tab-btn", index === 0 ? "is-active" : ""]} data-newbies-tab={tab.id} aria-selected={index === 0 ? "true" : "false"}>
@@ -317,8 +317,11 @@ const tabs: Tab[] = [
     margin-top: 22px;
     display: flex;
     gap: 10px;
-    justify-content: center;
+    justify-content: flex-start;
     overflow-x: auto;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
     padding-bottom: 4px;
   }
 
@@ -486,6 +489,31 @@ const tabs: Tab[] = [
 
     .newbies-card--start-4 {
       grid-column: 4 / span 2;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .newbies-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .newbies-card {
+      grid-column: auto;
+    }
+
+    .newbies-card--start-2,
+    .newbies-card--start-3,
+    .newbies-card--start-4 {
+      grid-column: auto;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .newbies-tabs {
+      justify-content: center;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 </style>

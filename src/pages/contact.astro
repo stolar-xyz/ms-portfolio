@@ -2,32 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import TablerIcon from "../components/TablerIcon.astro";
 
-const contactMethods = [
-  {
-    title: "E-mail",
-    value: "mszczecinska01@gmail.com",
-    href: "mszczecinska01@gmail.com",
-    description: "Najlepszy kanał do zapytań projektowych i współpracy.",
-  },
-  {
-    title: "LinkedIn",
-    value: "Magdalena Szczecińska",
-    href: "https://www.linkedin.com/in/magdalena-szczecinska/",
-    description: "Wiadomości prywatne i kontakt biznesowy.",
-  },
-  {
-    title: "GitHub",
-    value: "mszczecinska",
-    href: "https://github.com/mszczecinska",
-    description: "Kod i projekty techniczne.",
-  },
-] as const;
-
-const collaborationSteps = [
-  "Krótki opis projektu i celu biznesowego.",
-  "Zakres: UX, UI, prototyp, wdrożenie.",
-  "Wstępny termin startu i preferowany tryb współpracy.",
-] as const;
+const email = "mszczecinska01@gmail.com";
+const mailtoHref = `mailto:${email}?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%C4%99`;
 ---
 
 <Layout title="Contact" description="Skontaktuj się w sprawie współpracy UX/UI">
@@ -37,78 +13,124 @@ const collaborationSteps = [
     </div>
   </div>
 
-  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] pt-[32px] sm:px-8 sm:pb-[144px] sm:pt-[48px] lg:px-0 lg:pb-[200px] lg:pt-[80px]" aria-labelledby="contact-page-title">
-    <div class="grid gap-[48px] md:grid-cols-[1fr_320px] md:gap-[40px] lg:grid-cols-[1fr_332px] lg:gap-[64px]">
-      <div class="space-y-[24px]">
-        <h1 id="contact-page-title" class="text-[56px] font-medium leading-[1] tracking-[-0.01em] text-[var(--color-text)] lg:text-[128px]">
-          Contact
+  <section
+    class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] pt-[56px] sm:px-8 sm:pb-[144px] sm:pt-[72px] lg:px-0 lg:pb-[200px] lg:pt-[120px]"
+    aria-labelledby="contact-page-title"
+  >
+    <div class="grid gap-[32px] lg:grid-cols-[507px_1fr] lg:items-center lg:gap-[64px]">
+      <div class="flex flex-col gap-[24px]">
+        <h1 id="contact-page-title" class="text-[24px] font-medium leading-[44px] tracking-[0] text-[var(--color-text)] lg:text-[36px]">
+          Masz pomysł na projekt? Porozmawiajmy!
         </h1>
 
         <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
 
-        <p class="max-w-[680px] text-[18px] leading-[30px] tracking-[0.3px] text-[var(--color-text)]">
-          Jeśli chcesz omówić nowy projekt, odświeżyć istniejący produkt albo przygotować audyt UX/UI, napisz wiadomość. Odpowiadam możliwie szybko i zaczynam od konkretu: celu, zakresu oraz planu działania.
+        <p class="text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+          Chcesz rozpocząć nowy projekt, odświeżyć swoją stronę internetową lub po prostu porozmawiać o swoich pomysłach? Napisz wiadomość!
         </p>
       </div>
 
-      <aside class="rounded-[16px] border border-[var(--color-border)] bg-[var(--color-foreground)] p-[24px] lg:p-[28px]" aria-label="Dostępność">
-        <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[var(--color-text-muted)]">Dostępność</p>
-        <p class="mt-[12px] text-[24px] leading-[32px] text-[var(--color-text)]">Nowe projekty od marca 2026</p>
-        <div class="mt-[20px] inline-flex items-center gap-[10px] rounded-[999px] border border-[var(--color-border)] px-[12px] py-[8px]">
-          <span class="inline-flex size-[10px] rounded-full bg-[#49b46f]" aria-hidden="true"></span>
-          <span class="text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)]">Otwarte terminy</span>
+      <aside class="rounded-[16px] border border-[var(--color-border)] bg-[var(--color-foreground)] p-[20px] lg:px-[20px] lg:py-[24px]" aria-label="Kontakt e-mail">
+        <div class="flex flex-col gap-[24px] lg:gap-[32px]">
+          <div class="flex flex-col gap-[14px] lg:gap-[20px]">
+            <p class="text-[10px] uppercase leading-[16px] tracking-[0.5px] text-[var(--color-text-muted)] lg:text-[12px]">E-mail</p>
+
+            <div class="flex items-start gap-[12px]">
+              <a
+                href={mailtoHref}
+                class="text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)] lg:text-[20px]"
+              >
+                {email}
+              </a>
+
+              <button
+                type="button"
+                data-copy-email-button
+                data-email={email}
+                class="inline-flex size-[24px] items-center justify-center rounded-[6px] text-[var(--color-text)] transition-colors hover:bg-[var(--color-surface)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+                aria-label="Skopiuj adres e-mail"
+              >
+                <span data-copy-icon>
+                  <TablerIcon name="copy" class="size-[24px]" />
+                </span>
+                <span data-copy-check-icon hidden>
+                  <TablerIcon name="copy-check" class="size-[24px]" />
+                </span>
+              </button>
+            </div>
+
+          </div>
+
+          <a
+            href={mailtoHref}
+            class="inline-flex w-fit items-center justify-center rounded-[10px] bg-[#1e1e1e] px-[20px] py-[12px] text-[14px] font-medium leading-[20px] text-white shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)] transition-colors hover:bg-[#111111] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)] lg:px-[24px] lg:py-[14px] lg:text-[16px]"
+          >
+            Napisz wiadomość
+          </a>
         </div>
+
+        <p data-copy-status class="sr-only" aria-live="polite"></p>
       </aside>
     </div>
   </section>
-
-  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] sm:px-8 sm:pb-[144px] lg:px-0 lg:pb-[200px]" aria-labelledby="contact-methods-title">
-    <h2 id="contact-methods-title" class="sr-only">Kanały kontaktu</h2>
-
-    <div class="grid gap-[20px] md:grid-cols-2 lg:grid-cols-3">
-      {
-        contactMethods.map((item) => (
-          <article class="group rounded-[16px] border border-[var(--color-border)] bg-[var(--color-foreground)] p-[24px] transition-colors hover:bg-[var(--color-background)]">
-            <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[var(--color-text-muted)]">{item.title}</p>
-            <a
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              class="mt-[14px] inline-flex items-center gap-[10px] text-[20px] leading-[28px] text-[var(--color-text)] underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
-            >
-              <span>{item.value}</span>
-              <TablerIcon name="arrow-up-right" class="size-5" />
-            </a>
-            <p class="mt-[16px] text-[15px] leading-[24px] tracking-[0.25px] text-[var(--color-text-muted)]">{item.description}</p>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] sm:px-8 sm:pb-[144px] lg:px-0 lg:pb-[200px]" aria-labelledby="collaboration-title">
-    <div class="grid gap-[24px] rounded-[16px] border border-[var(--color-border)] bg-[var(--color-foreground)] p-[24px] md:grid-cols-[1fr_240px] md:items-start md:gap-[28px] lg:grid-cols-[1fr_260px] lg:gap-[40px] lg:p-[36px]">
-      <div>
-        <h2 id="collaboration-title" class="text-[32px] leading-[40px] text-[var(--color-text)] lg:text-[36px] lg:leading-[44px]">
-          Jak przygotować pierwszy kontakt
-        </h2>
-
-        <div class="mt-[20px] h-px w-full bg-[var(--color-divider)]"></div>
-
-        <ul class="mt-[20px] list-disc space-y-[10px] pl-[24px] text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-          {collaborationSteps.map((step) => <li>{step}</li>)}
-        </ul>
-      </div>
-
-      <div class="rounded-[12px] border border-[var(--color-border)] p-[18px]">
-        <p class="text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text-muted)]">Szybki start</p>
-        <a
-          href="mailto:hello@example.com?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%C4%99"
-          class="mt-[10px] inline-flex w-full items-center justify-center rounded-[10px] bg-[#1e1e1e] px-[18px] py-[14px] text-[14px] lg:text-[16px] font-medium leading-[20px] text-white shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)] transition-colors hover:bg-[#111111] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
-        >
-          Napisz wiadomość
-        </a>
-      </div>
-    </div>
-  </section>
 </Layout>
+
+<script is:inline>
+  (() => {
+    const copyButton = document.querySelector("[data-copy-email-button]");
+    const statusNode = document.querySelector("[data-copy-status]");
+    const copyIcon = document.querySelector("[data-copy-icon]");
+    const copyCheckIcon = document.querySelector("[data-copy-check-icon]");
+
+    if (
+      !(copyButton instanceof HTMLButtonElement) ||
+      !(statusNode instanceof HTMLElement) ||
+      !(copyIcon instanceof HTMLElement) ||
+      !(copyCheckIcon instanceof HTMLElement)
+    ) {
+      return;
+    }
+
+    let timeoutId = 0;
+    const setCopyIconState = (isSuccess) => {
+      copyIcon.hidden = isSuccess;
+      copyCheckIcon.hidden = !isSuccess;
+    };
+
+    const setStatus = (message, type) => {
+      const isSuccess = type === "success";
+      setCopyIconState(isSuccess);
+
+      statusNode.textContent = message;
+
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+
+      window.setTimeout(() => {
+        if (statusNode.textContent === message) {
+          statusNode.textContent = "";
+        }
+      }, 1600);
+
+      timeoutId = window.setTimeout(() => {
+        setCopyIconState(false);
+      }, 1600);
+    };
+
+    copyButton.addEventListener("click", async () => {
+      const value = copyButton.getAttribute("data-email");
+      if (!value) {
+        setStatus("Nie udało się skopiować adresu e-mail.", "error");
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(value);
+        setStatus("Adres e-mail został skopiowany.", "success");
+      } catch {
+        setStatus("Nie udało się skopiować adresu e-mail.", "error");
+      }
+    });
+  })();
+</script>

@@ -50,9 +50,15 @@ const mailtoHref = `mailto:${email}?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%
                 class="inline-flex size-[24px] items-center justify-center rounded-[6px] text-[var(--color-text)] transition-colors hover:bg-[var(--color-surface)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
                 aria-label="Skopiuj adres e-mail"
               >
-                <TablerIcon name="copy" class="size-[24px]" />
+                <span data-copy-icon>
+                  <TablerIcon name="copy" class="size-[24px]" />
+                </span>
+                <span data-copy-check-icon hidden>
+                  <TablerIcon name="copy-check" class="size-[24px]" />
+                </span>
               </button>
             </div>
+
           </div>
 
           <a
@@ -73,32 +79,57 @@ const mailtoHref = `mailto:${email}?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%
   (() => {
     const copyButton = document.querySelector("[data-copy-email-button]");
     const statusNode = document.querySelector("[data-copy-status]");
+    const copyIcon = document.querySelector("[data-copy-icon]");
+    const copyCheckIcon = document.querySelector("[data-copy-check-icon]");
 
-    if (!(copyButton instanceof HTMLButtonElement) || !(statusNode instanceof HTMLElement)) {
+    if (
+      !(copyButton instanceof HTMLButtonElement) ||
+      !(statusNode instanceof HTMLElement) ||
+      !(copyIcon instanceof HTMLElement) ||
+      !(copyCheckIcon instanceof HTMLElement)
+    ) {
       return;
     }
 
-    const setStatus = (message) => {
+    let timeoutId = 0;
+    const setCopyIconState = (isSuccess) => {
+      copyIcon.hidden = isSuccess;
+      copyCheckIcon.hidden = !isSuccess;
+    };
+
+    const setStatus = (message, type) => {
+      const isSuccess = type === "success";
+      setCopyIconState(isSuccess);
+
       statusNode.textContent = message;
+
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+
       window.setTimeout(() => {
         if (statusNode.textContent === message) {
           statusNode.textContent = "";
         }
+      }, 1600);
+
+      timeoutId = window.setTimeout(() => {
+        setCopyIconState(false);
       }, 1600);
     };
 
     copyButton.addEventListener("click", async () => {
       const value = copyButton.getAttribute("data-email");
       if (!value) {
-        setStatus("Nie udało się skopiować adresu e-mail.");
+        setStatus("Nie udało się skopiować adresu e-mail.", "error");
         return;
       }
 
       try {
         await navigator.clipboard.writeText(value);
-        setStatus("Adres e-mail został skopiowany.");
+        setStatus("Adres e-mail został skopiowany.", "success");
       } catch {
-        setStatus("Nie udało się skopiować adresu e-mail.");
+        setStatus("Nie udało się skopiować adresu e-mail.", "error");
       }
     });
   })();

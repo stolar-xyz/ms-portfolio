@@ -83,11 +83,11 @@ function getDarkIconSrc(src: string): string | undefined {
             {project.title}
           </h1>
 
-          <ul class="flex flex-wrap items-center gap-[16px]" aria-label="Tagi projektu">
+          <ul class="flex flex-wrap items-center gap-[12px]" aria-label="Tagi projektu">
             {
               project.tags.map((tag, tagIndex) => (
                 <li
-                  class="rounded-[5555px] border border-[var(--color-border)] px-[12px] py-[8px] text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)]"
+                  class="rounded-[5555px] border border-[var(--color-border)] px-[12px] py-[8px] text-[12px] leading-[16px] tracking-[0.25px] text-[var(--color-text)]"
                   transition:name={`work-${project.slug}-tag-${tagIndex}`}
                 >
                   {tag}
@@ -99,7 +99,7 @@ function getDarkIconSrc(src: string): string | undefined {
 
         <div
           class:list={[
-            "relative h-[420px] w-full overflow-hidden sm:h-auto sm:aspect-[108/71] lg:h-[568px]",
+            "relative h-auto w-full overflow-hidden sm:h-auto sm:aspect-[108/71] lg:h-[568px]",
             heroHasSurface ? "bg-[var(--color-surface)]" : "bg-[var(--color-background)]",
           ]}
           transition:name={`work-${project.slug}-card`}
@@ -107,7 +107,7 @@ function getDarkIconSrc(src: string): string | undefined {
           <img
             src={heroImage}
             alt={heroAlt}
-            class="size-full object-cover"
+            class="w-full h-auto object-contain sm:size-full sm:object-cover"
             transition:name={`work-${project.slug}-image`}
           />
         </div>

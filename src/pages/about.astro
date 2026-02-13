@@ -144,15 +144,15 @@ function getDarkIconSrc(src: string): string | undefined {
     </div>
   </div>
 
-  <section class="mx-auto hidden max-w-[1040px] px-[8px] pb-[120px] pt-[32px] md:flex md:flex-col md:items-center md:gap-[56px] md:px-8 md:pb-[144px] md:pt-[48px] lg:flex-row lg:items-start lg:justify-between lg:gap-0 lg:px-[8px] lg:pb-[200px] lg:pt-[80px]">
+  <section class="about-intro-desktop mx-auto hidden max-w-[1040px] px-[8px] pb-[120px] pt-[32px] md:flex md:flex-col md:items-center md:gap-[56px] md:px-8 md:pb-[144px] md:pt-[48px] lg:flex-row lg:items-start lg:justify-between lg:gap-0 lg:px-[8px] lg:pb-[200px] lg:pt-[80px]">
     <div
-      class="size-[245px] shrink-0 bg-[#c4c4c4]"
+      class="about-intro-photo size-[245px] shrink-0 bg-[#c4c4c4]"
       role="img"
       aria-label="Miejsce na zdjęcie profilowe"
       transition:name="about-profile-photo"
     ></div>
 
-    <div class="w-full md:max-w-[720px] lg:w-[688px]">
+    <div class="about-intro-content w-full md:max-w-[720px] lg:w-[688px]">
       <div class="flex flex-col gap-[64px]">
         <div class="flex flex-col gap-[24px]">
           <div class="flex items-center gap-[10px]">
@@ -233,7 +233,7 @@ function getDarkIconSrc(src: string): string | undefined {
     </div>
   </section>
 
-  <section class="mx-auto max-w-[327px] px-[0] pb-[120px] pt-[32px] sm:max-w-[560px] sm:pt-[48px] md:hidden">
+  <section class="about-intro-mobile mx-auto max-w-[327px] px-[0] pb-[120px] pt-[32px] sm:max-w-[560px] sm:pt-[48px] md:hidden">
     <div class="mx-auto size-[245px] bg-[#c4c4c4]" role="img" aria-label="Miejsce na zdjęcie profilowe" transition:name="about-profile-photo"></div>
 
     <div class="mt-[64px] flex flex-col gap-[64px]">
@@ -308,7 +308,7 @@ function getDarkIconSrc(src: string): string | undefined {
     </div>
   </section>
 
-  <section class="mx-auto hidden max-w-[1040px] pb-[120px] md:block md:px-8 md:pb-[144px] lg:px-0 lg:pb-[200px]">
+  <section class="about-testimonials-section mx-auto hidden max-w-[1040px] pb-[120px] md:block md:px-8 md:pb-[144px] lg:px-0 lg:pb-[200px]">
     <div class="flex items-center justify-between gap-[20px]">
       <h2 class="text-[30px] font-medium leading-[38px] text-[var(--color-text)] lg:text-[36px] lg:leading-[44px]">Co mówią o mnie inni?</h2>
       <a
@@ -363,7 +363,7 @@ function getDarkIconSrc(src: string): string | undefined {
     </div>
   </section>
 
-  <section class="mx-auto max-w-[327px] px-[0] pb-[120px] sm:max-w-[560px] md:hidden">
+  <section class="about-testimonials-section mx-auto max-w-[327px] px-[0] pb-[120px] sm:max-w-[560px] md:hidden">
     <div class="flex flex-col items-center gap-[12px]">
       <h2 class="text-center text-[24px] font-medium leading-[32px] text-[var(--color-text)]">Co mówią o mnie inni?</h2>
       <a
@@ -451,6 +451,71 @@ function getDarkIconSrc(src: string): string | undefined {
       100% {
         transform: scale(1.75);
         opacity: 0;
+      }
+    }
+
+    .about-intro-desktop .about-intro-photo,
+    .about-intro-desktop .about-intro-content {
+      opacity: 0;
+      transition:
+        opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .about-intro-desktop .about-intro-photo {
+      transform: translateX(30px);
+    }
+
+    .about-intro-desktop .about-intro-content {
+      transform: translateX(-30px);
+    }
+
+    .about-intro-desktop.is-visible .about-intro-photo,
+    .about-intro-desktop.is-visible .about-intro-content {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .about-intro-mobile {
+      opacity: 0;
+      transform: translateY(14px) scale(0.99);
+      transition:
+        opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .about-intro-mobile.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .about-testimonials-section {
+      transition:
+        opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    :global(html.about-animations-ready) .about-testimonials-section:not(.is-visible) {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    :global(html.about-animations-ready) .about-testimonials-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-intro-desktop .about-intro-photo,
+      .about-intro-desktop .about-intro-content,
+      .about-intro-mobile,
+      .about-testimonials-section {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
       }
     }
 
@@ -684,5 +749,84 @@ function getDarkIconSrc(src: string): string | undefined {
 
     initTestimonials();
     document.addEventListener("astro:page-load", initTestimonials);
+  </script>
+
+  <script is:inline>
+    (() => {
+      const STATE_KEY = "__aboutAnimationsState";
+      const state =
+        window[STATE_KEY] ??
+        (window[STATE_KEY] = {
+          observer: null,
+          pageLoadBound: false,
+        });
+
+      const initAboutAnimations = () => {
+        const introDesktop = document.querySelector(".about-intro-desktop");
+        const introMobile = document.querySelector(".about-intro-mobile");
+        const testimonialSections = Array.from(
+          document.querySelectorAll(".about-testimonials-section")
+        ).filter((section) => section instanceof HTMLElement && section.offsetParent !== null);
+
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        document.documentElement.classList.toggle("about-animations-ready", !prefersReducedMotion);
+
+        if (introDesktop instanceof HTMLElement) {
+          introDesktop.classList.remove("is-visible");
+        }
+        if (introMobile instanceof HTMLElement) {
+          introMobile.classList.remove("is-visible");
+        }
+
+        if (prefersReducedMotion) {
+          if (introDesktop instanceof HTMLElement) {
+            introDesktop.classList.add("is-visible");
+          }
+          if (introMobile instanceof HTMLElement) {
+            introMobile.classList.add("is-visible");
+          }
+          testimonialSections.forEach((section) => section.classList.add("is-visible"));
+          if (state.observer instanceof IntersectionObserver) {
+            state.observer.disconnect();
+          }
+          return;
+        }
+
+        requestAnimationFrame(() => {
+          if (introDesktop instanceof HTMLElement && introDesktop.offsetParent !== null) {
+            introDesktop.classList.add("is-visible");
+          }
+          if (introMobile instanceof HTMLElement && introMobile.offsetParent !== null) {
+            introMobile.classList.add("is-visible");
+          }
+        });
+
+        testimonialSections.forEach((section) => section.classList.remove("is-visible"));
+
+        if (state.observer instanceof IntersectionObserver) {
+          state.observer.disconnect();
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px 6% 0px" }
+        );
+
+        testimonialSections.forEach((section) => observer.observe(section));
+        state.observer = observer;
+      };
+
+      initAboutAnimations();
+      if (!state.pageLoadBound) {
+        document.addEventListener("astro:page-load", initAboutAnimations);
+        state.pageLoadBound = true;
+      }
+    })();
   </script>
 </Layout>

@@ -17,7 +17,7 @@ const { project } = Astro.props;
     <img
       src={project.image}
       alt={project.title}
-      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
       transition:name={`work-${project.slug}-image`}
       loading="lazy"
     />

@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from "./ThemeToggle";
 import TablerIcon from "./TablerIcon.astro";
+import LogoIcon from "./LogoIcon.astro";
 
 const navItems = [
   { key: "work", href: "/work", label: "Work" },
@@ -18,16 +19,19 @@ const activeKey = currentPath.startsWith("/about")
       : null;
 ---
 
-<header class="relative z-40" transition:name="site-header">
+<header class="relative z-40" data-scroll-header transition:name="site-header">
   <div class="mx-auto w-full px-[32px] pt-[36px] sm:px-10 sm:pt-[40px] lg:px-16 lg:pt-[48px]">
     <nav class="flex items-center justify-between lg:min-h-[140px] lg:items-start" aria-label="Główna nawigacja">
       <a
         href="/"
-        class="text-[16px] leading-none tracking-[-0.01em] text-[var(--color-text)] lg:py-[6px] lg:text-[24px] lg:leading-[32px]"
+        class="inline-flex items-center lg:py-[12px]"
+        aria-label="Strona główna"
         transition:name="site-brand"
         transition:persist
       >
-        mszczecinska
+        <span class="h-[16px] w-auto lg:h-[18px] text-[var(--color-text)]">
+          <LogoIcon class="size-6" />
+        </span>
       </a>
 
       <div class="flex items-center gap-[24px] sm:gap-[32px] lg:items-start lg:gap-[64px]">
@@ -339,7 +343,198 @@ const activeKey = currentPath.startsWith("/about")
 </script>
 
 <style>
+  [data-scroll-header] {
+    position: relative;
+    z-index: 40;
+    border-bottom: 1px solid transparent;
+    opacity: 1;
+  }
+
+  [data-scroll-header].is-floating {
+    position: sticky;
+    inset-inline: 0;
+    top: 0;
+    z-index: 70;
+    background: var(--color-background);
+    border-bottom-color: var(--color-divider);
+    transform: translateY(0);
+    transition:
+      transform 260ms ease,
+      opacity 260ms ease;
+    will-change: transform, opacity;
+  }
+
+  [data-scroll-header].is-floating.is-hidden {
+    transform: translateY(-100%);
+    opacity: 0.01;
+  }
+
+  [data-scroll-header].is-no-transition {
+    transition: none;
+  }
+
   :global(body.mobile-menu-open) {
     overflow: hidden;
   }
 </style>
+
+<script is:inline>
+  (() => {
+    const STATE_KEY = "__portfolioHeaderRevealState";
+    const state =
+      window[STATE_KEY] ??
+      (window[STATE_KEY] = {
+        pageLoadBound: false,
+        cleanup: null,
+      });
+
+    const setup = () => {
+      if (typeof state.cleanup === "function") {
+        state.cleanup();
+      }
+
+      const header = document.querySelector("[data-scroll-header]");
+      if (!(header instanceof HTMLElement)) return;
+
+      let lastY = window.scrollY;
+      let direction = "down";
+      let directionDistance = 0;
+      let isTicking = false;
+      state.isFloating = false;
+      state.isHidden = false;
+      const revealAfterY = 260;
+      const toggleVisibilityDelta = 12;
+      const revealFromBottomDelta = 56;
+      const revealAfterDownPauseMs = 140;
+      let maxYSinceHidden = window.scrollY;
+      let lastDownAt = performance.now();
+      let transitionResetRaf = 0;
+      const applyFloatingState = () => {
+        if (state.isFloating) {
+          header.classList.add("is-floating");
+        } else {
+          header.classList.remove("is-floating");
+        }
+      };
+
+      const hideImmediatelyOnEnterFloating = () => {
+        if (transitionResetRaf) {
+          cancelAnimationFrame(transitionResetRaf);
+        }
+
+        header.classList.add("is-no-transition");
+        applyFloatingState();
+        header.classList.add("is-hidden");
+
+        transitionResetRaf = requestAnimationFrame(() => {
+          transitionResetRaf = 0;
+          header.classList.remove("is-no-transition");
+        });
+      };
+
+      const processScroll = () => {
+        isTicking = false;
+        const currentY = window.scrollY;
+        const now = performance.now();
+        const rawDelta = currentY - lastY;
+        const absDelta = Math.abs(rawDelta);
+
+        if (absDelta < 1) return;
+        const nextDirection = rawDelta > 0 ? "down" : "up";
+
+        if (nextDirection === direction) {
+          directionDistance += absDelta;
+        } else {
+          direction = nextDirection;
+          directionDistance = absDelta;
+        }
+
+        if (document.body.classList.contains("mobile-menu-open")) {
+          applyFloatingState();
+          header.classList.remove("is-hidden");
+          state.isHidden = false;
+          lastY = currentY;
+          return;
+        }
+
+        if (currentY <= 2) {
+          state.isFloating = false;
+          state.isHidden = false;
+          applyFloatingState();
+          header.classList.remove("is-hidden");
+          direction = "down";
+          directionDistance = 0;
+          lastY = currentY;
+          return;
+        }
+
+        if (!state.isFloating && currentY > revealAfterY) {
+          state.isFloating = true;
+          state.isHidden = true;
+          hideImmediatelyOnEnterFloating();
+          maxYSinceHidden = currentY;
+          directionDistance = 0;
+        }
+
+        if (!state.isFloating) {
+          applyFloatingState();
+          header.classList.remove("is-hidden");
+          lastY = currentY;
+          return;
+        }
+
+        if (direction === "down") {
+          lastDownAt = now;
+          maxYSinceHidden = Math.max(maxYSinceHidden, currentY);
+        }
+
+        if (direction === "down" && directionDistance > toggleVisibilityDelta && !state.isHidden) {
+          state.isHidden = true;
+          header.classList.add("is-hidden");
+          maxYSinceHidden = currentY;
+          directionDistance = 0;
+        } else if (
+          direction === "up" &&
+          directionDistance > toggleVisibilityDelta &&
+          state.isHidden &&
+          maxYSinceHidden - currentY > revealFromBottomDelta &&
+          now - lastDownAt > revealAfterDownPauseMs
+        ) {
+          state.isHidden = false;
+          header.classList.remove("is-hidden");
+          directionDistance = 0;
+        }
+
+        lastY = currentY;
+      };
+
+      const onScroll = () => {
+        if (isTicking) return;
+        isTicking = true;
+        requestAnimationFrame(processScroll);
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      processScroll();
+
+      state.cleanup = () => {
+        window.removeEventListener("scroll", onScroll);
+        if (transitionResetRaf) {
+          cancelAnimationFrame(transitionResetRaf);
+          transitionResetRaf = 0;
+        }
+        header.classList.remove("is-no-transition");
+        state.isFloating = false;
+        applyFloatingState();
+        header.classList.remove("is-hidden");
+        state.isHidden = false;
+      };
+    };
+
+    setup();
+    if (!state.pageLoadBound) {
+      document.addEventListener("astro:page-load", setup);
+      state.pageLoadBound = true;
+    }
+  })();
+</script>

@@ -764,6 +764,7 @@ function getDarkIconSrc(src: string): string | undefined {
       const initAboutAnimations = () => {
         const introDesktop = document.querySelector(".about-intro-desktop");
         const introMobile = document.querySelector(".about-intro-mobile");
+        const isMobile = window.matchMedia("(max-width: 1023px)").matches;
         const testimonialSections = Array.from(
           document.querySelectorAll(".about-testimonials-section")
         ).filter((section) => section instanceof HTMLElement && section.offsetParent !== null);
@@ -782,6 +783,17 @@ function getDarkIconSrc(src: string): string | undefined {
           if (introDesktop instanceof HTMLElement) {
             introDesktop.classList.add("is-visible");
           }
+          if (introMobile instanceof HTMLElement) {
+            introMobile.classList.add("is-visible");
+          }
+          testimonialSections.forEach((section) => section.classList.add("is-visible"));
+          if (state.observer instanceof IntersectionObserver) {
+            state.observer.disconnect();
+          }
+          return;
+        }
+
+        if (isMobile) {
           if (introMobile instanceof HTMLElement) {
             introMobile.classList.add("is-visible");
           }

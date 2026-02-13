@@ -107,7 +107,7 @@ const successMetrics = [
 <section class="flex flex-col gap-[64px]" aria-labelledby="research-title">
   <div class="flex flex-col gap-[24px]">
     <div class="flex flex-col gap-[14px]">
-      <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">Research</p>
+      <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[var(--color-eyebrow)]">Research</p>
       <h2 id="research-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Proces badawczy</h2>
     </div>
     <div class="h-px w-full bg-[var(--color-border)]"></div>
@@ -167,7 +167,7 @@ const successMetrics = [
 <section class="flex flex-col gap-[64px]" aria-labelledby="define-title">
   <div class="flex flex-col gap-[24px] lg:justify-center">
     <div class="flex flex-col gap-[14px]">
-      <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">Define</p>
+      <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[var(--color-eyebrow)]">Define</p>
       <h2 id="define-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Definiowanie rozwiązania</h2>
     </div>
     <div class="h-px w-full bg-[var(--color-border)]"></div>
@@ -177,21 +177,21 @@ const successMetrics = [
 
     <ol class="flex flex-col gap-[32px]">
       <li class="grid gap-[12px] lg:grid-cols-[27px_1fr] lg:gap-[16px]">
-        <p class="text-[45px] font-bold leading-[52px] text-[#474747]">1</p>
+        <p class="text-[45px] font-bold leading-[52px] text-[var(--color-eyebrow)]">1</p>
         <div class="flex flex-col gap-[12px]">
           <p class="text-[14px] lg:text-[16px] leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Jak możemy uporządkować różne typy informacji o wyjeździe?</p>
           <p class="text-[14px] lg:text-[16px] italic leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Rozwiązanie: Dedykowane kategorie (nocleg, transport, jedzenie) z opcjami dodawanymi przez uczestników.</p>
         </div>
       </li>
       <li class="grid gap-[12px] lg:grid-cols-[27px_1fr] lg:gap-[16px]">
-        <p class="text-[45px] font-bold leading-[52px] text-[#474747]">2</p>
+        <p class="text-[45px] font-bold leading-[52px] text-[var(--color-eyebrow)]">2</p>
         <div class="flex flex-col gap-[12px]">
           <p class="text-[14px] lg:text-[16px] leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Jak możemy zebrać wszystkie propozycje w jednym miejscu, aby nie przepadły w historii czatu?</p>
           <p class="text-[14px] lg:text-[16px] italic leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Rozwiązanie: Stworzyć jedno miejsce, gdzie można gromadzić wszystkie informacje dotyczące wyjazdów.</p>
         </div>
       </li>
       <li class="grid gap-[12px] lg:grid-cols-[27px_1fr] lg:gap-[16px]">
-        <p class="text-[45px] font-bold leading-[52px] text-[#474747]">3</p>
+        <p class="text-[45px] font-bold leading-[52px] text-[var(--color-eyebrow)]">3</p>
         <div class="flex flex-col gap-[12px]">
           <p class="text-[14px] lg:text-[16px] leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Jak możemy zamienić gotowy plan w prosty harmonogram dostępny zawsze pod ręką?</p>
           <p class="text-[14px] lg:text-[16px] italic leading-[22px] tracking-[0.25px] text-[var(--color-text)]">Rozwiązanie: Automatyczny harmonogram generowany na podstawie decyzji grupy z możliwością pobrania.</p>
@@ -208,7 +208,7 @@ const successMetrics = [
 <section class="mx-auto flex w-full max-w-[864px] flex-col gap-[64px]" aria-labelledby="jtbd-title">
   <div class="flex flex-col gap-[24px]">
     <div class="flex flex-col gap-[14px]">
-      <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">JTBD</p>
+      <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[var(--color-eyebrow)]">JTBD</p>
       <h2 id="jtbd-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Jobs to be done</h2>
     </div>
     <div class="h-px w-full bg-[var(--color-border)]"></div>
@@ -222,7 +222,7 @@ const successMetrics = [
       jobsToBeDone.map((job) => (
         <article class="rounded-[12px] border border-[var(--color-border)] bg-[var(--color-foreground)] px-[20px] py-[32px]" aria-label={job.title}>
           <div class="flex flex-col gap-[20px] lg:flex-row lg:items-center lg:gap-[24px]">
-            <TablerIcon name={job.icon} class="size-[56px] text-[#1d272d]" />
+            <TablerIcon name={job.icon} class="size-[56px] text-[var(--color-text)]" />
             <div class="flex-1">
               <h3 class="text-[20px] leading-[28px] lg:text-[22px] lg:leading-[28px] text-[var(--color-text)]">{job.title}</h3>
               <p class="mt-[20px] text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{job.description}</p>
@@ -237,7 +237,7 @@ const successMetrics = [
 <section class="grid gap-[48px] lg:grid-cols-[514px_457px] lg:items-center lg:gap-[64px]" aria-labelledby="user-flow-title">
   <div class="flex flex-col gap-[24px]">
     <div class="flex flex-col gap-[14px]">
-      <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">User flow</p>
+      <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[var(--color-eyebrow)]">User flow</p>
       <h2 id="user-flow-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Architektura i kluczowe decyzje projektowe</h2>
     </div>
 
@@ -262,7 +262,7 @@ const successMetrics = [
 
 <section class="mx-auto flex w-full max-w-[864px] flex-col gap-[24px]" aria-labelledby="design-title">
   <div class="flex flex-col gap-[14px]">
-    <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">Design</p>
+    <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[var(--color-eyebrow)]">Design</p>
     <h2 id="design-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Decyzje projektowe i ekrany</h2>
   </div>
   <div class="h-px w-full bg-[var(--color-border)]"></div>
@@ -331,7 +331,7 @@ const successMetrics = [
 <section class="grid gap-[48px] lg:grid-cols-[511px_283px] lg:items-start lg:justify-between" aria-labelledby="user-tests-title">
   <div class="flex flex-col gap-[24px] lg:justify-center">
     <div class="flex flex-col gap-[14px]">
-      <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">User tests</p>
+      <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[var(--color-eyebrow)]">User tests</p>
       <h2 id="user-tests-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Testy użytkowników</h2>
     </div>
     <div class="h-px w-full bg-[var(--color-border)]"></div>

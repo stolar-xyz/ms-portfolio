@@ -64,7 +64,7 @@ function getDarkIconSrc(src: string): string | undefined {
         <a
           href="/work"
           data-case-study-close
-          class="flex size-[44px] items-center justify-center rounded-full border border-[#0e0e0e] bg-[var(--color-background)] text-[var(--color-text)] transition-colors hover:bg-[var(--color-foreground)]"
+          class="flex size-[44px] items-center justify-center rounded-full border border-[var(--color-text)] bg-[var(--color-background)] text-[var(--color-text)] transition-colors hover:bg-[var(--color-foreground)]"
           aria-label="Powrót do listy projektów"
         >
           <TablerIcon name="x" class="size-[24px]" />
@@ -116,7 +116,7 @@ function getDarkIconSrc(src: string): string | undefined {
       <section class="mx-auto grid w-full max-w-[864px] gap-[32px] md:grid-cols-[1fr_220px] md:items-start lg:grid-cols-[598px_215px]" aria-label="Project overview">
         <div class="flex flex-col gap-[24px]">
           <div class="flex flex-col gap-[14px]">
-            <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[#474747]">Project overview</p>
+            <p class="text-[12px] uppercase leading-[16px] tracking-[0.4px] text-[var(--color-eyebrow)]">Project overview</p>
             <h2 class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">{overviewHeading}</h2>
           </div>
           <div class="h-px w-full bg-[var(--color-border)]"></div>
@@ -127,14 +127,14 @@ function getDarkIconSrc(src: string): string | undefined {
           <div class="rounded-[12px] border border-[var(--color-border)] px-[20px] py-[14px] md:px-[16px] md:py-[12px] lg:px-[20px] lg:py-[14px]">
             <div class="flex items-center justify-between gap-[12px] md:flex-col md:items-start md:justify-start">
               <p class="text-[14px] font-medium leading-[20px] tracking-[0.25px] text-[var(--color-text)]">{primaryMetaLabel}</p>
-              <p class="text-right text-[14px] leading-[20px] tracking-[0.25px] text-[#6a6a6a] md:text-left">{resolvedPrimaryMetaValue}</p>
+              <p class="text-right text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-meta)] md:text-left">{resolvedPrimaryMetaValue}</p>
             </div>
           </div>
 
           <div class="rounded-[12px] border border-[var(--color-border)] px-[20px] py-[14px] md:px-[16px] md:py-[12px] lg:px-[20px] lg:py-[14px]">
             <div class="flex items-center justify-between gap-[12px] md:flex-col md:items-start md:justify-start">
               <p class="text-[14px] font-medium leading-[20px] tracking-[0.25px] text-[var(--color-text)]">Typ projektu</p>
-              <p class="text-right text-[14px] leading-[20px] tracking-[0.25px] text-[#6a6a6a] md:text-left">{projectType}</p>
+              <p class="text-right text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-meta)] md:text-left">{projectType}</p>
             </div>
           </div>
 

@@ -8,7 +8,7 @@ interface ThemeToggleProps {
 }
 
 const DEFAULT_BUTTON_CLASS =
-  "inline-flex items-center justify-center rounded-lg bg-[var(--color-foreground)] p-2 transition-colors hover:bg-[var(--color-border)]";
+  "inline-flex items-center justify-center rounded-lg bg-[var(--color-foreground)] p-2 transition-colors hover:bg-[var(--color-surface)]";
 const DEFAULT_ICON_CLASS = "size-5";
 
 function SunHighIcon({ className }: { className: string }) {

@@ -23,6 +23,18 @@ import Footer from "../components/Footer.astro";
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const isDark = storedTheme ? storedTheme === "dark" : prefersDark;
+
+        root.classList.toggle("dark", isDark);
+        root.style.colorScheme = isDark ? "dark" : "light";
+        root.style.backgroundColor = isDark ? "#111111" : "#fefefe";
+      })();
+    </script>
     <link rel="preconnect" href="https://api.fontshare.com" />
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
     <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" />
@@ -33,25 +45,39 @@ import Footer from "../components/Footer.astro";
     <meta name="apple-mobile-web-app-title" content="Portfolio" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="light dark" />
     <title>{title} | Portfolio</title>
     <ClientRouter />
     <script is:inline>
-      function applyTheme() {
+      function getIsDarkTheme() {
         const theme = localStorage.getItem("theme");
-        if (theme === "light") {
-          document.documentElement.classList.remove("dark");
-        } else if (theme === "dark") {
-          document.documentElement.classList.add("dark");
-        } else if (!window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          document.documentElement.classList.remove("dark");
-        }
+        if (theme === "light") return false;
+        if (theme === "dark") return true;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+      }
+
+      function applyThemeToRoot(root) {
+        const isDark = getIsDarkTheme();
+        root.classList.toggle("dark", isDark);
+        root.style.colorScheme = isDark ? "dark" : "light";
+        root.style.backgroundColor = isDark ? "#111111" : "#fefefe";
+      }
+
+      function applyTheme() {
+        applyThemeToRoot(document.documentElement);
       }
 
       // Apply on initial load
       applyTheme();
 
-      // Apply before swap to avoid one-frame theme flash during view transitions
-      document.addEventListener("astro:before-swap", applyTheme);
+      // Apply to current and incoming document before swap to avoid theme flash
+      document.addEventListener("astro:before-swap", (event) => {
+        applyTheme();
+        const incomingRoot = event?.newDocument?.documentElement;
+        if (incomingRoot) {
+          applyThemeToRoot(incomingRoot);
+        }
+      });
       document.addEventListener("astro:after-swap", applyTheme);
     </script>
   </head>

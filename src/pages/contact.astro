@@ -43,20 +43,30 @@ const mailtoHref = `mailto:${email}?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%
                 {email}
               </a>
 
-              <button
-                type="button"
-                data-copy-email-button
-                data-email={email}
-                class="btn-icon size-[24px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
-                aria-label="Skopiuj adres e-mail"
-              >
-                <span data-copy-icon>
-                  <TablerIcon name="copy" class="size-[24px]" />
+              <div class="group relative inline-flex" data-copy-tooltip-group>
+                <button
+                  type="button"
+                  data-copy-email-button
+                  data-email={email}
+                  class="btn-icon size-[24px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+                  aria-label="Skopiuj adres e-mail"
+                >
+                  <span data-copy-icon>
+                    <TablerIcon name="copy" class="size-[24px]" />
+                  </span>
+                  <span data-copy-check-icon hidden>
+                    <TablerIcon name="copy-check" class="size-[24px]" />
+                  </span>
+                </button>
+
+                <span
+                  data-copy-tooltip
+                  class="pointer-events-none absolute bottom-full left-1/2 z-20 mb-[8px] inline-flex min-w-[220px] -translate-x-1/2 translate-y-[2px] scale-[0.98] items-center justify-center rounded-[999px] border border-[var(--color-primary-border)] bg-[var(--color-primary-bg)] px-[18px] py-[7px] text-center text-[12px] leading-[16px] text-[var(--color-primary-fg)] opacity-0 transition-all duration-200 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100"
+                  aria-hidden="true"
+                >
+                  Kliknij, aby skopiować e-mail
                 </span>
-                <span data-copy-check-icon hidden>
-                  <TablerIcon name="copy-check" class="size-[24px]" />
-                </span>
-              </button>
+              </div>
             </div>
 
           </div>
@@ -75,18 +85,26 @@ const mailtoHref = `mailto:${email}?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%
   </section>
 </Layout>
 
+<style>
+  [data-copy-tooltip-group][data-tooltip-locked="true"] [data-copy-tooltip] {
+    opacity: 0 !important;
+  }
+</style>
+
 <script is:inline>
   (() => {
     const copyButton = document.querySelector("[data-copy-email-button]");
     const statusNode = document.querySelector("[data-copy-status]");
     const copyIcon = document.querySelector("[data-copy-icon]");
     const copyCheckIcon = document.querySelector("[data-copy-check-icon]");
+    const tooltipGroup = document.querySelector("[data-copy-tooltip-group]");
 
     if (
       !(copyButton instanceof HTMLButtonElement) ||
       !(statusNode instanceof HTMLElement) ||
       !(copyIcon instanceof HTMLElement) ||
-      !(copyCheckIcon instanceof HTMLElement)
+      !(copyCheckIcon instanceof HTMLElement) ||
+      !(tooltipGroup instanceof HTMLElement)
     ) {
       return;
     }
@@ -115,10 +133,16 @@ const mailtoHref = `mailto:${email}?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%
 
       timeoutId = window.setTimeout(() => {
         setCopyIconState(false);
+        tooltipGroup.removeAttribute("data-tooltip-locked");
       }, 1600);
     };
 
+    const hideTooltip = () => {
+      tooltipGroup.setAttribute("data-tooltip-locked", "true");
+    };
+
     copyButton.addEventListener("click", async () => {
+      hideTooltip();
       const value = copyButton.getAttribute("data-email");
       if (!value) {
         setStatus("Nie udało się skopiować adresu e-mail.", "error");

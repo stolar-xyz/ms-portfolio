@@ -11,42 +11,58 @@ const featuredProjects = getAllProjects().slice(0, 2);
     class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] pt-[80px] sm:px-8 sm:pb-[144px] sm:pt-[88px] lg:px-0 lg:pb-[200px] lg:pt-[80px]"
     aria-labelledby="home-hero-title"
   >
-    <h1
-      id="home-hero-title"
-      aria-label="Portfolio Magdaleny Szczecińskiej"
-      class="text-center text-[56px] font-medium leading-[1] tracking-[0] text-[var(--color-text)] sm:text-[68px] md:text-[74px] lg:text-[80px]"
-    >
-    Projektuję, buduję, wdrażam
-    </h1>
-
-    <p
-      class="mt-[36px] text-center text-[16px] leading-[1.2] tracking-[0] text-[var(--color-text-muted)] sm:mt-[30px] sm:text-[18px] md:text-[20px] lg:mt-[28px] lg:text-[22px]"
-      aria-hidden="true"
-    >
-    UI/UX designerka napędzana AI - tworzę intuicyjne interfejsy od pierwszego szkicu po produkcję
-    </p>
-
-    <div class="mt-[48px] flex flex-wrap items-center justify-center gap-[12px] sm:mt-[56px] md:mt-[64px] lg:mt-[72px]">
-      <a
-        href="/work"
-        class="btn-primary group gap-[8px] px-[24px] py-[14px] text-[14px] lg:text-[16px] font-medium leading-[20px] tracking-[0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
-        transition:name="home-work-cta"
+    <div class="flex flex-col items-center gap-[38px] sm:gap-[44px] lg:gap-[52px]">
+      <h1
+        id="home-hero-title"
+        aria-label="Portfolio Magdaleny Szczecińskiej"
+        class="text-center text-[56px] font-medium leading-[1] tracking-[0] text-[var(--color-text)] sm:text-[68px] md:text-[74px] lg:text-[80px]"
       >
-        <span>Zobacz moje prace</span>
-        <TablerIcon name="arrow-narrow-right" class="size-6" />
-      </a>
+        <span
+          data-home-typewriter
+          data-full-text="Projektuję, buduję, wdrażam"
+          data-full-text-mobile="Projektuję,
+buduję,
+wdrażam"
+          class="home-typewriter-text"
+        >
+          Projektuję, buduję, wdrażam
+        </span>
+      </h1>
 
-      <a
-        href="/about"
-        class="btn-secondary px-[24px] py-[14px] text-[14px] lg:text-[16px] font-medium leading-[20px] tracking-[0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
-        transition:name="home-about-cta"
+      <p
+        data-home-subheader
+        class="home-reveal text-center text-[16px] leading-[1.2] tracking-[0] text-[var(--color-text-muted)] sm:text-[18px] md:text-[20px] lg:text-[22px]"
+        aria-hidden="true"
       >
-        O mnie
-      </a>
+        UI/UX designerka napędzana AI - tworzę intuicyjne interfejsy od pierwszego szkicu po produkcję
+      </p>
+
+      <div data-home-cta class="home-reveal flex flex-wrap items-center justify-center gap-[12px] pt-[10px] sm:pt-[12px] lg:pt-[14px]">
+        <a
+          href="/work"
+          class="btn-primary group gap-[8px] px-[24px] py-[14px] text-[14px] lg:text-[16px] font-medium leading-[20px] tracking-[0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+          transition:name="home-work-cta"
+        >
+          <span>Zobacz moje prace</span>
+          <TablerIcon name="arrow-narrow-right" class="size-6" />
+        </a>
+
+        <a
+          href="/about"
+          class="btn-secondary px-[24px] py-[14px] text-[14px] lg:text-[16px] font-medium leading-[20px] tracking-[0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+          transition:name="home-about-cta"
+        >
+          O mnie
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] sm:px-8 sm:pb-[144px] lg:px-0 lg:pb-[200px]" aria-labelledby="featured-work-title">
+  <section
+    data-home-lower-section
+    class="home-reveal mx-auto w-full max-w-[1040px] px-6 pb-[120px] sm:px-8 sm:pb-[144px] lg:px-0 lg:pb-[200px]"
+    aria-labelledby="featured-work-title"
+  >
     <h2 id="featured-work-title" class="sr-only">Wybrane projekty</h2>
 
     <div class="grid gap-[64px] md:grid-cols-2 md:gap-[40px] lg:grid-cols-[488px_488px] lg:gap-[64px]">
@@ -114,7 +130,8 @@ const featuredProjects = getAllProjects().slice(0, 2);
   </section>
 
   <section
-    class="mx-auto grid w-full max-w-[1040px] gap-[48px] px-6 pb-[120px] sm:px-8 sm:pb-[144px] md:grid-cols-[340px_1fr] md:items-center md:gap-[56px] lg:grid-cols-[421px_505px] lg:items-center lg:justify-between lg:gap-[114px] lg:px-0 lg:pb-[200px]"
+    data-home-lower-section
+    class="home-reveal mx-auto grid w-full max-w-[1040px] gap-[48px] px-6 pb-[120px] sm:px-8 sm:pb-[144px] md:grid-cols-[340px_1fr] md:items-center md:gap-[56px] lg:grid-cols-[421px_505px] lg:items-center lg:justify-between lg:gap-[114px] lg:px-0 lg:pb-[200px]"
     aria-labelledby="home-about-title"
   >
     <div
@@ -141,7 +158,10 @@ const featuredProjects = getAllProjects().slice(0, 2);
         <div class="mt-[24px] h-[2px] w-full bg-[var(--color-divider)]"></div>
 
         <div class="mt-[24px] flex items-center gap-[12px]">
-          <span class="inline-flex size-[16px] rounded-full bg-[#49b46f]" aria-hidden="true"></span>
+          <span class="availability-dot-wrap" aria-hidden="true">
+            <span class="availability-dot-ping"></span>
+            <span class="availability-dot-core"></span>
+          </span>
           <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text-muted)]">Wrocław, PL</p>
         </div>
 
@@ -161,3 +181,220 @@ const featuredProjects = getAllProjects().slice(0, 2);
   </section>
 
 </Layout>
+
+<style>
+  .availability-dot-wrap {
+    position: relative;
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .availability-dot-ping {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: #49b46f;
+    opacity: 0.6;
+    animation: availabilityPing 1.35s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .availability-dot-core {
+    position: relative;
+    z-index: 1;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #49b46f;
+  }
+
+  @keyframes availabilityPing {
+    75%,
+    100% {
+      transform: scale(1.75);
+      opacity: 0;
+    }
+  }
+
+  .home-typewriter-text.is-typing {
+    border-right: 2px solid currentColor;
+    padding-right: 2px;
+    white-space: pre-line;
+    animation: homeTypewriterCaret 800ms steps(1, end) infinite;
+  }
+
+  .home-typewriter-text {
+    white-space: pre-line;
+  }
+
+  .home-reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 320ms ease-in-out, transform 320ms ease-in-out;
+  }
+
+  .home-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes homeTypewriterCaret {
+    0%,
+    49% {
+      border-right-color: currentColor;
+    }
+    50%,
+    100% {
+      border-right-color: transparent;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-typewriter-text.is-typing {
+      animation: none;
+      border-right-color: transparent;
+    }
+
+    .home-reveal,
+    .home-reveal.is-visible {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const STORAGE_KEY = "home_typewriter_seen_v1";
+    const STATE_KEY = "__homeTypewriterState";
+    const state =
+      window[STATE_KEY] ??
+      (window[STATE_KEY] = {
+        isTyping: false,
+        timerId: 0,
+        revealTimerIds: [],
+        pageLoadBound: false,
+      });
+
+    const clearTimer = () => {
+      if (state.timerId) {
+        window.clearTimeout(state.timerId);
+        state.timerId = 0;
+      }
+    };
+
+    const clearRevealTimers = () => {
+      if (!Array.isArray(state.revealTimerIds)) return;
+      state.revealTimerIds.forEach((timerId) => window.clearTimeout(timerId));
+      state.revealTimerIds = [];
+    };
+
+    const runTypewriter = () => {
+      const target = document.querySelector("[data-home-typewriter]");
+      const subheader = document.querySelector("[data-home-subheader]");
+      const cta = document.querySelector("[data-home-cta]");
+      const lowerSections = Array.from(document.querySelectorAll("[data-home-lower-section]"));
+      if (!(target instanceof HTMLElement)) return;
+      if (!(subheader instanceof HTMLElement) || !(cta instanceof HTMLElement)) return;
+
+      const fullDesktopText = target.getAttribute("data-full-text")?.trim() || target.textContent?.trim() || "";
+      const fullMobileText = target.getAttribute("data-full-text-mobile")?.trim() || "";
+      const isMobile = window.matchMedia("(max-width: 639px)").matches;
+      const fullText = isMobile && fullMobileText ? fullMobileText : fullDesktopText;
+      if (!fullText) return;
+
+      clearRevealTimers();
+      subheader.classList.add("home-reveal");
+      cta.classList.add("home-reveal");
+      subheader.classList.remove("is-visible");
+      cta.classList.remove("is-visible");
+      lowerSections.forEach((section) => {
+        if (!(section instanceof HTMLElement)) return;
+        section.classList.add("home-reveal");
+        section.classList.remove("is-visible");
+      });
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        clearTimer();
+        state.isTyping = false;
+        target.textContent = fullText;
+        target.classList.remove("is-typing");
+        subheader.classList.add("is-visible");
+        cta.classList.add("is-visible");
+        lowerSections.forEach((section) => {
+          if (section instanceof HTMLElement) {
+            section.classList.add("is-visible");
+          }
+        });
+        localStorage.setItem(STORAGE_KEY, "1");
+        return;
+      }
+
+      const hasSeen = localStorage.getItem(STORAGE_KEY) === "1";
+      if (hasSeen) {
+        clearTimer();
+        state.isTyping = false;
+        target.textContent = fullText;
+        target.classList.remove("is-typing");
+        subheader.classList.add("is-visible");
+        cta.classList.add("is-visible");
+        lowerSections.forEach((section) => {
+          if (section instanceof HTMLElement) {
+            section.classList.add("is-visible");
+          }
+        });
+        return;
+      }
+
+      if (state.isTyping && target.classList.contains("is-typing")) {
+        return;
+      }
+
+      clearTimer();
+      state.isTyping = true;
+      target.textContent = "";
+      target.classList.add("is-typing");
+
+      let index = 0;
+      const step = () => {
+        index += 1;
+        target.textContent = fullText.slice(0, index);
+        if (index < fullText.length) {
+          const delay = index < 10 ? 82 : 68;
+          state.timerId = window.setTimeout(step, delay);
+          return;
+        }
+        state.isTyping = false;
+        state.timerId = 0;
+        target.classList.remove("is-typing");
+        state.revealTimerIds.push(
+          window.setTimeout(() => subheader.classList.add("is-visible"), 120)
+        );
+        state.revealTimerIds.push(
+          window.setTimeout(() => cta.classList.add("is-visible"), 260)
+        );
+        state.revealTimerIds.push(
+          window.setTimeout(() => {
+            lowerSections.forEach((section) => {
+              if (section instanceof HTMLElement) {
+                section.classList.add("is-visible");
+              }
+            });
+          }, 260)
+        );
+        localStorage.setItem(STORAGE_KEY, "1");
+      };
+
+      state.timerId = window.setTimeout(step, 260);
+    };
+
+    runTypewriter();
+    if (!state.pageLoadBound) {
+      document.addEventListener("astro:page-load", runTypewriter);
+      state.pageLoadBound = true;
+    }
+  })();
+</script>

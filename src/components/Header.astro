@@ -105,7 +105,7 @@ const activeKey = currentPath.startsWith("/about")
               <button
                 type="button"
                 data-mobile-close
-                class="inline-flex size-[32px] items-center justify-center rounded-full text-[var(--color-text)] sm:size-[36px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+                class="inline-flex size-[32px] appearance-none items-center justify-center rounded-full border-0 bg-transparent text-[var(--color-text)] outline-none sm:size-[36px] focus:outline-none focus-visible:outline-none"
                 aria-label="Zamknij menu"
               >
                 <TablerIcon name="x" class="size-6" />
@@ -376,6 +376,10 @@ const activeKey = currentPath.startsWith("/about")
   :global(body.mobile-menu-open) {
     overflow: hidden;
   }
+
+  [data-mobile-close] {
+    -webkit-tap-highlight-color: transparent;
+  }
 </style>
 
 <script is:inline>
@@ -404,10 +408,7 @@ const activeKey = currentPath.startsWith("/about")
       state.isHidden = false;
       const revealAfterY = 260;
       const toggleVisibilityDelta = 12;
-      const revealFromBottomDelta = 56;
-      const revealAfterDownPauseMs = 140;
       let maxYSinceHidden = window.scrollY;
-      let lastDownAt = performance.now();
       let transitionResetRaf = 0;
       const applyFloatingState = () => {
         if (state.isFloating) {
@@ -435,7 +436,6 @@ const activeKey = currentPath.startsWith("/about")
       const processScroll = () => {
         isTicking = false;
         const currentY = window.scrollY;
-        const now = performance.now();
         const rawDelta = currentY - lastY;
         const absDelta = Math.abs(rawDelta);
 
@@ -484,7 +484,6 @@ const activeKey = currentPath.startsWith("/about")
         }
 
         if (direction === "down") {
-          lastDownAt = now;
           maxYSinceHidden = Math.max(maxYSinceHidden, currentY);
         }
 
@@ -492,16 +491,6 @@ const activeKey = currentPath.startsWith("/about")
           state.isHidden = true;
           header.classList.add("is-hidden");
           maxYSinceHidden = currentY;
-          directionDistance = 0;
-        } else if (
-          direction === "up" &&
-          directionDistance > toggleVisibilityDelta &&
-          state.isHidden &&
-          maxYSinceHidden - currentY > revealFromBottomDelta &&
-          now - lastDownAt > revealAfterDownPauseMs
-        ) {
-          state.isHidden = false;
-          header.classList.remove("is-hidden");
           directionDistance = 0;
         }
 

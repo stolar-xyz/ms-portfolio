@@ -14,11 +14,11 @@ const mailtoHref = `mailto:${email}?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%
   </div>
 
   <section
-    class="mx-auto w-full max-w-[1040px] px-6 pb-[120px] pt-[56px] sm:px-8 sm:pb-[144px] sm:pt-[72px] lg:px-0 lg:pb-[200px] lg:pt-[120px]"
+    class="contact-split-section mx-auto w-full max-w-[1040px] px-6 pb-[120px] pt-[56px] sm:px-8 sm:pb-[144px] sm:pt-[72px] lg:px-0 lg:pb-[200px] lg:pt-[120px]"
     aria-labelledby="contact-page-title"
   >
     <div class="grid gap-[32px] lg:grid-cols-[507px_1fr] lg:items-center lg:gap-[64px]">
-      <div class="flex flex-col gap-[24px]">
+      <div class="contact-split-left flex flex-col gap-[24px]">
         <h1 id="contact-page-title" class="text-[24px] font-medium leading-[44px] tracking-[0] text-[var(--color-text)] lg:text-[36px]">
           Masz pomysł na projekt? Porozmawiajmy!
         </h1>
@@ -30,7 +30,7 @@ const mailtoHref = `mailto:${email}?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%
         </p>
       </div>
 
-      <aside class="rounded-[16px] border border-[var(--color-border)] bg-[var(--color-foreground)] p-[20px] lg:px-[20px] lg:py-[24px]" aria-label="Kontakt e-mail">
+      <aside class="contact-split-right rounded-[16px] border border-[var(--color-border)] bg-[var(--color-foreground)] p-[20px] lg:px-[20px] lg:py-[24px]" aria-label="Kontakt e-mail">
         <div class="flex flex-col gap-[24px] lg:gap-[32px]">
           <div class="flex flex-col gap-[14px] lg:gap-[20px]">
             <p class="text-[10px] uppercase leading-[16px] tracking-[0.5px] text-[var(--color-text-muted)] lg:text-[12px]">E-mail</p>
@@ -86,10 +86,83 @@ const mailtoHref = `mailto:${email}?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%
 </Layout>
 
 <style>
+  .contact-split-left,
+  .contact-split-right {
+    opacity: 0;
+    transition:
+      opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .contact-split-left {
+    transform: translateX(24px);
+  }
+
+  .contact-split-right {
+    transform: translateX(-24px);
+  }
+
+  .contact-split-section.is-visible .contact-split-left,
+  .contact-split-section.is-visible .contact-split-right {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (max-width: 1023px) {
+    .contact-split-left,
+    .contact-split-right {
+      transform: translateY(12px);
+    }
+  }
+
   [data-copy-tooltip-group][data-tooltip-locked="true"] [data-copy-tooltip] {
     opacity: 0 !important;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-split-left,
+    .contact-split-right,
+    .contact-split-section.is-visible .contact-split-left,
+    .contact-split-section.is-visible .contact-split-right {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
 </style>
+
+<script is:inline>
+  (() => {
+    const STATE_KEY = "__contactSplitAnimationState";
+    const state =
+      window[STATE_KEY] ??
+      (window[STATE_KEY] = {
+        pageLoadBound: false,
+      });
+
+    const initContactSplitAnimation = () => {
+      const section = document.querySelector(".contact-split-section");
+      if (!(section instanceof HTMLElement)) return;
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        section.classList.add("is-visible");
+        return;
+      }
+
+      section.classList.remove("is-visible");
+      requestAnimationFrame(() => {
+        section.classList.add("is-visible");
+      });
+    };
+
+    initContactSplitAnimation();
+    if (!state.pageLoadBound) {
+      document.addEventListener("astro:page-load", initContactSplitAnimation);
+      state.pageLoadBound = true;
+    }
+  })();
+</script>
 
 <script is:inline>
   (() => {

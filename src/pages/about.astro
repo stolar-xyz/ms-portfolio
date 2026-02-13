@@ -319,7 +319,7 @@ function getDarkIconSrc(src: string): string | undefined {
       </a>
     </div>
 
-    <div class="mt-[46px] grid grid-cols-2 gap-x-[20px] gap-y-[24px]">
+    <div class="mt-[46px] grid grid-cols-2 items-start gap-x-[20px] gap-y-[24px]">
       {
         testimonials.map((item) => (
           <article class="testimonial-card testimonial-card-desktop is-collapsed rounded-[24px] border border-[var(--color-divider)] px-[28px] py-[28px]" data-testimonial-card>
@@ -419,19 +419,20 @@ function getDarkIconSrc(src: string): string | undefined {
     .testimonial-card {
       display: flex;
       flex-direction: column;
+      align-self: start;
       transition: border-color 220ms ease;
     }
 
-    .testimonial-card-desktop.is-collapsed {
-      height: 352px;
+    .testimonial-card-desktop {
+      min-height: 352px;
     }
 
-    .testimonial-card-mobile.is-collapsed {
-      height: 286px;
+    .testimonial-card-mobile {
+      min-height: 286px;
     }
 
     .testimonial-card.is-collapsed {
-      overflow: hidden;
+      overflow: clip;
     }
 
     .testimonial-card.is-collapsed .testimonial-quote.is-dynamic-clamped {
@@ -440,56 +441,27 @@ function getDarkIconSrc(src: string): string | undefined {
       -webkit-box-orient: vertical;
       -webkit-line-clamp: var(--testimonial-line-clamp, 4);
     }
-
-    .testimonial-card.is-expanding {
-      animation: testimonial-expand 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .testimonial-card.is-expanding .testimonial-quote {
-      animation: testimonial-quote-reveal 260ms ease;
-    }
-
-    @keyframes testimonial-expand {
-      0% {
-        transform: translateY(0);
-      }
-      45% {
-        transform: translateY(-2px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes testimonial-quote-reveal {
-      0% {
-        opacity: 0.65;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
   </style>
 
   <script>
     function initTestimonials() {
       const cards = Array.from(document.querySelectorAll("[data-testimonial-card]"));
       if (!cards.length) return;
+      const cardAnimationState = new WeakMap();
+      const DURATION_MS = 360;
+      const EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
+      const STAN_NAME_PATTERN = /stan\b/i;
 
-      const stanNamePattern = /stan\b/i;
       const stanQuoteLength = (() => {
         for (const card of cards) {
           if (!(card instanceof HTMLElement)) continue;
-
           const name = card.querySelector("[data-testimonial-name]");
           const quote = card.querySelector("[data-testimonial-quote]");
-
           if (!(name instanceof HTMLElement) || !(quote instanceof HTMLElement)) continue;
-          if (stanNamePattern.test(name.textContent?.trim() ?? "")) {
+          if (STAN_NAME_PATTERN.test(name.textContent?.trim() ?? "")) {
             return (quote.textContent?.trim() ?? "").length;
           }
         }
-
         return 0;
       })();
 
@@ -498,48 +470,141 @@ function getDarkIconSrc(src: string): string | undefined {
 
         const quote = card.querySelector("[data-testimonial-quote]");
         const toggle = card.querySelector("[data-testimonial-toggle]");
-        const quoteWrap = quote?.parentElement;
-
-        if (!(quote instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement) || !(quoteWrap instanceof HTMLElement)) return;
-
+        if (!(quote instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return;
         const quoteLength = (quote.textContent?.trim() ?? "").length;
-        const exceedsStanThreshold = stanQuoteLength > 0 ? quoteLength > stanQuoteLength : true;
+        const canExpand = stanQuoteLength > 0 ? quoteLength > stanQuoteLength : false;
+
+        if (!canExpand) {
+          quote.style.removeProperty("--testimonial-line-clamp");
+          quote.classList.remove("is-dynamic-clamped");
+          card.classList.remove("is-collapsed");
+          toggle.classList.add("hidden");
+          toggle.textContent = "Pokaż więcej";
+          toggle.setAttribute("aria-expanded", "false");
+          return;
+        }
+
+        const wasCollapsed = card.classList.contains("is-collapsed");
+        card.classList.add("is-collapsed");
+        quote.classList.add("is-dynamic-clamped");
         quote.style.removeProperty("--testimonial-line-clamp");
-        quote.classList.remove("is-dynamic-clamped");
+        const collapsedHeight = quote.getBoundingClientRect().height;
+        card.classList.remove("is-collapsed");
+        const expandedHeight = quote.getBoundingClientRect().height;
+        card.classList.toggle("is-collapsed", wasCollapsed);
+
+        const needsToggle = expandedHeight > collapsedHeight + 1;
+        toggle.classList.toggle("hidden", !needsToggle);
+
+        if (!needsToggle) {
+          quote.style.removeProperty("--testimonial-line-clamp");
+          quote.classList.remove("is-dynamic-clamped");
+          card.classList.remove("is-collapsed");
+          toggle.textContent = "Pokaż więcej";
+          toggle.setAttribute("aria-expanded", "false");
+          return;
+        }
+
+        if (card.classList.contains("is-collapsed")) {
+          const quoteWrap = quote.parentElement;
+          if (quoteWrap instanceof HTMLElement) {
+            const contentStyles = window.getComputedStyle(quoteWrap);
+            const gap = Number.parseFloat(contentStyles.rowGap || contentStyles.gap || "0") || 0;
+            const availableQuoteHeight = Math.max(0, quoteWrap.clientHeight - toggle.offsetHeight - gap);
+            const quoteStyles = window.getComputedStyle(quote);
+            const lineHeight = Number.parseFloat(quoteStyles.lineHeight || "0") || 24;
+            const clampedLines = Math.max(1, Math.floor((availableQuoteHeight + 0.5) / lineHeight));
+            quote.style.setProperty("--testimonial-line-clamp", String(clampedLines));
+          }
+        } else {
+          quote.style.removeProperty("--testimonial-line-clamp");
+        }
 
         const isCollapsed = card.classList.contains("is-collapsed");
-        if (!isCollapsed) {
-          toggle.classList.remove("hidden");
-          return;
-        }
-
-        toggle.classList.add("hidden");
-        const overflowsWithoutToggle = quote.scrollHeight > quoteWrap.clientHeight + 1;
-        const shouldClamp = exceedsStanThreshold || overflowsWithoutToggle;
-
-        if (!shouldClamp) {
-          return;
-        }
-
-        if (!overflowsWithoutToggle) {
-          return;
-        }
-
-        toggle.classList.remove("hidden");
-
-        const contentStyles = window.getComputedStyle(quoteWrap);
-        const gap = Number.parseFloat(contentStyles.rowGap || contentStyles.gap || "0") || 0;
-        const availableQuoteHeight = quoteWrap.clientHeight - toggle.offsetHeight - gap;
-        const quoteStyles = window.getComputedStyle(quote);
-        const lineHeight = Number.parseFloat(quoteStyles.lineHeight || "0") || 24;
-        const clampedLines = Math.max(1, Math.floor((Math.max(0, availableQuoteHeight) + 0.5) / lineHeight));
-
-        quote.style.setProperty("--testimonial-line-clamp", String(clampedLines));
-        quote.classList.add("is-dynamic-clamped");
+        toggle.textContent = isCollapsed ? "Pokaż więcej" : "Pokaż mniej";
+        toggle.setAttribute("aria-expanded", String(!isCollapsed));
       }
 
-      function syncAllTestimonialCards() {
-        cards.forEach((card) => syncTestimonialCard(card));
+      function syncAllTestimonialCards(excludedCard) {
+        cards.forEach((card) => {
+          if (excludedCard && card === excludedCard) return;
+          syncTestimonialCard(card);
+        });
+      }
+
+      function animateCardHeight(card, updateState, options = {}) {
+        if (!(card instanceof HTMLElement)) return;
+        const quote = card.querySelector("[data-testimonial-quote]");
+        if (!(quote instanceof HTMLElement)) {
+          updateState();
+          return;
+        }
+        const { isCollapsing = false } = options;
+
+        const activeAnimation = cardAnimationState.get(card);
+        if (typeof activeAnimation === "function") {
+          activeAnimation();
+        }
+
+        const startHeight = quote.getBoundingClientRect().height;
+        let endHeight = startHeight;
+
+        if (isCollapsing) {
+          const wasCollapsed = card.classList.contains("is-collapsed");
+          card.classList.add("is-collapsed");
+          endHeight = quote.getBoundingClientRect().height;
+          card.classList.toggle("is-collapsed", wasCollapsed);
+        } else {
+          updateState();
+          endHeight = quote.getBoundingClientRect().height;
+        }
+
+        if (Math.abs(endHeight - startHeight) < 1) {
+          if (isCollapsing) {
+            updateState();
+          }
+          return;
+        }
+
+        quote.style.overflow = "hidden";
+        quote.style.maxHeight = `${startHeight}px`;
+        quote.style.opacity = "1";
+        quote.style.transition = `max-height ${DURATION_MS}ms ${EASING}, opacity ${DURATION_MS}ms ${EASING}`;
+
+        requestAnimationFrame(() => {
+          quote.style.maxHeight = `${endHeight}px`;
+          quote.style.opacity = isCollapsing ? "0.96" : "1";
+        });
+
+        let hasCommittedState = false;
+        const commitStateIfNeeded = () => {
+          if (!isCollapsing || hasCommittedState) return;
+          hasCommittedState = true;
+          updateState();
+        };
+
+        const cleanup = () => {
+          quote.style.removeProperty("transition");
+          quote.style.removeProperty("max-height");
+          quote.style.removeProperty("overflow");
+          quote.style.removeProperty("opacity");
+          commitStateIfNeeded();
+          quote.removeEventListener("transitionend", onTransitionEnd);
+          if (fallbackTimeout) {
+            window.clearTimeout(fallbackTimeout);
+          }
+          cardAnimationState.delete(card);
+        };
+
+        const onTransitionEnd = (event) => {
+          if (event.propertyName !== "max-height") return;
+          cleanup();
+        };
+
+        quote.addEventListener("transitionend", onTransitionEnd);
+        const fallbackTimeout = window.setTimeout(cleanup, DURATION_MS + 120);
+
+        cardAnimationState.set(card, cleanup);
       }
 
       cards.forEach((card) => {
@@ -548,18 +613,24 @@ function getDarkIconSrc(src: string): string | undefined {
 
         toggle.dataset.bound = "true";
         toggle.addEventListener("click", () => {
-          const isCollapsed = card.classList.toggle("is-collapsed");
-          toggle.textContent = isCollapsed ? "Pokaż więcej" : "Pokaż mniej";
-          toggle.setAttribute("aria-expanded", String(!isCollapsed));
+          const isCurrentlyCollapsed = card.classList.contains("is-collapsed");
+          const isCollapsing = !isCurrentlyCollapsed;
 
-          if (!isCollapsed) {
-            card.classList.add("is-expanding");
-            window.setTimeout(() => {
-              card.classList.remove("is-expanding");
-            }, 280);
-          }
-
-          syncTestimonialCard(card);
+          animateCardHeight(
+            card,
+            () => {
+              if (isCollapsing) {
+                card.classList.add("is-collapsed");
+                toggle.textContent = "Pokaż więcej";
+                toggle.setAttribute("aria-expanded", "false");
+              } else {
+                card.classList.remove("is-collapsed");
+                toggle.textContent = "Pokaż mniej";
+                toggle.setAttribute("aria-expanded", "true");
+              }
+            },
+            { isCollapsing }
+          );
         });
       });
 

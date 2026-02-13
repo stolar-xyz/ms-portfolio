@@ -35,7 +35,7 @@ const activeKey = currentPath.startsWith("/about")
       </a>
 
       <div class="flex items-center gap-[24px] sm:gap-[32px] lg:items-start lg:gap-[64px]">
-        <ul class="hidden items-start gap-[64px] text-[var(--color-text)] lg:flex">
+        <ul class="hidden items-start pt-[12px] self-center gap-[64px] text-[var(--color-text)] lg:flex">
           {
             navItems.map((item) => {
               const isActive = item.key === activeKey;
@@ -46,10 +46,10 @@ const activeKey = currentPath.startsWith("/about")
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
                     class:list={[
-                      "block whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text)]",
+                      "leading-none block whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text)]",
                       isActive
-                        ? "font-medium text-[128px] leading-[1] tracking-[-0.025em]"
-                        : "py-[6px] text-[24px] leading-[32px]",
+                        ? "font-medium text-[128px] -my-4"
+                        : "text-[24px]",
                     ]}
                     transition:name={`nav-item-${item.key}`}
                   >
@@ -360,6 +360,13 @@ const activeKey = currentPath.startsWith("/about")
     z-index: 40;
     border-bottom: 1px solid transparent;
     opacity: 1;
+    --header-float-shadow: 0 8px 24px -20px rgba(0, 0, 0, 0.28);
+  }
+
+  :global(.dark) [data-scroll-header] {
+    --header-float-shadow:
+      0 10px 28px -20px rgba(0, 0, 0, 0.62),
+      0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
   [data-scroll-header].is-floating {
@@ -368,17 +375,45 @@ const activeKey = currentPath.startsWith("/about")
     top: 0;
     z-index: 70;
     background: var(--color-background);
-    border-bottom-color: var(--color-divider);
-    transform: translateY(0);
-    transition:
-      transform 260ms ease,
-      opacity 260ms ease;
-    will-change: transform, opacity;
+    box-shadow: none;
   }
 
   [data-scroll-header].is-floating.is-hidden {
-    transform: translateY(-100%);
     opacity: 0.01;
+  }
+
+  @media (max-width: 1023px) {
+    [data-scroll-header].is-floating {
+      transition:
+        top 260ms ease,
+        opacity 260ms ease;
+    }
+
+    [data-scroll-header].is-floating > div {
+      padding-bottom: 36px;
+    }
+
+    [data-scroll-header].is-floating.is-hidden {
+      top: calc(-1 * var(--header-height, 120px));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    [data-scroll-header].is-floating {
+      transform: translateY(0);
+      transition:
+        transform 260ms ease,
+        opacity 260ms ease;
+      will-change: transform, opacity;
+    }
+
+    [data-scroll-header].is-floating:not(.is-at-top) {
+      box-shadow: var(--header-float-shadow);
+    }
+
+    [data-scroll-header].is-floating.is-hidden {
+      transform: translateY(-100%);
+    }
   }
 
   [data-scroll-header].is-no-transition {
@@ -411,6 +446,11 @@ const activeKey = currentPath.startsWith("/about")
 
       const header = document.querySelector("[data-scroll-header]");
       if (!(header instanceof HTMLElement)) return;
+      const desktopMq = window.matchMedia("(min-width: 1024px)");
+      const setHeaderHeightVar = () => {
+        header.style.setProperty("--header-height", `${header.offsetHeight}px`);
+      };
+      setHeaderHeightVar();
 
       let lastY = window.scrollY;
       let direction = "down";
@@ -419,8 +459,13 @@ const activeKey = currentPath.startsWith("/about")
       state.isFloating = false;
       state.isHidden = false;
       const revealAfterY = 260;
-      const toggleVisibilityDelta = 12;
-      let maxYSinceHidden = window.scrollY;
+      const getMobileRevealAfterY = () => Math.max(header.offsetHeight * 0.85, 96);
+      const desktopToggleDelta = 12;
+      const mobileHideDelta = 28;
+      const mobileShowDelta = 14;
+      const getHideDelta = () => (desktopMq.matches ? desktopToggleDelta : mobileHideDelta);
+      const getShowDelta = () => (desktopMq.matches ? desktopToggleDelta : mobileShowDelta);
+      const getMinYToHide = () => (desktopMq.matches ? revealAfterY : Math.max(header.offsetHeight * 0.8, 88));
       let transitionResetRaf = 0;
       const applyFloatingState = () => {
         if (state.isFloating) {
@@ -445,21 +490,14 @@ const activeKey = currentPath.startsWith("/about")
         });
       };
 
+      applyFloatingState();
+      header.classList.toggle("is-at-top", window.scrollY <= 2);
+
       const processScroll = () => {
         isTicking = false;
         const currentY = window.scrollY;
         const rawDelta = currentY - lastY;
         const absDelta = Math.abs(rawDelta);
-
-        if (absDelta < 1) return;
-        const nextDirection = rawDelta > 0 ? "down" : "up";
-
-        if (nextDirection === direction) {
-          directionDistance += absDelta;
-        } else {
-          direction = nextDirection;
-          directionDistance = absDelta;
-        }
 
         if (document.body.classList.contains("mobile-menu-open")) {
           applyFloatingState();
@@ -473,6 +511,7 @@ const activeKey = currentPath.startsWith("/about")
           state.isFloating = false;
           state.isHidden = false;
           applyFloatingState();
+          header.classList.add("is-at-top");
           header.classList.remove("is-hidden");
           direction = "down";
           directionDistance = 0;
@@ -480,11 +519,29 @@ const activeKey = currentPath.startsWith("/about")
           return;
         }
 
-        if (!state.isFloating && currentY > revealAfterY) {
+        if (absDelta < 1) return;
+        const nextDirection = rawDelta > 0 ? "down" : "up";
+
+        if (nextDirection === direction) {
+          directionDistance += absDelta;
+        } else {
+          direction = nextDirection;
+          directionDistance = absDelta;
+        }
+
+        header.classList.remove("is-at-top");
+
+        if (!desktopMq.matches && !state.isFloating && currentY > getMobileRevealAfterY()) {
           state.isFloating = true;
           state.isHidden = true;
           hideImmediatelyOnEnterFloating();
-          maxYSinceHidden = currentY;
+          directionDistance = 0;
+        }
+
+        if (desktopMq.matches && !state.isFloating && currentY > revealAfterY) {
+          state.isFloating = true;
+          state.isHidden = true;
+          hideImmediatelyOnEnterFloating();
           directionDistance = 0;
         }
 
@@ -495,14 +552,20 @@ const activeKey = currentPath.startsWith("/about")
           return;
         }
 
-        if (direction === "down") {
-          maxYSinceHidden = Math.max(maxYSinceHidden, currentY);
-        }
-
-        if (direction === "down" && directionDistance > toggleVisibilityDelta && !state.isHidden) {
+        if (
+          direction === "down" &&
+          directionDistance > getHideDelta() &&
+          currentY > getMinYToHide() &&
+          !state.isHidden
+        ) {
           state.isHidden = true;
           header.classList.add("is-hidden");
-          maxYSinceHidden = currentY;
+          directionDistance = 0;
+        }
+
+        if (direction === "up" && directionDistance > getShowDelta() && state.isHidden) {
+          state.isHidden = false;
+          header.classList.remove("is-hidden");
           directionDistance = 0;
         }
 
@@ -516,10 +579,12 @@ const activeKey = currentPath.startsWith("/about")
       };
 
       window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", setHeaderHeightVar, { passive: true });
       processScroll();
 
       state.cleanup = () => {
         window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", setHeaderHeightVar);
         if (transitionResetRaf) {
           cancelAnimationFrame(transitionResetRaf);
           transitionResetRaf = 0;
@@ -527,6 +592,7 @@ const activeKey = currentPath.startsWith("/about")
         header.classList.remove("is-no-transition");
         state.isFloating = false;
         applyFloatingState();
+        header.classList.add("is-at-top");
         header.classList.remove("is-hidden");
         state.isHidden = false;
       };

@@ -60,8 +60,8 @@ const activeKey = currentPath.startsWith("/about")
         <div transition:name="theme-toggle" transition:persist>
           <ThemeToggle
             client:load
-            className="inline-flex size-[32px] items-center justify-center p-[4px] text-[var(--color-text)] sm:size-[36px] sm:p-[5px] lg:size-[44px] lg:p-[6px]"
-            iconClassName="size-6 sm:size-7 lg:size-8"
+            className="group inline-flex size-[32px] cursor-pointer items-center justify-center p-[4px] text-[var(--color-text)] sm:size-[36px] sm:p-[5px] lg:size-[44px] lg:p-[6px]"
+            iconClassName="size-6 transition-transform duration-200 ease-out group-hover:scale-105 group-hover:rotate-6 sm:size-7 lg:size-8"
           />
         </div>
 

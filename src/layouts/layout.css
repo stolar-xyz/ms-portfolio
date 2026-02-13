@@ -62,7 +62,6 @@ body {
 
 body {
   font-family: "Satoshi", "Avenir Next", "Segoe UI", sans-serif;
-  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 :focus-visible {
@@ -74,10 +73,19 @@ body {
   background-color: var(--color-background);
 }
 
+::view-transition {
+  background-color: var(--color-background);
+}
+
+::view-transition-image-pair(root) {
+  background-color: var(--color-background);
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 280ms;
+  animation: none;
   mix-blend-mode: normal;
+  opacity: 1;
   background-color: var(--color-background);
 }
 

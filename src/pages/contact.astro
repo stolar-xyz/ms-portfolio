@@ -93,68 +93,78 @@ const mailtoHref = `mailto:${email}?subject=Zapytanie%20o%20wsp%C3%B3%C5%82prac%
 
 <script is:inline>
   (() => {
-    const copyButton = document.querySelector("[data-copy-email-button]");
-    const statusNode = document.querySelector("[data-copy-status]");
-    const copyIcon = document.querySelector("[data-copy-icon]");
-    const copyCheckIcon = document.querySelector("[data-copy-check-icon]");
-    const tooltipGroup = document.querySelector("[data-copy-tooltip-group]");
+    const initContactCopy = () => {
+      const copyButton = document.querySelector("[data-copy-email-button]");
+      const statusNode = document.querySelector("[data-copy-status]");
+      const copyIcon = document.querySelector("[data-copy-icon]");
+      const copyCheckIcon = document.querySelector("[data-copy-check-icon]");
+      const tooltipGroup = document.querySelector("[data-copy-tooltip-group]");
 
-    if (
-      !(copyButton instanceof HTMLButtonElement) ||
-      !(statusNode instanceof HTMLElement) ||
-      !(copyIcon instanceof HTMLElement) ||
-      !(copyCheckIcon instanceof HTMLElement) ||
-      !(tooltipGroup instanceof HTMLElement)
-    ) {
-      return;
-    }
-
-    let timeoutId = 0;
-    const setCopyIconState = (isSuccess) => {
-      copyIcon.hidden = isSuccess;
-      copyCheckIcon.hidden = !isSuccess;
-    };
-
-    const setStatus = (message, type) => {
-      const isSuccess = type === "success";
-      setCopyIconState(isSuccess);
-
-      statusNode.textContent = message;
-
-      if (timeoutId) {
-        window.clearTimeout(timeoutId);
-      }
-
-      window.setTimeout(() => {
-        if (statusNode.textContent === message) {
-          statusNode.textContent = "";
-        }
-      }, 1600);
-
-      timeoutId = window.setTimeout(() => {
-        setCopyIconState(false);
-        tooltipGroup.removeAttribute("data-tooltip-locked");
-      }, 1600);
-    };
-
-    const hideTooltip = () => {
-      tooltipGroup.setAttribute("data-tooltip-locked", "true");
-    };
-
-    copyButton.addEventListener("click", async () => {
-      hideTooltip();
-      const value = copyButton.getAttribute("data-email");
-      if (!value) {
-        setStatus("Nie udało się skopiować adresu e-mail.", "error");
+      if (
+        !(copyButton instanceof HTMLButtonElement) ||
+        !(statusNode instanceof HTMLElement) ||
+        !(copyIcon instanceof HTMLElement) ||
+        !(copyCheckIcon instanceof HTMLElement) ||
+        !(tooltipGroup instanceof HTMLElement)
+      ) {
         return;
       }
 
-      try {
-        await navigator.clipboard.writeText(value);
-        setStatus("Adres e-mail został skopiowany.", "success");
-      } catch {
-        setStatus("Nie udało się skopiować adresu e-mail.", "error");
+      if (copyButton.dataset.bound === "true") {
+        return;
       }
-    });
+      copyButton.dataset.bound = "true";
+
+      let timeoutId = 0;
+      const setCopyIconState = (isSuccess) => {
+        copyIcon.hidden = isSuccess;
+        copyCheckIcon.hidden = !isSuccess;
+      };
+
+      const setStatus = (message, type) => {
+        const isSuccess = type === "success";
+        setCopyIconState(isSuccess);
+
+        statusNode.textContent = message;
+
+        if (timeoutId) {
+          window.clearTimeout(timeoutId);
+        }
+
+        window.setTimeout(() => {
+          if (statusNode.textContent === message) {
+            statusNode.textContent = "";
+          }
+        }, 1600);
+
+        timeoutId = window.setTimeout(() => {
+          setCopyIconState(false);
+          tooltipGroup.removeAttribute("data-tooltip-locked");
+        }, 1600);
+      };
+
+      const hideTooltip = () => {
+        tooltipGroup.setAttribute("data-tooltip-locked", "true");
+      };
+
+      copyButton.addEventListener("click", async () => {
+        hideTooltip();
+        const value = copyButton.getAttribute("data-email");
+        if (!value) {
+          setStatus("Nie udało się skopiować adresu e-mail.", "error");
+          return;
+        }
+
+        try {
+          await navigator.clipboard.writeText(value);
+          setStatus("Adres e-mail został skopiowany.", "success");
+        } catch {
+          setStatus("Nie udało się skopiować adresu e-mail.", "error");
+        }
+      });
+    };
+
+    initContactCopy();
+    document.addEventListener("astro:page-load", initContactCopy);
   })();
 </script>

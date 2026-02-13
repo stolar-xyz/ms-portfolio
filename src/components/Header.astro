@@ -183,9 +183,14 @@ const activeKey = currentPath.startsWith("/about")
         document.body.classList.toggle("mobile-menu-open", hasOpenMenu);
       };
 
-      const closeMenu = (root, restoreFocus = true) => {
+      const closeMenu = (root, restoreFocus = true, immediate = false) => {
         const { openButton, overlay, panel } = getElements(root);
         if (!openButton || !overlay || !panel) return;
+
+        if (immediate) {
+          overlay.style.transitionDuration = "0ms";
+          panel.style.transitionDuration = "0ms";
+        }
 
         openButton.setAttribute("aria-expanded", "false");
         overlay.setAttribute("aria-hidden", "true");
@@ -203,12 +208,19 @@ const activeKey = currentPath.startsWith("/about")
           savedFocus.focus();
         }
         previousFocus.delete(root);
+
+        if (immediate) {
+          requestAnimationFrame(() => {
+            overlay.style.removeProperty("transition-duration");
+            panel.style.removeProperty("transition-duration");
+          });
+        }
       };
 
-      const closeAllMenus = (restoreFocus = false) => {
+      const closeAllMenus = (restoreFocus = false, immediate = false) => {
         getRoots().forEach((root) => {
           if (isOpen(root)) {
-            closeMenu(root, restoreFocus);
+            closeMenu(root, restoreFocus, immediate);
           }
         });
       };
@@ -263,7 +275,7 @@ const activeKey = currentPath.startsWith("/about")
           if (navLink) {
             const root = getRoot(navLink);
             if (!root) return;
-            closeMenu(root, false);
+            closeMenu(root, false, true);
           }
         },
         { signal }
@@ -322,7 +334,7 @@ const activeKey = currentPath.startsWith("/about")
       document.addEventListener(
         "astro:before-swap",
         () => {
-          closeAllMenus(false);
+          closeAllMenus(false, true);
         },
         { signal }
       );

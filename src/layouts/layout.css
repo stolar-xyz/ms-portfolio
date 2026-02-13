@@ -141,11 +141,17 @@ body {
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .btn-primary:hover {
   background-color: var(--color-primary-bg-hover);
+  transform: scale(1.015);
+}
+
+html:not(.dark) .btn-primary:hover {
+  background-color: #3a3a3a;
 }
 
 .btn-secondary {
@@ -160,11 +166,21 @@ body {
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .btn-secondary:hover {
   background-color: var(--color-secondary-bg-hover);
+  transform: scale(1.015);
+}
+
+html:not(.dark) .btn-secondary:hover {
+  background-color: #e6e6e6;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #2a2a2a;
 }
 
 .btn-icon {
@@ -175,9 +191,11 @@ body {
   color: var(--color-text);
   transition:
     background-color 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .btn-icon:hover {
   background-color: var(--color-surface);
+  transform: scale(1.03);
 }

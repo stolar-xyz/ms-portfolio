@@ -145,12 +145,14 @@ function getDarkIconSrc(src: string): string | undefined {
   </div>
 
   <section class="about-intro-desktop mx-auto hidden max-w-[1040px] px-[8px] pb-[120px] pt-[32px] md:flex md:flex-col md:items-center md:gap-[56px] md:px-8 md:pb-[144px] md:pt-[48px] lg:flex-row lg:items-start lg:justify-between lg:gap-0 lg:px-[8px] lg:pb-[200px] lg:pt-[80px]">
-    <div
-      class="about-intro-photo size-[245px] shrink-0 bg-[#c4c4c4]"
-      role="img"
-      aria-label="Miejsce na zdjęcie profilowe"
+    <img
+      class="about-intro-photo size-[245px] shrink-0 rounded-[20px] object-cover"
+      src="/about-photo.JPG"
+      alt="Zdjęcie profilowe Magdy"
+      loading="eager"
+      decoding="async"
       transition:name="about-profile-photo"
-    ></div>
+    />
 
     <div class="about-intro-content w-full md:max-w-[720px] lg:w-[688px]">
       <div class="flex flex-col gap-[64px]">
@@ -234,7 +236,14 @@ function getDarkIconSrc(src: string): string | undefined {
   </section>
 
   <section class="about-intro-mobile mx-auto max-w-[327px] px-[0] pb-[120px] pt-[32px] sm:max-w-[560px] sm:pt-[48px] md:hidden">
-    <div class="mx-auto size-[245px] bg-[#c4c4c4]" role="img" aria-label="Miejsce na zdjęcie profilowe" transition:name="about-profile-photo"></div>
+    <img
+      class="mx-auto size-[245px] rounded-[20px] object-cover"
+      src="/about-photo.JPG"
+      alt="Zdjęcie profilowe Magdy"
+      loading="eager"
+      decoding="async"
+      transition:name="about-profile-photo"
+    />
 
     <div class="mt-[64px] flex flex-col gap-[64px]">
       <div class="flex flex-col gap-[24px]">

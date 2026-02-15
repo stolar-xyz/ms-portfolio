@@ -200,6 +200,14 @@ html:not(.dark) .btn-secondary:hover {
   transform: scale(1.03);
 }
 
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color 400ms ease, border-color 400ms ease, box-shadow 400ms ease !important;
+  transition-delay: 0s !important;
+}
+
 .skip-to-content {
   position: fixed;
   top: 0;

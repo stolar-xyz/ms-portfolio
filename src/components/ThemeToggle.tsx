@@ -81,7 +81,15 @@ export default function ThemeToggle({
   return (
     <button
       type="button"
-      onClick={() => setIsDark(!isDark)}
+      onClick={() => {
+        const root = document.documentElement;
+        root.classList.add('theme-transition');
+        setIsDark(!isDark);
+        const next = isDark ? 'light' : 'dark';
+        root.style.backgroundColor = next === 'dark' ? '#111111' : '#fefefe';
+        root.style.colorScheme = next;
+        setTimeout(() => root.classList.remove('theme-transition'), 400);
+      }}
       className={className ?? DEFAULT_BUTTON_CLASS}
       aria-label={isDark ? ariaLabelDark : ariaLabelLight}
     >

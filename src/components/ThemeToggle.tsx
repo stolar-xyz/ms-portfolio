@@ -8,7 +8,7 @@ interface ThemeToggleProps {
 }
 
 const DEFAULT_BUTTON_CLASS =
-  "inline-flex items-center justify-center rounded-lg bg-[var(--color-foreground)] p-2 transition-colors hover:bg-[var(--color-border)]";
+  "inline-flex items-center justify-center rounded-lg bg-[var(--color-foreground)] p-2 transition-colors hover:bg-[var(--color-surface)]";
 const DEFAULT_ICON_CLASS = "size-5";
 
 function SunHighIcon({ className }: { className: string }) {
@@ -81,7 +81,15 @@ export default function ThemeToggle({
   return (
     <button
       type="button"
-      onClick={() => setIsDark(!isDark)}
+      onClick={() => {
+        const root = document.documentElement;
+        root.classList.add('theme-transition');
+        setIsDark(!isDark);
+        const next = isDark ? 'light' : 'dark';
+        root.style.backgroundColor = next === 'dark' ? '#111111' : '#fefefe';
+        root.style.colorScheme = next;
+        setTimeout(() => root.classList.remove('theme-transition'), 400);
+      }}
       className={className ?? DEFAULT_BUTTON_CLASS}
       aria-label={isDark ? ariaLabelDark : ariaLabelLight}
     >

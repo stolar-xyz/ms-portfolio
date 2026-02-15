@@ -1,0 +1,31 @@
+---
+import WorkCaseShell from "../../components/work/WorkCaseShell.astro";
+import KoncepcjaCaseContent from "../../components/work/cases/KoncepcjaCaseContent.astro";
+import { getProjectBySlug } from "../../lib/projects";
+
+const project = getProjectBySlug("koncepcja-wizji-produktu-b2c");
+
+if (!project) {
+  return Astro.redirect("/work");
+}
+
+const tools = [
+  { src: "/icons/tool-figma.png", alt: "Figma" },
+  { src: "/icons/tool-notion.png", alt: "Notion" },
+  { src: "/icons/tool-openai.png", alt: "OpenAI" },
+  { src: "/icons/tool-perplexity.svg", alt: "Perplexity" },
+] as const;
+---
+
+<WorkCaseShell
+  project={project}
+  tools={tools}
+  heroImage="/assets/inx/hero-inx.png"
+  heroHasSurface={false}
+  overviewHeading="Wstęp"
+  overviewText="InsightX to firma technologiczna działająca na rynku kryptowalut, która zbudowała swoją pozycję jako zaawansowany silnik analityczny. Główne narzędzia to Token Scanner (szybka ocena bezpieczeństwa tokenów) i Bubblemaps (wizualizacja powiązań między walletami)."
+  duration="1 miesiąc"
+  projectType="Client project"
+>
+  <KoncepcjaCaseContent />
+</WorkCaseShell>

@@ -3,6 +3,8 @@ interface Props {
   name:
     | "arrow-up-right"
     | "arrow-narrow-right"
+    | "copy"
+    | "copy-check"
     | "sparkles"
     | "quote"
     | "x"
@@ -11,7 +13,8 @@ interface Props {
     | "scale"
     | "chart-bar"
     | "puzzle"
-    | "eye";
+    | "eye"
+    | "download";
   class?: string;
   strokeWidth?: number;
 }
@@ -21,6 +24,15 @@ const { name, class: className, strokeWidth = 1 } = Astro.props as Props;
 const iconPaths: Record<Props["name"], string[]> = {
   "arrow-up-right": ["M7 17L17 7", "M8.5 7H17V15.5"],
   "arrow-narrow-right": ["M5 12H19", "M15 8L19 12L15 16"],
+  copy: [
+    "M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z",
+    "M4.012 16.737a2 2 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1",
+  ],
+  "copy-check": [
+    "M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z",
+    "M4.012 16.737a2 2 0 0 1 -1.012 -1.737v-10a2 2 0 0 1 2 -2h10c.75 0 1.158 .385 1.5 1",
+    "M11 14l2 2l4 -4",
+  ],
   sparkles: [
     "M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2",
     "M16 8a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2",
@@ -58,9 +70,14 @@ const iconPaths: Record<Props["name"], string[]> = {
     "M3 12s3.5 -6 9 -6s9 6 9 6s-3.5 6 -9 6s-9 -6 -9 -6",
     "M12 9a3 3 0 1 0 0 6a3 3 0 0 0 0 -6",
   ],
+  download: [
+    "M12 4v10",
+    "M8 10l4 4l4 -4",
+    "M4 20h16",
+  ],
 };
 
-const paths = iconPaths[name];
+const paths = iconPaths[name] ?? [];
 ---
 
 <svg

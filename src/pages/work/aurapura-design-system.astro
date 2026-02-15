@@ -1,0 +1,28 @@
+---
+import WorkCaseShell from "../../components/work/WorkCaseShell.astro";
+import AurapuraCaseContent from "../../components/work/cases/AurapuraCaseContent.astro";
+import { getProjectBySlug } from "../../lib/projects";
+
+const project = getProjectBySlug("aurapura-design-system");
+
+if (!project) {
+  return Astro.redirect("/work");
+}
+
+const tools = [
+  { src: "/icons/tool-figma.png", alt: "Figma" },
+] as const;
+---
+
+<WorkCaseShell
+  project={project}
+  tools={tools}
+  heroImage="/assets/aurapura/hero-aurapure.png"
+  heroHasSurface={true}
+  overviewHeading="Wstęp"
+  overviewText={project.description}
+  duration="około 6 tygodni"
+  projectType="Konceptualny (kurs Design system intro)"
+>
+  <AurapuraCaseContent />
+</WorkCaseShell>

@@ -1,0 +1,78 @@
+<section class="grid gap-[48px] lg:grid-cols-[509px_467px] lg:items-center lg:gap-[64px]" aria-labelledby="goal-title">
+  <div class="flex flex-col gap-[24px] lg:justify-center">
+    <h2 id="goal-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Cel</h2>
+    <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
+    <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+      Przejście przez cały proces tworzenia design systemu od podstaw. Od zdefiniowania tokenów (kolory, typografia, spacing) przez
+      budowę komponentów, aż po ich zastosowanie w konkretnych layoutach. Projekt miał być podsumowaniem i praktycznym wykorzystaniem
+      wiedzy z kursu.
+    </p>
+  </div>
+  <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-square lg:h-[467px]">
+    <img src="/assets/aurapura/mac-mockup.png" alt="Makieta desktopowa projektu AuraPura" class="size-full object-cover" loading="lazy" />
+  </div>
+</section>
+
+<section class="mx-auto flex w-full max-w-[1040px] flex-col gap-[24px]" aria-labelledby="process-title">
+  <h2 id="process-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Proces</h2>
+  <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
+  <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+    Pracę zaczęłam od analizy briefu i assetów marki, z których wyciągnęłam paletę kolorów, styl typografii i ogólny kierunek wizualny.
+    Następnie zbudowałam system od fundamentów, opierając go na podziale między <strong>core tokenami</strong> (surowe wartości, np.
+    konkretne odcienie kolorów) a <strong>alias tokenami</strong> (znaczenie w kontekście interfejsu, np.
+    <code>background-primary</code>, <code>text-error</code>). Ten podział pozwala zmieniać wartości na poziomie core, nie ruszając logiki
+    komponentów, które odwołują się tylko do aliasów. Na tokenach zbudowałam komponenty wielokrotnego użytku.
+  </p>
+  <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+    Kluczowym elementem projektu było wykorzystanie <strong>Figma variables</strong> w dwóch rolach:
+  </p>
+  <ol class="list-decimal pl-[24px] text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+    <li>Do obsługi <strong>themingu</strong> (np. warianty kolorystyczne),</li>
+    <li>Do <strong>dostosowania komponentów do różnych breakpointów</strong>.</li>
+  </ol>
+  <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+    Dzięki temu komponenty automatycznie adaptowały się do widoku mobile, tablet i desktop bez konieczności tworzenia osobnych wersji.
+  </p>
+</section>
+
+<section class="grid gap-[48px] lg:grid-cols-[467px_509px] lg:items-center lg:gap-[64px]" aria-labelledby="learnings-title">
+  <div class="overflow-hidden bg-transparent lg:bg-[var(--color-surface)] sm:h-auto sm:aspect-square lg:h-[467px]">
+    <img
+      src="/assets/aurapura/mobile+tablet+mock.png"
+      alt="Makiety mobilne i tabletowe projektu AuraPura"
+      class="size-full object-cover"
+      loading="lazy"
+    />
+  </div>
+  <div class="flex flex-col gap-[24px] lg:justify-center">
+    <h2 id="learnings-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Czego się nauczyłam?</h2>
+    <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
+    <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+      Przede wszystkim tego, jak dużo pracy kryje się za „prostym" design systemem. Samodzielne przejście przez cały proces, od tokenów do
+      gotowych ekranów, uświadomiło mi, jak ważna jest spójność na każdym poziomie i jak decyzje podjęte na etapie tokenów wpływają na
+      wszystko powyżej. Cały projekt pozwolił mi lepiej zrozumieć podstawy budowania systemów projektowych i ich wartość dla całego
+      zespołu.
+    </p>
+    <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+      Praktyczne zastosowanie Figma variables do zarządzania zarówno motywem, jak i responsywnością komponentów, było dla mnie najcenniejszą
+      lekcją. To podejście pozwala budować systemy, które skalują się bez chaosu, a ewentualne zmiany mozna wprowadzać globalnie bez
+      potrzeby kontrolowania poszczególnych komponentów.
+    </p>
+  </div>
+</section>
+
+<section class="w-full overflow-hidden" aria-label="Przegląd siatki desktopowej AuraPura">
+  <img src="/assets/aurapura/grid-photo.png" alt="Duży widok siatki projektu AuraPura" class="w-full h-auto object-cover" loading="lazy" />
+</section>
+
+<section class="mx-auto w-full max-w-[906px] overflow-hidden" aria-label="Widok desktop grid AuraPura">
+  <img src="/assets/aurapura/desktop-grid-aurapura.png" alt="Desktop grid projektu AuraPura" class="w-full h-auto object-cover" loading="lazy" />
+</section>
+
+<section class="mx-auto w-full max-w-[1016px] overflow-hidden" aria-label="Widok mobile i tablet grid AuraPura">
+  <img src="/assets/aurapura/mobile+tablet-grid.png" alt="Mobile i tablet grid projektu AuraPura" class="w-full h-auto object-cover" loading="lazy" />
+</section>
+
+<section class="mx-auto w-full max-w-[1039px] overflow-hidden" aria-label="Dodatkowe miniatury projektu AuraPura">
+  <img src="/assets/aurapura/grid-photos-small.png" alt="Zestaw mniejszych siatek projektu AuraPura" class="w-full h-auto object-cover" loading="lazy" />
+</section>

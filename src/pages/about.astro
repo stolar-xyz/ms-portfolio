@@ -13,9 +13,8 @@ const introMobile = [
 ];
 
 const socialLinks = [
-  { label: "LINKEDIN", href: "https://linkedin.com" },
-  { label: "Github", href: "https://github.com" },
-  { label: "mail", href: "mailto:hello@example.com" },
+  { label: "LINKEDIN", href: "https://www.linkedin.com/in/magdalena-szczecinska/" },
+  { label: "Github", href: "https://github.com/mszczecinska" },
 ] as const;
 
 const techStackDesktop = [
@@ -38,7 +37,7 @@ const techStackDesktop = [
     title: "AI",
     tools: [
       { label: "Claude Code", icon: "/icons/tool-claude-code.png" },
-      { label: "Codex", icon: "/icons/tool-claude-code.png" },
+      { label: "Codex", icon: "/icons/tool-chatgpt.svg" },
       { label: "Perplexity", icon: "/icons/tool-perplexity.svg" },
       { label: "ChatGPT", icon: "/icons/tool-chatgpt.svg" },
     ],
@@ -72,6 +71,7 @@ const techStackMobile = [
     title: "AI",
     tools: [
       { label: "Claude Code", icon: "/icons/tool-claude-code.png" },
+      { label: "Codex", icon: "/icons/tool-chatgpt.svg" },
       { label: "Perplexity", icon: "/icons/tool-perplexity.svg" },
       { label: "ChatGPT", icon: "/icons/tool-chatgpt.svg" },
     ],
@@ -88,53 +88,73 @@ const techStackMobile = [
 const testimonials = [
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
-    name: "Name and surname",
-    role: "Role",
+      "Magda to jedna z tych osób, na które po prostu można liczyć. Pracowaliśmy razem przy kilku projektach i za każdym razem dowoziła temat od A do Z. Było bardzo terminowo i zawsze jakościowo. Świetnie radzi sobie z nietypowymi zadaniami. Szybko łapie nowe narzędzia i potrafi znaleźć rozwiązanie tam, gdzie inni widzą problem. Implementacje stron, które przygotowywała, potrafiły wyrwać z butów. Natomiast dla mnie najważniejsza w trakcie pracy jest komunikacja i tu była na naprawdę na wysokim poziomie. Zawsze miałem jasność, co jestzrobione, co jest w toku i co planujemy dalej. Jeśli będę miał okazję, chętnie znów z nią popracuję. Zdecydowanie polecam.",
+    name: "Kamil",
+    role: "All the fancy words: marketing, vibe coding, no coding",
+    photo: "/references/kamil.jpeg",
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
-    name: "Name and surname",
-    role: "Role",
+      "Z pełnym przekonaniem polecam Magdę jako projektantkę UI. Współpraca developer-designer przebiegała wzorowo. Magda błyskawicznie wyłapywała wymagania techniczne, podsuwała estetyczne i funkcjonalne rozwiązania oraz była zawsze otwarta na konstruktywny feedback. Praca z taką osobą była czystą przyjemnością 😊",
+    name: "Andrzej",
+    role: "Frontend Engineer",
+    photo: "/references/andrzej.jpeg" ,
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
-    name: "Name and surname",
-    role: "Role",
+      "Współpraca z Magdą była dla mnie ogromną wartością, zarówno projektowo, jak i rozwojowo. Jej zaangażowanie, otwartość i chęć dzielenia się wiedzą sprawiały, że każdy projekt wchodził na wyższy poziom! Jej wkład w nasze wspólne projekty zawsze cechował się wysoką jakością, a proponowane rozwiązania często przewyższały oczekiwania. Dzięki jej zaangażowaniu zespół osiągał lepsze rezultaty, a produkt stawał się nie tylko bardziej dopracowany wizualnie, ale przede wszystkim intuicyjny i skuteczny dla użytkowników. Magdalena łączy świetne wyczucie estetyki z głębokim zrozumieniem zasad UI/UX. Bardzo doceniam jej szybkość uczenia się, szerokie kompetencje oraz umiejętność przeprowadzania projektu od pomysłu aż po wdrożenie. Jej kreatywność, inteligencja i sposób rozwiązywania problemów są wyjątkowe i jestem bardzo wdzięczna, że miałam okazję współpracować z Magdą i wiele się od niej nauczyć. GORĄCO POLECAM Magdalenę jako UX/UI designera. Każdy, kto będzie miał okazję współpracować z Magdą, szybko przekona się, jak dużą wartość wnosi do zespołu.",
+    name: "Martyna",
+    role: "Data Analyst",
+    photo: "/references/martyna.jpeg",
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
-    name: "Name and surname",
-    role: "Role",
+      "Pracowałem razem z Magdą nad projektem UIUX w branży Krypto. Współpraca była naprawdę super, czas i zaangażowanie jakie wprowadzała do zespołu pozwoliły zrobić nam naprawdę szybki progres, do tego stopnia że usłyszeliśmy od klienta \"jesteśmy w szoku ile udało wam się zrobić w tak krótkim czasie\". Polecam każdemu pracę z Magdą i sam z chęcią pracowałbym nad wspólnym projektem w przyszłości 🔥",
+    name: "Stan",
+    role: "Founder of nueve.design",
+    photo: "/references/stan.jpeg",
   },
 ] as const;
+
+const testimonialsCtaHref = "https://www.linkedin.com/in/magdalena-szczecinska/details/recommendations/";
+
+function getDarkIconSrc(src: string): string | undefined {
+  if (src === "/icons/tool-openai.png" || src === "/icons/tool-chatgpt.svg") {
+    return "/icons/openai-dark-icon.png";
+  }
+
+  if (src === "/icons/tool-vercel.svg") {
+    return "/icons/vercel-dark-icon.png";
+  }
+
+  return undefined;
+}
 ---
 
 <Layout title="About" description="Portfolio UX/UI - strona About">
-  <div class="hidden px-8 pt-[80px] lg:block lg:px-16">
+  <div class="hidden px-[32px] pt-[32px] sm:px-10 sm:pt-[36px] md:block lg:px-16 lg:pt-[40px]">
     <div class="mx-auto flex min-h-[20px] w-full items-center">
       <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
     </div>
   </div>
 
-  <div class="px-8 pt-[80px] lg:hidden">
+  <div class="px-[32px] pt-[32px] sm:px-10 sm:pt-[36px] md:hidden">
     <div class="flex min-h-[20px] items-center">
       <div class="h-px w-full border-b border-[var(--color-subtle)]"></div>
     </div>
   </div>
 
-  <section class="mx-auto hidden max-w-[1040px] px-[8px] pb-[120px] pt-[80px] lg:flex lg:items-start lg:justify-between">
-    <div
-      class="size-[245px] shrink-0 bg-[#c4c4c4]"
-      role="img"
-      aria-label="Miejsce na zdjęcie profilowe"
+  <section class="about-intro-desktop mx-auto hidden max-w-[1040px] px-[8px] pb-[120px] pt-[32px] md:flex md:flex-col md:items-center md:gap-[56px] md:px-8 md:pb-[144px] md:pt-[48px] lg:flex-row lg:items-start lg:justify-between lg:gap-0 lg:px-[8px] lg:pb-[200px] lg:pt-[80px]">
+    <img
+      class="about-intro-photo size-[245px] shrink-0 rounded-[20px] object-cover"
+      src="/about-photo.JPG"
+      alt="Zdjęcie profilowe Magdy"
+      loading="eager"
+      decoding="async"
       transition:name="about-profile-photo"
-    ></div>
+    />
 
-    <div class="w-[688px]">
+    <div class="about-intro-content w-full md:max-w-[720px] lg:w-[688px]">
       <div class="flex flex-col gap-[64px]">
         <div class="flex flex-col gap-[24px]">
           <div class="flex items-center gap-[10px]">
@@ -145,11 +165,14 @@ const testimonials = [
           <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
 
           <div class="flex items-center gap-[12px]">
-            <span class="inline-flex size-[16px] rounded-full bg-[#49b46f]" aria-hidden="true"></span>
-            <p class="text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text-muted)]">Wrocław, PL</p>
+            <span class="availability-dot-wrap" aria-hidden="true">
+              <span class="availability-dot-ping"></span>
+              <span class="availability-dot-core"></span>
+            </span>
+            <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text-muted)]">Wrocław, PL</p>
           </div>
 
-          <div class="space-y-4 text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+          <div class="space-y-4 text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
             {introDesktop.map((paragraph) => <p>{paragraph}</p>)}
           </div>
 
@@ -161,10 +184,10 @@ const testimonials = [
                     href={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    class="group inline-flex items-center gap-[12px] text-[16px] uppercase leading-[24px] tracking-[0.5px] text-[var(--color-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+                    class="group inline-flex items-center gap-[12px] text-[14px] lg:text-[16px] uppercase leading-[24px] tracking-[0.5px] text-[var(--color-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
                   >
                     <span>{item.label}</span>
-                    <TablerIcon name="arrow-up-right" class="size-8 transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
+                    <TablerIcon name="arrow-up-right" class="size-6 transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
                   </a>
                 </li>
               ))
@@ -175,18 +198,27 @@ const testimonials = [
         <div class="flex flex-col gap-[24px]">
           <h2 class="text-[36px] font-medium leading-[44px] text-[var(--color-text)]">Tech stack</h2>
 
-          <div class="grid grid-cols-4 gap-[16px]">
+          <div class="grid gap-[16px] md:grid-cols-2 lg:grid-cols-4">
             {
               techStackDesktop.map((column) => (
-                <article class="flex w-[156px] flex-col items-center gap-[24px]">
-                  <h3 class="text-center text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{column.title}</h3>
+                <article class="flex w-full flex-col items-center gap-[24px] lg:w-[156px]">
+                  <h3 class="text-center text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{column.title}</h3>
                   <ul class="flex w-full flex-col gap-[24px]">
                     {
                       column.tools.map((tool) => (
                         <li>
                           <div class="flex items-center gap-[12px] rounded-[12px] border border-[var(--color-border)] px-[16px] py-[14px]">
                             <span class="inline-flex size-[40px] items-center justify-center rounded-[8px] bg-[var(--color-surface)] p-[8px]">
-                              <img src={tool.icon} alt="" class="size-full object-contain" loading="lazy" decoding="async" />
+                              {
+                                getDarkIconSrc(tool.icon) ? (
+                                  <>
+                                    <img src={tool.icon} alt="" class="theme-icon-light size-full object-contain" loading="lazy" decoding="async" />
+                                    <img src={getDarkIconSrc(tool.icon)} alt="" class="theme-icon-dark size-full object-contain" loading="lazy" decoding="async" />
+                                  </>
+                                ) : (
+                                  <img src={tool.icon} alt="" class="size-full object-contain" loading="lazy" decoding="async" />
+                                )
+                              }
                             </span>
                             <span class="text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)]">{tool.label}</span>
                           </div>
@@ -203,8 +235,15 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-[327px] px-[0] pb-[56px] pt-[80px] lg:hidden">
-    <div class="mx-auto size-[245px] bg-[#c4c4c4]" role="img" aria-label="Miejsce na zdjęcie profilowe" transition:name="about-profile-photo"></div>
+  <section class="about-intro-mobile mx-auto max-w-[327px] px-[0] pb-[120px] pt-[32px] sm:max-w-[560px] sm:pt-[48px] md:hidden">
+    <img
+      class="mx-auto size-[245px] rounded-[20px] object-cover"
+      src="/about-photo.JPG"
+      alt="Zdjęcie profilowe Magdy"
+      loading="eager"
+      decoding="async"
+      transition:name="about-profile-photo"
+    />
 
     <div class="mt-[64px] flex flex-col gap-[64px]">
       <div class="flex flex-col gap-[24px]">
@@ -215,7 +254,7 @@ const testimonials = [
 
         <div class="h-[2px] w-full bg-[var(--color-divider)]"></div>
 
-        <div class="space-y-4 text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+        <div class="space-y-4 text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
           {introMobile.map((paragraph) => <p>{paragraph}</p>)}
         </div>
 
@@ -230,7 +269,7 @@ const testimonials = [
                   class="group inline-flex items-center gap-[12px] text-[14px] uppercase leading-[24px] tracking-[0.5px] text-[var(--color-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
                 >
                   <span>{item.label}</span>
-                  <TablerIcon name="arrow-up-right" class="size-6 transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
+                  <TablerIcon name="arrow-up-right" class="size-[18px] transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
                 </a>
               </li>
             ))
@@ -253,7 +292,16 @@ const testimonials = [
                       <li>
                         <div class="flex items-center gap-[12px] rounded-[12px] border border-[var(--color-border)] px-[14px] py-[12px]">
                           <span class="inline-flex size-8 items-center justify-center rounded-[6px] bg-[var(--color-surface)] p-[6px]">
-                            <img src={tool.icon} alt="" class="size-full object-contain" loading="lazy" decoding="async" />
+                            {
+                              getDarkIconSrc(tool.icon) ? (
+                                <>
+                                  <img src={tool.icon} alt="" class="theme-icon-light size-full object-contain" loading="lazy" decoding="async" />
+                                  <img src={getDarkIconSrc(tool.icon)} alt="" class="theme-icon-dark size-full object-contain" loading="lazy" decoding="async" />
+                                </>
+                              ) : (
+                                <img src={tool.icon} alt="" class="size-full object-contain" loading="lazy" decoding="async" />
+                              )
+                            }
                           </span>
                           <span class="text-[12px] leading-[18px] tracking-[0.25px] text-[var(--color-text)]">{tool.label}</span>
                         </div>
@@ -269,30 +317,537 @@ const testimonials = [
     </div>
   </section>
 
-  <section class="mx-auto hidden max-w-[1040px] pb-[110px] lg:block">
-    <h2 class="text-center text-[36px] font-medium leading-[44px] text-[var(--color-text)]">Co mówią o mnie innni?</h2>
+  <section class="about-testimonials-section mx-auto hidden max-w-[1040px] pb-[120px] md:block md:px-8 md:pb-[144px] lg:px-0 lg:pb-[200px]">
+    <div class="flex items-center justify-between gap-[20px]">
+      <h2 class="text-[30px] font-medium leading-[38px] text-[var(--color-text)] lg:text-[36px] lg:leading-[44px]">Co mówią o mnie inni?</h2>
+      <a
+        href={testimonialsCtaHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-[10px] text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text)] underline underline-offset-4 transition-colors hover:text-[var(--color-text-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+      >
+        <span>Zobacz wszystkie na LinkedIn</span>
+        <TablerIcon name="arrow-up-right" class="size-[18px] transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
+      </a>
+    </div>
 
-    <div class="mt-[46px] grid grid-cols-2 gap-x-[20px] gap-y-[24px]">
+    <div class="mt-[46px] grid grid-cols-2 items-start gap-x-[20px] gap-y-[24px]">
       {
         testimonials.map((item) => (
-          <article class="px-[20px] py-[24px]">
-            <div class="flex items-start gap-[12px]">
-              <p class="flex-1 text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{item.quote}</p>
-              <TablerIcon name="quote" class="size-[92px] text-black/10" />
+          <article class="testimonial-card testimonial-card-desktop is-collapsed rounded-[24px] border border-[var(--color-divider)] px-[28px] py-[28px]" data-testimonial-card>
+            <div class="flex items-center gap-[20px]">
+              {
+                item.photo ? (
+                  <img
+                    src={item.photo}
+                    alt={`Zdjęcie ${item.name}`}
+                    class="size-[64px] shrink-0 rounded-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <span class="inline-flex size-[64px] shrink-0 rounded-full bg-[#d3d3d3]" aria-hidden="true"></span>
+                )
+              }
+              <div>
+                <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]" data-testimonial-name>{item.name}</p>
+                <p class="text-[12px] lg:text-[14px] leading-[16px] lg:leading-[20px] tracking-[0.5px] text-[var(--color-text-muted)]">{item.role}</p>
+              </div>
             </div>
 
-            <div class="mt-[24px] h-[2px] w-full bg-[var(--color-divider)]"></div>
-
-            <div class="mt-[24px] flex items-center gap-[20px]">
-              <span class="inline-flex size-[64px] shrink-0 rounded-full bg-[#d3d3d3]" aria-hidden="true"></span>
-              <div>
-                <p class="text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">{item.name}</p>
-                <p class="text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text-muted)]">{item.role}</p>
-              </div>
+            <div class="mt-[28px] flex min-h-0 flex-1 flex-col gap-[12px]">
+              <p class="testimonial-quote text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]" data-testimonial-quote>{item.quote}</p>
+              <button
+                type="button"
+                class="testimonial-toggle hidden w-fit text-[14px] leading-[20px] tracking-[0.25px] text-[var(--color-text-muted)] underline underline-offset-4 transition-colors hover:text-[var(--color-text)] cursor-pointer"
+                data-testimonial-toggle
+                aria-expanded="false"
+              >
+                Pokaż więcej
+              </button>
             </div>
           </article>
         ))
       }
     </div>
   </section>
+
+  <section class="about-testimonials-section mx-auto max-w-[327px] px-[0] pb-[120px] sm:max-w-[560px] md:hidden">
+    <div class="flex flex-col items-center gap-[12px]">
+      <h2 class="text-center text-[24px] font-medium leading-[32px] text-[var(--color-text)]">Co mówią o mnie inni?</h2>
+      <a
+        href={testimonialsCtaHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-[8px] text-[13px] leading-[18px] tracking-[0.25px] text-[var(--color-text)] underline underline-offset-4 transition-colors hover:text-[var(--color-text-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+      >
+        <span>Zobacz wszystkie na LinkedIn</span>
+        <TablerIcon name="arrow-up-right" class="size-[16px] transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
+      </a>
+    </div>
+
+    <div class="mt-[32px] grid grid-cols-1 gap-y-[20px]">
+      {
+        testimonials.map((item) => (
+          <article class="testimonial-card testimonial-card-mobile is-collapsed rounded-[20px] border border-[var(--color-divider)] px-[16px] py-[18px]" data-testimonial-card>
+            <div class="flex items-center gap-[14px]">
+              {
+                item.photo ? (
+                  <img
+                    src={item.photo}
+                    alt={`Zdjęcie ${item.name}`}
+                    class="size-[48px] shrink-0 rounded-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <span class="inline-flex size-[48px] shrink-0 rounded-full bg-[#d3d3d3]" aria-hidden="true"></span>
+                )
+              }
+              <div>
+                <p class="text-[14px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]" data-testimonial-name>{item.name}</p>
+                <p class="text-[12px] leading-[16px] tracking-[0.5px] text-[var(--color-text-muted)]">{item.role}</p>
+              </div>
+            </div>
+
+            <div class="mt-[18px] flex min-h-0 flex-1 flex-col gap-[10px]">
+              <p class="testimonial-quote text-[14px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]" data-testimonial-quote>{item.quote}</p>
+              <button
+                type="button"
+                class="testimonial-toggle hidden w-fit text-[13px] leading-[18px] tracking-[0.25px] text-[var(--color-text-muted)] underline underline-offset-4 transition-colors hover:text-[var(--color-text)]"
+                data-testimonial-toggle
+                aria-expanded="false"
+              >
+                Pokaż więcej
+              </button>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <style>
+    .availability-dot-wrap {
+      position: relative;
+      display: inline-flex;
+      width: 16px;
+      height: 16px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .availability-dot-ping {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: #49b46f;
+      opacity: 0.6;
+      animation: availabilityPing 1.35s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .availability-dot-core {
+      position: relative;
+      z-index: 1;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #49b46f;
+    }
+
+    @keyframes availabilityPing {
+      75%,
+      100% {
+        transform: scale(1.75);
+        opacity: 0;
+      }
+    }
+
+    .about-intro-desktop .about-intro-photo,
+    .about-intro-desktop .about-intro-content {
+      opacity: 0;
+      transition:
+        opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .about-intro-desktop .about-intro-photo {
+      transform: translateX(30px);
+    }
+
+    .about-intro-desktop .about-intro-content {
+      transform: translateX(-30px);
+    }
+
+    .about-intro-desktop.is-visible .about-intro-photo,
+    .about-intro-desktop.is-visible .about-intro-content {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .about-intro-mobile {
+      opacity: 0;
+      transform: translateY(14px) scale(0.99);
+      transition:
+        opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .about-intro-mobile.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .about-testimonials-section {
+      transition:
+        opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    :global(html.about-animations-ready) .about-testimonials-section:not(.is-visible) {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    :global(html.about-animations-ready) .about-testimonials-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-intro-desktop .about-intro-photo,
+      .about-intro-desktop .about-intro-content,
+      .about-intro-mobile,
+      .about-testimonials-section {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      align-self: start;
+      transition: border-color 220ms ease;
+    }
+
+    .testimonial-card-desktop {
+      min-height: 352px;
+    }
+
+    .testimonial-card-mobile {
+      min-height: 286px;
+    }
+
+    .testimonial-card.is-collapsed {
+      overflow: clip;
+    }
+
+    .testimonial-card.is-collapsed .testimonial-quote.is-dynamic-clamped {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--testimonial-line-clamp, 4);
+    }
+  </style>
+
+  <script>
+    function initTestimonials() {
+      const cards = Array.from(document.querySelectorAll("[data-testimonial-card]"));
+      if (!cards.length) return;
+      const cardAnimationState = new WeakMap();
+      const DURATION_MS = 360;
+      const EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
+      const STAN_NAME_PATTERN = /stan\b/i;
+
+      const stanQuoteLength = (() => {
+        for (const card of cards) {
+          if (!(card instanceof HTMLElement)) continue;
+          const name = card.querySelector("[data-testimonial-name]");
+          const quote = card.querySelector("[data-testimonial-quote]");
+          if (!(name instanceof HTMLElement) || !(quote instanceof HTMLElement)) continue;
+          if (STAN_NAME_PATTERN.test(name.textContent?.trim() ?? "")) {
+            return (quote.textContent?.trim() ?? "").length;
+          }
+        }
+        return 0;
+      })();
+
+      function syncTestimonialCard(card) {
+        if (!(card instanceof HTMLElement) || card.offsetParent === null) return;
+
+        const quote = card.querySelector("[data-testimonial-quote]");
+        const toggle = card.querySelector("[data-testimonial-toggle]");
+        if (!(quote instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return;
+        const quoteLength = (quote.textContent?.trim() ?? "").length;
+        const canExpand = stanQuoteLength > 0 ? quoteLength > stanQuoteLength : false;
+
+        if (!canExpand) {
+          quote.style.removeProperty("--testimonial-line-clamp");
+          quote.classList.remove("is-dynamic-clamped");
+          card.classList.remove("is-collapsed");
+          toggle.classList.add("hidden");
+          toggle.textContent = "Pokaż więcej";
+          toggle.setAttribute("aria-expanded", "false");
+          return;
+        }
+
+        const wasCollapsed = card.classList.contains("is-collapsed");
+        card.classList.add("is-collapsed");
+        quote.classList.add("is-dynamic-clamped");
+        quote.style.removeProperty("--testimonial-line-clamp");
+        const collapsedHeight = quote.getBoundingClientRect().height;
+        card.classList.remove("is-collapsed");
+        const expandedHeight = quote.getBoundingClientRect().height;
+        card.classList.toggle("is-collapsed", wasCollapsed);
+
+        const needsToggle = expandedHeight > collapsedHeight + 1;
+        toggle.classList.toggle("hidden", !needsToggle);
+
+        if (!needsToggle) {
+          quote.style.removeProperty("--testimonial-line-clamp");
+          quote.classList.remove("is-dynamic-clamped");
+          card.classList.remove("is-collapsed");
+          toggle.textContent = "Pokaż więcej";
+          toggle.setAttribute("aria-expanded", "false");
+          return;
+        }
+
+        if (card.classList.contains("is-collapsed")) {
+          const quoteWrap = quote.parentElement;
+          if (quoteWrap instanceof HTMLElement) {
+            const contentStyles = window.getComputedStyle(quoteWrap);
+            const gap = Number.parseFloat(contentStyles.rowGap || contentStyles.gap || "0") || 0;
+            const availableQuoteHeight = Math.max(0, quoteWrap.clientHeight - toggle.offsetHeight - gap);
+            const quoteStyles = window.getComputedStyle(quote);
+            const lineHeight = Number.parseFloat(quoteStyles.lineHeight || "0") || 24;
+            const clampedLines = Math.max(1, Math.floor((availableQuoteHeight + 0.5) / lineHeight));
+            quote.style.setProperty("--testimonial-line-clamp", String(clampedLines));
+          }
+        } else {
+          quote.style.removeProperty("--testimonial-line-clamp");
+        }
+
+        const isCollapsed = card.classList.contains("is-collapsed");
+        toggle.textContent = isCollapsed ? "Pokaż więcej" : "Pokaż mniej";
+        toggle.setAttribute("aria-expanded", String(!isCollapsed));
+      }
+
+      function syncAllTestimonialCards(excludedCard) {
+        cards.forEach((card) => {
+          if (excludedCard && card === excludedCard) return;
+          syncTestimonialCard(card);
+        });
+      }
+
+      function animateCardHeight(card, updateState, options = {}) {
+        if (!(card instanceof HTMLElement)) return;
+        const quote = card.querySelector("[data-testimonial-quote]");
+        if (!(quote instanceof HTMLElement)) {
+          updateState();
+          return;
+        }
+        const { isCollapsing = false } = options;
+
+        const activeAnimation = cardAnimationState.get(card);
+        if (typeof activeAnimation === "function") {
+          activeAnimation();
+        }
+
+        const startHeight = quote.getBoundingClientRect().height;
+        let endHeight = startHeight;
+
+        if (isCollapsing) {
+          const wasCollapsed = card.classList.contains("is-collapsed");
+          card.classList.add("is-collapsed");
+          endHeight = quote.getBoundingClientRect().height;
+          card.classList.toggle("is-collapsed", wasCollapsed);
+        } else {
+          updateState();
+          endHeight = quote.getBoundingClientRect().height;
+        }
+
+        if (Math.abs(endHeight - startHeight) < 1) {
+          if (isCollapsing) {
+            updateState();
+          }
+          return;
+        }
+
+        quote.style.overflow = "hidden";
+        quote.style.maxHeight = `${startHeight}px`;
+        quote.style.opacity = "1";
+        quote.style.transition = `max-height ${DURATION_MS}ms ${EASING}, opacity ${DURATION_MS}ms ${EASING}`;
+
+        requestAnimationFrame(() => {
+          quote.style.maxHeight = `${endHeight}px`;
+          quote.style.opacity = isCollapsing ? "0.96" : "1";
+        });
+
+        let hasCommittedState = false;
+        const commitStateIfNeeded = () => {
+          if (!isCollapsing || hasCommittedState) return;
+          hasCommittedState = true;
+          updateState();
+        };
+
+        const cleanup = () => {
+          quote.style.removeProperty("transition");
+          quote.style.removeProperty("max-height");
+          quote.style.removeProperty("overflow");
+          quote.style.removeProperty("opacity");
+          commitStateIfNeeded();
+          quote.removeEventListener("transitionend", onTransitionEnd);
+          if (fallbackTimeout) {
+            window.clearTimeout(fallbackTimeout);
+          }
+          cardAnimationState.delete(card);
+        };
+
+        const onTransitionEnd = (event) => {
+          if (event.propertyName !== "max-height") return;
+          cleanup();
+        };
+
+        quote.addEventListener("transitionend", onTransitionEnd);
+        const fallbackTimeout = window.setTimeout(cleanup, DURATION_MS + 120);
+
+        cardAnimationState.set(card, cleanup);
+      }
+
+      cards.forEach((card) => {
+        const toggle = card.querySelector("[data-testimonial-toggle]");
+        if (!(toggle instanceof HTMLButtonElement) || toggle.dataset.bound === "true") return;
+
+        toggle.dataset.bound = "true";
+        toggle.addEventListener("click", () => {
+          const isCurrentlyCollapsed = card.classList.contains("is-collapsed");
+          const isCollapsing = !isCurrentlyCollapsed;
+
+          animateCardHeight(
+            card,
+            () => {
+              if (isCollapsing) {
+                card.classList.add("is-collapsed");
+                toggle.textContent = "Pokaż więcej";
+                toggle.setAttribute("aria-expanded", "false");
+              } else {
+                card.classList.remove("is-collapsed");
+                toggle.textContent = "Pokaż mniej";
+                toggle.setAttribute("aria-expanded", "true");
+              }
+            },
+            { isCollapsing }
+          );
+        });
+      });
+
+      const prevResizeHandler = window.__testimonialResizeHandler;
+      if (typeof prevResizeHandler === "function") {
+        window.removeEventListener("resize", prevResizeHandler);
+      }
+      window.__testimonialResizeHandler = syncAllTestimonialCards;
+
+      syncAllTestimonialCards();
+      window.addEventListener("resize", syncAllTestimonialCards);
+    }
+
+    initTestimonials();
+    document.addEventListener("astro:page-load", initTestimonials);
+  </script>
+
+  <script is:inline>
+    (() => {
+      const STATE_KEY = "__aboutAnimationsState";
+      const state =
+        window[STATE_KEY] ??
+        (window[STATE_KEY] = {
+          observer: null,
+          pageLoadBound: false,
+        });
+
+      const initAboutAnimations = () => {
+        const introDesktop = document.querySelector(".about-intro-desktop");
+        const introMobile = document.querySelector(".about-intro-mobile");
+        const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+        const testimonialSections = Array.from(
+          document.querySelectorAll(".about-testimonials-section")
+        ).filter((section) => section instanceof HTMLElement && section.offsetParent !== null);
+
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        document.documentElement.classList.toggle("about-animations-ready", !prefersReducedMotion);
+
+        if (introDesktop instanceof HTMLElement) {
+          introDesktop.classList.remove("is-visible");
+        }
+        if (introMobile instanceof HTMLElement) {
+          introMobile.classList.remove("is-visible");
+        }
+
+        if (prefersReducedMotion) {
+          if (introDesktop instanceof HTMLElement) {
+            introDesktop.classList.add("is-visible");
+          }
+          if (introMobile instanceof HTMLElement) {
+            introMobile.classList.add("is-visible");
+          }
+          testimonialSections.forEach((section) => section.classList.add("is-visible"));
+          if (state.observer instanceof IntersectionObserver) {
+            state.observer.disconnect();
+          }
+          return;
+        }
+
+        if (isMobile) {
+          if (introMobile instanceof HTMLElement) {
+            introMobile.classList.add("is-visible");
+          }
+          testimonialSections.forEach((section) => section.classList.add("is-visible"));
+          if (state.observer instanceof IntersectionObserver) {
+            state.observer.disconnect();
+          }
+          return;
+        }
+
+        requestAnimationFrame(() => {
+          if (introDesktop instanceof HTMLElement && introDesktop.offsetParent !== null) {
+            introDesktop.classList.add("is-visible");
+          }
+          if (introMobile instanceof HTMLElement && introMobile.offsetParent !== null) {
+            introMobile.classList.add("is-visible");
+          }
+        });
+
+        testimonialSections.forEach((section) => section.classList.remove("is-visible"));
+
+        if (state.observer instanceof IntersectionObserver) {
+          state.observer.disconnect();
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px 6% 0px" }
+        );
+
+        testimonialSections.forEach((section) => observer.observe(section));
+        state.observer = observer;
+      };
+
+      initAboutAnimations();
+      if (!state.pageLoadBound) {
+        document.addEventListener("astro:page-load", initAboutAnimations);
+        state.pageLoadBound = true;
+      }
+    })();
+  </script>
 </Layout>

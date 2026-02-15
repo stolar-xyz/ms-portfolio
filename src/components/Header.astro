@@ -85,6 +85,7 @@ const activeKey = currentPath.startsWith("/about")
             class="fixed inset-0 z-[90] opacity-0 pointer-events-none transition-opacity duration-200"
             data-mobile-overlay
             aria-hidden="true"
+            inert
           >
             <button
               type="button"
@@ -194,6 +195,7 @@ const activeKey = currentPath.startsWith("/about")
 
         openButton.setAttribute("aria-expanded", "false");
         overlay.setAttribute("aria-hidden", "true");
+        overlay.setAttribute("inert", "");
         root.classList.remove("is-open");
 
         overlay.classList.remove("opacity-100", "pointer-events-auto");
@@ -236,6 +238,7 @@ const activeKey = currentPath.startsWith("/about")
 
         openButton.setAttribute("aria-expanded", "true");
         overlay.setAttribute("aria-hidden", "false");
+        overlay.removeAttribute("inert");
         root.classList.add("is-open");
 
         overlay.classList.remove("opacity-0", "pointer-events-none");

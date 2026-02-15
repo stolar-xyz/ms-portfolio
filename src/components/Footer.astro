@@ -133,9 +133,20 @@ const mobileDots = [
         </div>
       </div>
 
-      <p class="text-right text-[12px] leading-[16px] text-[var(--color-text)] lg:text-[14px] lg:leading-[19px]">
-        &copy; Magdalena Szczecińska {currentYear}
-      </p>
+      <div class="flex items-center justify-between text-[12px] leading-[16px] text-[var(--color-text)] lg:text-[14px] lg:leading-[19px]">
+        <a
+          href="https://github.com/mszczecinska/portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-[6px] text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text)]"
+        >
+          <span>developed by me</span>
+          <TablerIcon name="arrow-narrow-right" class="size-4 transition-transform duration-200 group-hover:translate-x-[2px]" />
+        </a>
+        <p>
+          &copy; Magdalena Szczecińska {currentYear}
+        </p>
+      </div>
     </div>
   </div>
 </footer>

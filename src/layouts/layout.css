@@ -52,16 +52,18 @@
   --color-danger: #ff9f9f;
 }
 
-html,
-body {
-  margin: 0;
-  min-height: 100%;
-  background-color: var(--color-background);
-  color: var(--color-text);
-}
+@layer base {
+  html,
+  body {
+    margin: 0;
+    min-height: 100%;
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
 
-body {
-  font-family: "Satoshi", "Avenir Next", "Segoe UI", sans-serif;
+  body {
+    font-family: "Satoshi", "Avenir Next", "Segoe UI", sans-serif;
+  }
 }
 
 :focus-visible {

@@ -54,11 +54,11 @@ export const projects: Project[] = [
   },
   {
     slug: "aurapura-design-system",
-    title: "AuraPura - design system",
+    title: "AuraPura - projekt design systemu",
     description:
       "AuraPura to projekt stworzony w ramach kursu Design system intro. Punktem wyjścia był brief marki, zapis wywiadu z klientem i zestaw assetów. Na tej podstawie miałam samodzielnie zbudować kompletny design system i doprowadzić go do finalnych widoków na trzech wielkościach ekranu.",
     image: "/assets/aurapura/work-aurapura.png",
-    tags: ["UX / UI Design", "Design system", "E-commerse"],
+    tags: ["UX / UI Design", "Design system", "E-commerce"],
     content:
       "AuraPura to projekt stworzony w ramach kursu Design system intro. Punktem wyjścia był brief marki, zapis wywiadu z klientem i zestaw assetów. Na tej podstawie miałam samodzielnie zbudować kompletny design system i doprowadzić go do finalnych widoków na trzech wielkościach ekranu.",
   },

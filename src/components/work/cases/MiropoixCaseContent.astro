@@ -1,3 +1,11 @@
+---
+interface Props {
+  liveUrl?: string;
+}
+
+const { liveUrl } = Astro.props;
+---
+
 <section class="grid gap-[48px] lg:grid-cols-[509px_467px] lg:items-center lg:gap-[64px]" aria-labelledby="problem-title">
   <div class="flex flex-col gap-[24px] lg:justify-center">
     <h2 id="problem-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Problem</h2>
@@ -24,7 +32,7 @@
     <h2 id="goal-title" class="text-[24px] leading-[32px] lg:text-[36px] lg:leading-[44px] text-[var(--color-text)]">Cel projektu</h2>
     <div class="h-px w-full bg-[var(--color-border)]"></div>
     <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-      Przeprowadzić kompleksowy redesign ekranów aplikacji, landing page i zaproponować nową tożsamość wizualną, która:
+      Przeprowadzić kompleksowy redesign landing page oraz ekranów aplikacji na potrzeby strony i zaproponować nową tożsamość wizualną, która:
     </p>
     <ul class="list-disc pl-[24px] text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
       <li>nada marce wyrazisty, rozpoznawalny charakter kojarzący się z kuchnią,</li>
@@ -47,11 +55,10 @@
   <section class="flex flex-col gap-[24px]" aria-labelledby="app-redesign-title">
     <h3 id="app-redesign-title" class="text-[20px] leading-[28px] lg:text-[28px] lg:leading-[36px] text-[var(--color-text)]">Redesign aplikacji</h3>
     <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-      Punktem wyjścia była istniejąca aplikacja, która działała poprawnie, ale wizualnie była generyczna i nie budowała żadnych skojarzeń z branżą gastronomiczną. Brakowało jej charakteru, który sprawiłby, że użytkownik rozpozna ją i zapamięta.
-      Ten sam problem dotyczny strony promującej aplikację.
+      Punktem wyjścia była istniejąca aplikacja oraz strona, które działały poprawnie, ale wizualnie były generyczne i nie budowały żadnych skojarzeń z branżą gastronomiczną. Brakowało im charakteru, który sprawiłby, że użytkownik rozpoznałby je i zapamiętaliby.
     </p>
     <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
-      Podczas redesignu skupiłam się na kilku kluczowych obszarach. Przede wszystkim na zbudowaniu spójnej tożsamości wizualnej, która łączy profesjonalizm narzędzia SaaS z energią i dynamiką środowiska kuchennego. Zależało mi, aby aplikacja nie wyglądała jak kolejny nudny panel administracyjny, ale była czytelna i funkcjonalna dla kucharzy.
+      Podczas redesignu skupiłam się na kilku kluczowych obszarach. Przede wszystkim na zbudowaniu spójnej tożsamości wizualnej, która łączy profesjonalizm narzędzia SaaS z energią i dynamiką środowiska kuchennego. Zależało mi, aby aplikacja nie wyglądała jak kolejny nudny panel administracyjny, ale była czytelna i funkcjonalna dla kucharzy. Zdecydowałam się m.in. na powiększenie kluczowych buttonów (kucharze często mają brudne dłonie, a większe przyciski pozwalają łatwiej wykonać akcję), zmianę kolorów oraz dodanie animacji.
     </p>
     <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
       Zaprojektowałam kompletne widoki aplikacji obejmujące kluczowe ekrany, takie jak dodawanie produktów do listy, segregację zamówień według dostawców czy akceptację próśb innych kucharzy. Oprócz statycznych ekranów opracowałam animacje, które pojawiły się na landing page'u. Dodały one dynamiki i pomogły pokazać działanie aplikacji.
@@ -73,7 +80,15 @@
     <h3 id="website-title" class="text-[20px] leading-[28px] lg:text-[28px] lg:leading-[36px] text-[var(--color-text)]">Strona internetowa</h3>
     <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
       Równolegle z redesignem widoków stworzyłam stronę internetową, która pełniła rolę głównego punktu styku z potencjalnymi użytkownikami. Współpracowałam z analitykiem i UX designerem. Został mi dostarczony wireframe układu landing page'a oraz teksty, a moim zadaniem było opracowanie designu, implementacja i animacje.
-      Do budowy strony wybrałam stack technologiczny oparty na <strong>Vite</strong>, <strong>React</strong> i <strong>Tailwind CSS</strong>. Dodatkowo wykorzystałam technologię MCP, dzięki której mogłam „pokazać" AI, jaki efekt chcę osiągnąć bez wysyłania zdjęć poglądowych i pisania długich promptów.
+      Do budowy strony wybrałam stack technologiczny oparty na <strong>Vite</strong>, <strong>React</strong> i <strong>Tailwind CSS</strong>. Dodatkowo wykorzystałam technologię <strong>MCP</strong>, dzięki której mogłam „pokazać" AI, jaki efekt chcę osiągnąć bez wysyłania zdjęć poglądowych i pisania długich promptów.
+    </p>
+    <p class="text-[14px] lg:text-[16px] leading-[24px] tracking-[0.5px] text-[var(--color-text)]">
+      <strong>Live:</strong>
+      {
+        liveUrl
+          ? <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="ml-[6px] font-semibold underline">Zobacz stronę</a>
+          : <a href="https://miropoix.com/en/" target="_blank" rel="noopener noreferrer" class="ml-[6px] font-semibold underline">https://miropoix.com/en/</a>
+      }
     </p>
     <div class="overflow-hidden bg-transparent">
       <img
